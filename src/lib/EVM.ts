@@ -748,6 +748,7 @@ export async function submitTransaction(signedXDR: string): Promise<{
       ledger: 1042918 + Math.floor(Math.random() * 500),
     };
   }
+}
 
 // ──────────────────────────────────────────────────
 //  TRANSACTION HISTORY (Real Horizon)
