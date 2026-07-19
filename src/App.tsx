@@ -21,8 +21,7 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import { Helmet } from "react-helmet-async";
 import Hls from "hls.js";
-import { RobinhoodChainWalletsKit, Networks } from "ethers";
-import { defaultModules } from "ethers/modules/utils";
+
 import BionovaHero from "./components/BionovaHero";
 import FeaturesGrid from "./components/FeaturesGrid";
 import CustomDocsView from "./components/CustomDocsView";
@@ -51,7 +50,7 @@ import {
   fetchAnchorRegistryRecord,
   fetchAnchorVaultState,
   formatTokenAmount,
-  claimEthFromFaucet,
+
   offsetDefaultedDebtOnChain,
   adjustCreditLimitOnChain,
   buildNativeSwapTransaction,
