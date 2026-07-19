@@ -1,0 +1,132 @@
+Funding Application
+
+Founder Contact Information
+Founder First Name
+* Shriyash
+
+Founder Last Name
+* Soni
+
+Main Founder Email
+* shriyash@anchorvault.com
+
+Do you have a Co-Founder?
+* No
+
+How did you hear about us?
+How did you hear about us?
+* Online search / Social Media
+
+Company Basic Information
+Company Name
+* AnchorVault
+
+Company Website
+Valid URLs only, please!
+https://anchorvault.com
+
+Industry
+* Fintech, Web3, Blockchain, Financial Services
+
+Company Location (Region)
+* Global / Remote
+
+Year Company Founded
+* 2024
+
+Elevator Pitch
+* AnchorVault is a trustless on-chain remittance liquidity routing protocol on Stellar Soroban. It bridges Liquidity Providers with authorized off-ramp payment anchors to facilitate instant, cross-border remittances, replacing slow opaque intermediaries with a transparent smart-contract layer.
+
+Business Model
+* We provide a decentralized liquidity layer for cross-border remittances. We sell liquidity access to licensed payment anchors (off-ramps) who draw from our USDC pools to settle payouts instantly. Revenue comes from utilization-based fees charged to anchors on each draw, which are dynamically routed to our Liquidity Providers as organic yield.
+
+Pitch Deck (PDF)
+* [Please attach PDF here]
+
+Pitch Deck (Link)
+[Insert Pitch Deck Link]
+
+Company Financial Information
+Fundraising Stage
+* Pre-Seed
+
+Raise Amount
+* $250,000
+
+Current Valuation
+* $2,500,000
+
+Are you VC-Backed?
+* No
+
+Company MRR
+* $0
+
+Company Burn Rate
+* $5,000
+
+Company Runway
+* 6
+
+Previously Raised Capital
+* $0
+
+What is your startup's current cash reserve?
+* $0-$49,999
+
+Apply To: Venture Capital, Accelerator, CVC, and Venture Debt Selection 
+LvlUp Ventures Seed Fund
+* Yes
+
+LvlUp First Check Fund
+* Yes
+
+Do you have any team members or contractors? If so, are they paid?
+* No, currently operating as a solo founder prior to funding.
+
+Where is your entity formed / what is the formation / or are you pre-formation?
+* Pre-formation.
+
+What is your startup's current cash reserve?
+* $0-$49,999
+
+LvlUp CPG Fund
+* No
+
+LvlUp Labs CPG Accelerator
+* No
+
+LvlUp Labs Marketing Edge Accelerator
+* No
+
+LvlUp Labs
+* Yes
+
+LvlUp Ventures E-Commerce Ecosystem Builders Fund
+* No
+
+LvlUp Ventures Small Business Fund
+* No
+
+LvlUp CPG Non-Dilutive Fund I
+* No
+
+LvlUp Tech Non-Dilutive Fund I
+* Yes
+
+LvlUp Real Economy Non-Dilutive Fund I
+* No
+
+LvlUp Ventures B2B SaaS Accel Fund
+* No
+
+LvlUp Ventures | Ecosystem Initiatives
+LvlUp Ventures Power of the Pitch Week | August 3-7 (Virtual)
+* Yes
+
+LvlUp NYC Founder & Investor Networking Event | September 17 (In-Person)
+* Yes
+
+Privacy Policy
+Have you reviewed and acknowledged the privacy policy above?
+* Yes

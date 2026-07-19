@@ -1,0 +1,81 @@
+=== Page 1 ===
+AnchorVault
+Decentralized Cross-Border
+Remittances
+Built on Stellar & Soroban Smart Contracts
+Stellar Community Fund Submission
+
+=== Page 2 ===
+ The Problem: Capital Inefficiency
+Cross-border payment anchors face massive hurdles scaling operations.
+Trapped Capital: Millions locked upfront to process daily remittances.
+Lost Opportunity: Idle cash reserves provide zero yield.
+Fragmented Liquidity: Traditional rails are slow and siloed.
+![w:700]("website phtoo/Screenshot 2026-06-06 194158.png")
+
+=== Page 3 ===
+ The Solution: AnchorVault
+Protocol
+Bridging Liquidity Providers with authorized off-ramp anchors.
+For LPs: Deposit USDC to earn organic, institutional-grade yield.
+For Anchors: Draw borrowed USDC to settle payments instantly.
+Result: Infinite scalability without locking operational capital.
+![w:700]("website phtoo/Screenshot 2026-06-07 003329.png")
+
+=== Page 4 ===
+ Liquidity Providers (LPs)
+Fueling the global remittance corridors safely and efficiently.
+Mint $AVLT: Depositors receive Vault Share Tokens.
+Real Yield: LPs earn 90% of settlement fees generated from real payment
+flows.
+Transparent Risk: All reserves are 100% on-chain on Stellar.
+![w:700]("website phtoo/Screenshot 2026-06-07 003402.png")
+
+=== Page 5 ===
+ Anchor Operations & Draws
+Off-ramp providers can unlock massive liquidity lines.
+Whitelisting: Anchors lock collateral in the Anchor Registry.
+Instant Draws: Whitelisted anchors pull USDC to settle fiat payouts
+instantly.
+Two-Slope Utilization Curve: Borrowing costs dynamically penalize late
+repayments.
+![w:700]("website phtoo/Screenshot 2026-06-07 003438.png")
+
+=== Page 6 ===
+ Galileo: AI Risk Copilot
+Uncollateralized lending secured by state-of-the-art AI.
+Constant Monitoring: Analyzes anchor behavior and ledger metrics.
+Autonomous Slashing: Automatically cuts credit limits upon risky behavior.
+Insurance Fund: 5% of all fees programmatically protect LP capital.
+![w:700]("website phtoo/Screenshot 2026-06-07 003504.png")
+
+=== Page 7 ===
+ Deep Ecosystem Integrations
+AnchorVault is designed to expand the Stellar ecosystem utility.
+Soroban Contracts: 100% Rust logic running on Mainnet.
+Stellar Wallets Kit: Seamless multi-wallet authentication.
+Freighter Connect: Native browser-based transaction simulation.
+![w:700]("website phtoo/Screenshot 2026-06-07 003538.png")
+
+=== Page 8 ===
+ Live on Stellar Mainnet
+We are already deployed and fully operational!
+Verified Contracts: Auditable and live.
+High-Fidelity DeFi Portal: Obsidian-glass UI optimizing user experience.
+![w:700]("website phtoo/Screenshot 2026-06-07 003611.png")
+
+=== Page 9 ===
+ Roadmap & SCF Ask
+Applying for the SCF Build Integration Track grant.
+Next Steps:
+1. Bootstrap initial pool liquidity.
+2. Whitelist 3-5 major global off-ramp corridors.
+3. Conduct comprehensive Soroban security audits.
+![w:700]("website phtoo/Screenshot 2026-06-07 003618.png")
+
+=== Page 10 ===
+Thank You
+Join the decentralized remittance revolution.
+Shriyash Soni / AnchorVault
+![w:500]("website phtoo/Screenshot 2026-06-07 003642.png")
+

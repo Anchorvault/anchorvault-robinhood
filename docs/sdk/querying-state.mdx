@@ -1,0 +1,105 @@
+---
+title: "Querying State"
+sidebarTitle: "Querying State"
+description: "How to query on-chain pool state, LP positions, anchor records, and balances."
+icon: "magnifying-glass"
+---
+
+# Querying State
+
+All read operations use Soroban RPC simulation (no gas cost) or Horizon API queries.
+
+## Pool State
+
+```typescript
+import { fetchPoolState } from './lib/soroban';
+
+const pool = await fetchPoolState(callerPubKey);
+// Returns: PoolState | null
+// {
+//   totalDeposits: bigint,
+//   activeDraws: bigint,
+//   reserveBalance: bigint,
+//   accFeesPerShare: bigint,
+//   optimalUtilization: number,
+//   baseFeeBps: number,
+//   slope1Bps: number,
+//   slope2Bps: number,
+// }
+```
+
+## LP State
+
+```typescript
+import { fetchLPState } from './lib/soroban';
+
+const lpState = await fetchLPState(userPubKey);
+// Returns: LPState | null
+// { shares: bigint, feeDebt: bigint }
+```
+
+## Pending Yield
+
+```typescript
+import { fetchPendingYield } from './lib/soroban';
+
+const yield = await fetchPendingYield(userPubKey);
+// Returns: string (formatted USDC amount, e.g. "125.50")
+```
+
+## Wallet Balances
+
+```typescript
+import { fetchWalletBalances } from './lib/soroban';
+
+const balances = await fetchWalletBalances(userPubKey);
+// Returns: WalletBalances
+// { xlm: string, usdc: string, vaultToken: string, lpShares: string }
+```
+
+## Anchor State (Vault)
+
+```typescript
+import { fetchAnchorVaultState } from './lib/soroban';
+
+const state = await fetchAnchorVaultState(callerPubKey, anchorAddress);
+// Returns: AnchorVaultState | null
+// { isRegistered, creditLimit, activeDraw, reputationScore, lastDrawTimestamp }
+```
+
+## Anchor Record (Registry)
+
+```typescript
+import { fetchAnchorRegistryRecord } from './lib/soroban';
+
+const record = await fetchAnchorRegistryRecord(callerPubKey, anchorAddress);
+// Returns: AnchorRecord | null
+// { isWhitelisted, creditLimit, reputationScore, lockedCollateral, firstRegistered }
+```
+
+## All Registered Anchors
+
+```typescript
+import { fetchRegisteredAnchors } from './lib/soroban';
+
+const anchors = await fetchRegisteredAnchors(callerPubKey);
+// Returns: RegisteredAnchor[]
+```
+
+## Transaction History
+
+```typescript
+import { fetchTransactionHistory } from './lib/soroban';
+
+const history = await fetchTransactionHistory(userPubKey, 20);
+// Returns: TxRecord[]
+```
+
+## Contract Events
+
+```typescript
+import { fetchContractEvents } from './lib/soroban';
+
+const events = await fetchContractEvents(CONTRACT_ADDRESSES.CORE_VAULT, 15);
+// Returns raw Soroban events from the last ~24 hours
+```

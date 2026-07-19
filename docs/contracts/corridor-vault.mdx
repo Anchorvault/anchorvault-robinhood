@@ -1,0 +1,148 @@
+---
+title: "Corridor Pool Vault"
+sidebarTitle: "Corridor Vault"
+description: "The core smart contract managing USDC deposits, withdrawals, anchor draws, repayments, and yield distribution."
+icon: "vault"
+---
+
+# Corridor Pool Vault (`anchor_vault`)
+
+The Corridor Pool Vault is the **central contract** of AnchorVault. It manages all USDC liquidity operations.
+
+## Data Structures
+
+### PoolState
+```rust
+pub struct PoolState {
+    pub token: Address,              // USDC contract address
+    pub total_deposits: i128,        // Total USDC from LPs
+    pub active_draws: i128,          // USDC drawn by anchors
+    pub reserve_balance: i128,       // Available USDC
+    pub acc_fees_per_share: i128,    // Yield accumulator (1e12 scaled)
+    pub optimal_utilization: u32,    // Target utilization (bps)
+    pub base_fee_bps: u32,           // Base fee (bps)
+    pub slope_1_bps: u32,            // Slope 1 (bps)
+    pub slope_2_bps: u32,            // Slope 2 (bps)
+}
+```
+
+### AnchorState
+```rust
+pub struct AnchorState {
+    pub is_registered: bool,
+    pub credit_limit: i128,
+    pub active_draw: i128,
+    pub reputation_score: u32,       // 0–1000
+    pub last_draw_timestamp: u64,
+}
+```
+
+### LPState
+```rust
+pub struct LPState {
+    pub shares: i128,
+    pub fee_debt: i128,              // Tracks claimed fees
+}
+```
+
+## Functions
+
+### `initialize()`
+Initialize the corridor pool with asset and fee parameters.
+
+```rust
+pub fn initialize(
+    env: Env,
+    admin: Address,
+    token: Address,           // USDC address
+    gov_token: Address,       // $AVLT address
+    optimal_utilization: u32, // e.g. 8000
+    base_fee_bps: u32,       // e.g. 100
+    slope_1_bps: u32,        // e.g. 400
+    slope_2_bps: u32,        // e.g. 5000
+)
+```
+
+<Warning>Can only be called once. Subsequent calls will panic.</Warning>
+
+### `deposit()`
+Deposit USDC into the pool. Returns the number of shares minted.
+
+```rust
+pub fn deposit(env: Env, lp: Address, amount: i128) -> i128
+```
+
+**Auth**: Requires `lp.require_auth()`.
+
+**Logic**:
+1. Transfer USDC from LP to vault
+2. Calculate shares (pro-rata or 1:1 for first deposit)
+3. Auto-distribute pending yield
+4. Mint shares, update pool state
+
+### `withdraw()`
+Withdraw USDC by burning shares. Returns the USDC amount.
+
+```rust
+pub fn withdraw(env: Env, lp: Address, shares: i128) -> i128
+```
+
+**Auth**: Requires `lp.require_auth()`.
+
+**Reverts if**: Insufficient shares or high utilization prevents full withdrawal.
+
+### `draw_liquidity()`
+Anchor draws USDC for settlement.
+
+```rust
+pub fn draw_liquidity(env: Env, anchor: Address, amount: i128)
+```
+
+**Auth**: Requires `anchor.require_auth()`.
+
+**Checks**: Registered, within credit limit, sufficient reserves.
+
+### `repay_liquidity()`
+Anchor repays principal. Fee is auto-calculated.
+
+```rust
+pub fn repay_liquidity(env: Env, anchor: Address, principal: i128)
+```
+
+**Auth**: Requires `anchor.require_auth()`.
+
+**Effects**: Fee calculated from utilization + reputation, 90/5/5 split, reputation boosted.
+
+### `register_anchor()`
+Register/whitelist an anchor (admin only).
+
+```rust
+pub fn register_anchor(env: Env, admin: Address, anchor: Address, credit_limit: i128)
+```
+
+Supports upsert — re-registering updates the credit limit.
+
+### `adjust_credit_limit()`
+Update an anchor's credit limit (admin only).
+
+```rust
+pub fn adjust_credit_limit(env: Env, admin: Address, anchor: Address, new_limit: i128)
+```
+
+### `offset_defaulted_debt()`
+Offset bad debt using Insurance Fund (admin only).
+
+```rust
+pub fn offset_defaulted_debt(env: Env, admin: Address, anchor: Address)
+```
+
+**Requirements**: Anchor reputation < 450, active_draw > 0, insurance fund > 0.
+
+## View Functions
+
+```rust
+pub fn get_pool_state(env: Env) -> PoolState
+pub fn get_anchor_state(env: Env, anchor: Address) -> AnchorState
+pub fn get_lp_state(env: Env, lp: Address) -> LPState
+pub fn get_pending_yield(env: Env, lp: Address) -> i128
+```

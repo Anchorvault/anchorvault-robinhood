@@ -1,0 +1,62 @@
+---
+title: "Deploy to Testnet"
+sidebarTitle: "Deploy to Testnet"
+description: "Deploy all four AnchorVault contracts to Stellar Testnet."
+icon: "rocket"
+---
+
+# Deploy to Testnet
+
+## Generate Keys First
+
+```bash
+npm run setup-keys
+```
+
+This creates a `.env` file with a funded testnet deployer account.
+
+## Run Deployment
+
+```bash
+npm run deploy
+```
+
+### Deployment Pipeline
+
+The script (`deploy.js`) executes four sequential deployments:
+
+<Steps>
+  <Step title="[1/4] USDC Token">
+    Uploads `vault_token.wasm` and instantiates as the mock USDC contract.
+    On mainnet, uses the official Circle USDC Stellar Asset Contract.
+  </Step>
+  <Step title="[2/4] Anchor Registry">
+    Uploads `anchor_registry.wasm` and instantiates the registry.
+  </Step>
+  <Step title="[3/4] Vault Share Token">
+    Uploads `vault_token.wasm` and instantiates as the $AVLT share token.
+  </Step>
+  <Step title="[4/4] Corridor Pool Vault">
+    Uploads `anchor_vault.wasm` and instantiates the core vault.
+  </Step>
+</Steps>
+
+### Auto-Configuration
+
+After deployment, the script automatically updates:
+- **`.env`** — Contract addresses for deployment scripts
+- **`src/lib/soroban.ts`** — Contract addresses for the frontend
+
+## Deployment Output
+
+```
+🎉 ALL CONTRACTS DEPLOYED ON STELLAR TESTNET!
+   USDC Token:        CCXXXXXXXXXX...
+   Anchor Registry:   CAXXXXXXXXXX...
+   Vault Share Token: CCXXXXXXXXXX...
+   Corridor Vault:    CCXXXXXXXXXX...
+```
+
+<Warning>
+Each deployment uses unique salt values. Re-running `npm run deploy` with the same salts may fail if contracts already exist at those addresses. Change the salts in `deploy.js` for fresh deployments.
+</Warning>

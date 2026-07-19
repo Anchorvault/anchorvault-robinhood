@@ -1,0 +1,106 @@
+---
+title: "Corridor Pools"
+sidebarTitle: "Corridor Pools"
+description: "Understand how corridor pools work — pre-funded USDC reserves that enable instant cross-border settlement."
+icon: "water"
+---
+
+# Corridor Pools
+
+A **Corridor Pool** is the core primitive of AnchorVault. It is a pre-funded on-chain reserve of USDC stablecoin that authorized payment anchors can draw from to settle instant cross-border remittances.
+
+---
+
+## How It Works
+
+<Steps>
+  <Step title="LPs Fund the Pool">
+    Liquidity Providers deposit USDC into the corridor pool. In return, they receive **$AVLT** share tokens representing their proportional ownership of the pool.
+  </Step>
+  <Step title="Anchors Draw From the Pool">
+    Authorized payment anchors draw USDC from the pool to fulfill instant off-ramp payouts to remittance recipients.
+  </Step>
+  <Step title="Anchors Repay + Fee">
+    After settlement, anchors repay the drawn principal plus a dynamic utilization-based fee. This fee is the organic yield source for LPs.
+  </Step>
+  <Step title="Yield Distributed to LPs">
+    90% of the settlement fee accrues to LPs via the `acc_fees_per_share` accumulator. LPs claim yield automatically on their next deposit or withdrawal.
+  </Step>
+</Steps>
+
+---
+
+## Pool State Structure
+
+The corridor pool maintains a global `PoolState` struct on-chain:
+
+```rust
+pub struct PoolState {
+    pub token: Address,              // USDC contract address
+    pub total_deposits: i128,        // Total USDC deposited by all LPs
+    pub active_draws: i128,          // Total USDC currently drawn by anchors
+    pub reserve_balance: i128,       // Idle USDC available for draws
+    pub acc_fees_per_share: i128,    // Yield accumulator (scaled by 1e12)
+    pub optimal_utilization: u32,    // Target utilization (bps)
+    pub base_fee_bps: u32,           // Base fee rate (bps)
+    pub slope_1_bps: u32,            // Slope below optimal (bps)
+    pub slope_2_bps: u32,            // Slope above optimal (bps)
+}
+```
+
+---
+
+## Pool Accounting
+
+The total pool value at any time is:
+
+$$\text{Total Pool Value} = \text{reserve\_balance} + \text{active\_draws}$$
+
+### Share Price Calculation
+
+When an LP deposits, their shares are calculated relative to the entire pool:
+
+$$\text{shares} = \frac{\text{deposit\_amount} \times \text{total\_deposits}}{\text{reserve\_balance} + \text{active\_draws}}$$
+
+For the first deposit (`total_deposits == 0`), shares are minted 1:1 with the deposit amount.
+
+### Withdrawal Calculation
+
+When an LP withdraws shares, the corresponding USDC is:
+
+$$\text{amount} = \frac{\text{shares} \times (\text{reserve\_balance} + \text{active\_draws})}{\text{total\_deposits}}$$
+
+<Warning>
+If the calculated withdrawal amount exceeds `reserve_balance` (because anchors have drawn too much), the withdrawal will revert. LPs must wait for anchors to repay before withdrawing during high utilization periods.
+</Warning>
+
+---
+
+## Pool Utilization
+
+Pool utilization is a critical metric that determines fee rates:
+
+$$U = \frac{\text{active\_draws}}{\text{reserve\_balance} + \text{active\_draws}}$$
+
+| Utilization | Impact |
+|:------------|:-------|
+| 0% – 50% | Low fees — capital is abundant |
+| 50% – 80% | Moderate fees — approaching optimal |
+| 80% (optimal) | Target equilibrium point |
+| 80% – 100% | Aggressive penalty fees — forces repayment |
+
+---
+
+## Fee Distribution
+
+When anchors repay, the settlement fee is distributed:
+
+| Recipient | Share | Purpose |
+|:----------|:------|:--------|
+| **LPs** | 90% | Organic yield via `acc_fees_per_share` |
+| **Insurance Fund** | 5% | Bad debt protection reserve |
+| **Protocol Treasury** | 5% | Protocol sustainability |
+
+<Info>
+The LP yield accumulator uses **1e12 scaling** for fractional precision. This ensures even tiny fee amounts are accurately distributed across all share holders.
+</Info>

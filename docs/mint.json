@@ -1,0 +1,132 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Anchor Wallet",
+  "github": "https://github.com/shriyashsoni/Anchor Wallet",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#00C805",
+    "light": "#A78BFA",
+    "dark": "#5B21B6",
+    "background": {
+      "dark": "#0F0A1A"
+    }
+  },
+  "modeToggle": {
+    "default": "dark"
+  },
+  "topbarLinks": [
+    {
+      "name": "Launch App",
+      "url": "https://Anchor Wallet.xyz"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Connect Wallet",
+    "url": "https://Anchor Wallet.xyz"
+  },
+  "anchors": [
+    {
+      "name": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/shriyashsoni/Anchor Wallet"
+    },
+    {
+      "name": "Robinhood Chain Expert",
+      "icon": "telescope",
+      "url": "https://Robinhood Chain.expert/explorer/testnet"
+    },
+    {
+      "name": "Community",
+      "icon": "discord",
+      "url": "https://discord.gg/Anchor Wallet"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "architecture"
+      ]
+    },
+    {
+      "group": "Core Concepts",
+      "pages": [
+        "concepts/corridor-pools",
+        "concepts/liquidity-providers",
+        "concepts/payment-anchors",
+        "concepts/yield-model",
+        "concepts/reputation-system",
+        "concepts/insurance-fund"
+      ]
+    },
+    {
+      "group": "Smart Contracts",
+      "pages": [
+        "contracts/overview",
+        "contracts/corridor-vault",
+        "contracts/anchor-registry",
+        "contracts/vault-token"
+      ]
+    },
+    {
+      "group": "SDK & Integration",
+      "pages": [
+        "sdk/typescript-sdk",
+        "sdk/transaction-building",
+        "sdk/querying-state",
+        "sdk/wallet-integration"
+      ]
+    },
+    {
+      "group": "Deployment",
+      "pages": [
+        "deployment/prerequisites",
+        "deployment/compile-contracts",
+        "deployment/deploy-testnet",
+        "deployment/initialize-protocol",
+        "deployment/register-anchors"
+      ]
+    },
+    {
+      "group": "API Reference",
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/vault-functions",
+        "api-reference/registry-functions",
+        "api-reference/token-functions",
+        "api-reference/view-functions"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "github": "https://github.com/shriyashsoni/Anchor Wallet",
+    "x": "https://x.com/Anchor Wallet",
+    "discord": "https://discord.gg/Anchor Wallet"
+  },
+  "feedback": {
+    "thumbsRating": true,
+    "suggestEdit": true,
+    "raiseIssue": true
+  },
+  "analytics": {
+    "posthog": {
+      "apiKey": ""
+    }
+  },
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    },
+    {
+      "name": "SDK",
+      "url": "sdk"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+---
+title: "Registry Functions"
+sidebarTitle: "Registry Functions"
+description: "API reference for the Anchor Registry contract functions."
+icon: "list-check"
+---
+
+# Registry Functions
+
+## `initialize`
+
+Initialize the registry with admin and collateral parameters.
+
+<ParamField path="admin" type="Address" required>Protocol admin.</ParamField>
+<ParamField path="vault_token" type="Address" required>$AVLT token contract for collateral.</ParamField>
+<ParamField path="min_collateral_ratio_bps" type="u32" required>Minimum collateral ratio (e.g. 1000 = 10%).</ParamField>
+
+---
+
+## `register_anchor`
+
+Whitelist an anchor with initial credit limit. Supports upsert.
+
+<ParamField path="admin" type="Address" required>Must match stored admin.</ParamField>
+<ParamField path="anchor" type="Address" required>Anchor to register.</ParamField>
+<ParamField path="credit_limit" type="i128" required>Maximum drawable amount.</ParamField>
+
+New anchors start with **800 reputation** and **0 locked collateral**.
+
+---
+
+## `lock_collateral`
+
+Lock $AVLT tokens as collateral. Transfers from anchor to registry.
+
+<ParamField path="anchor" type="Address" required>Must authorize.</ParamField>
+<ParamField path="amount" type="i128" required>$AVLT amount to lock.</ParamField>
+
+---
+
+## `release_collateral`
+
+Release locked $AVLT back to anchor.
+
+<ParamField path="anchor" type="Address" required>Must authorize.</ParamField>
+<ParamField path="amount" type="i128" required>$AVLT to release.</ParamField>
+
+**Reverts**: `"Cannot release: Collateral ratio falls below minimum"`.
+
+---
+
+## `slash_collateral`
+
+Slash collateral for defaults. Admin only. Applies -300 reputation penalty.
+
+<ParamField path="admin" type="Address" required>Admin.</ParamField>
+<ParamField path="anchor" type="Address" required>Target anchor.</ParamField>
+<ParamField path="slash_amount" type="i128" required>Amount to slash.</ParamField>
+<ParamField path="treasury" type="Address" required>Receives slashed tokens.</ParamField>
+
+---
+
+## `update_reputation`
+
+Adjust anchor reputation. Auto-cuts credit by 20% if score < 500.
+
+<ParamField path="updater" type="Address" required>Must authorize (admin or vault).</ParamField>
+<ParamField path="anchor" type="Address" required>Target anchor.</ParamField>
+<ParamField path="delta" type="i32" required>Score change (positive or negative).</ParamField>
+
+---
+
+## `adjust_credit_limit`
+
+Update credit limit. Admin only.
+
+<ParamField path="admin" type="Address" required>Admin.</ParamField>
+<ParamField path="anchor" type="Address" required>Target anchor.</ParamField>
+<ParamField path="new_limit" type="i128" required>New limit.</ParamField>

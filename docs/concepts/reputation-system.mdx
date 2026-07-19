@@ -1,0 +1,61 @@
+---
+title: "Reputation System"
+sidebarTitle: "Reputation System"
+description: "On-chain reputation scoring for anchor credit capacity and fee modifiers."
+icon: "star"
+---
+
+# Reputation System
+
+A dynamic, on-chain credit scoring mechanism that tracks anchor payment behavior.
+
+## Score Range
+
+| Score | Rating | Effect |
+|:------|:-------|:-------|
+| 900–1000 | 🟢 Excellent | Fee discount up to 25% |
+| 700–900 | 🔵 Good | Standard operations |
+| 500–700 | 🟡 Fair | Credit restrictions may apply |
+| 300–500 | 🟠 Poor | 20% credit limit cut |
+| 0–300 | 🔴 Critical | Eligible for debt offset |
+
+<Info>
+New anchors start at **800** (80%) — a healthy baseline for immediate operations.
+</Info>
+
+## Reputation Boosts
+
+When an anchor repays, their score is boosted based on speed:
+
+| Repayment Time | Boost |
+|:---------------|:------|
+| ≤ 24 hours | +25 points |
+| ≤ 3 days | +15 points |
+| > 3 days | +5 points |
+
+Score is capped at **1000**.
+
+## Reputation Penalties
+
+| Event | Penalty |
+|:------|:--------|
+| Late repayment | -10 to -50 |
+| Collateral slash | -300 |
+| Protocol alert | Variable |
+
+## Credit Limit Impact
+
+```rust
+if record.reputation_score < 500 {
+    record.credit_limit = (record.credit_limit * 80) / 100;
+}
+```
+
+## Default & Debt Offset
+
+If score drops below **450**, outstanding debt can be offset using the Insurance Fund via `offset_defaulted_debt()`.
+
+Requirements:
+- `reputation_score < 450`
+- `active_draw > 0`
+- Insurance Fund has reserves

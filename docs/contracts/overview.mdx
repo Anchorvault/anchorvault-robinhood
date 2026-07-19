@@ -1,0 +1,57 @@
+---
+title: "Contract Overview"
+sidebarTitle: "Overview"
+description: "Overview of the three Soroban smart contracts that power AnchorVault."
+icon: "file-code"
+---
+
+# Smart Contract Overview
+
+AnchorVault's protocol logic lives in **three Rust smart contracts** compiled to WASM and deployed on Stellar's Soroban VM.
+
+## Contract Suite
+
+<CardGroup cols={3}>
+  <Card title="Corridor Pool Vault" icon="vault" href="/contracts/corridor-vault">
+    Core vault managing deposits, withdrawals, liquidity draws, repayments, and yield distribution.
+  </Card>
+  <Card title="Anchor Registry" icon="list-check" href="/contracts/anchor-registry">
+    Manages anchor whitelisting, collateral lockups, reputation scoring, and credit limits.
+  </Card>
+  <Card title="Vault Token ($AVLT)" icon="coins" href="/contracts/vault-token">
+    ERC20-like share token representing LP ownership. Minted on deposit, burned on withdrawal.
+  </Card>
+</CardGroup>
+
+## Technology Stack
+
+| Component | Technology |
+|:----------|:-----------|
+| Language | Rust (`#![no_std]`) |
+| Platform | Stellar Soroban |
+| Compilation Target | `wasm32-unknown-unknown` |
+| SDK | `soroban-sdk` |
+| Token Standard | Soroban Token Interface |
+| Precision | 7 decimals (Stellar standard) |
+
+## Contract Interactions
+
+```mermaid
+graph TD
+    classDef core fill:#7b39fc,stroke:#fff,color:#fff
+    classDef token fill:#00e5ff,stroke:#fff,color:#000
+
+    Vault["Corridor Vault"]:::core -->|"mint/burn"| AVLT["$AVLT Token"]:::token
+    Vault -->|"transfer"| USDC["USDC (SAC)"]:::token
+    Registry["Anchor Registry"]:::core -->|"lock/release"| AVLT
+    Vault -.->|"whitelist check"| Registry
+```
+
+## Deployed Addresses (Testnet)
+
+| Contract | Address |
+|:---------|:--------|
+| USDC | `CCW67CUUZD4BY...` |
+| $AVLT Token | `CCG35K57NAFGZ3...` |
+| Anchor Registry | `CAWO6A52CISR4J...` |
+| Corridor Vault | `CCU3RFCKEG2OIQ...` |

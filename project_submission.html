@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchor Wallet - Project Details & Tech Stack</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f9fa;
+        }
+        h1, h2, h3 {
+            color: #111;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid #7c3aed;
+            padding-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight {
+            background-color: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .tech-stack-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .tech-stack-table th, .tech-stack-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .tech-stack-table th {
+            background-color: #f1f3f5;
+            font-weight: bold;
+        }
+        .image-placeholder {
+            display: block;
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            background-color: #ddd;
+            border: 2px dashed #999;
+            text-align: center;
+            padding: 40px 0;
+            margin: 20px 0;
+            color: #555;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        .architecture-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Anchor Wallet</h1>
+    <p><strong>Trustless On-Chain Remittance Liquidity Routing</strong></p>
+
+    <!-- Logo / Cover Image Placeholder -->
+    <div class="image-placeholder">
+        [ Insert BUIDL Logo / Cover Image Here (Recommended: 480x480px) ]
+        <br><br>
+        <img src="logo.png" alt="Anchor Wallet Logo" style="max-width: 200px; display:none;" />
+    </div>
+
+    <h2>Vision & Problem Solved</h2>
+    <p>
+        Cross-border payment anchors on the Robinhood Chain network face a massive problem: <strong>Capital Inefficiency</strong>. They are forced to lock up millions of dollars just to maintain 1:1 liquidity across different global corridors.
+    </p>
+    <p>
+        <strong>Anchor Wallet</strong> solves this by acting as a decentralized clearinghouse, pooling USDC liquidity from retail providers and offering AI-managed credit lines to whitelisted Anchors. Retail Liquidity Providers (LPs) earn organic yield derived from real-world remittance volume, while institutions access the necessary capital to process transactions instantly. A perfect synergy of decentralized finance and real-world utility.
+    </p>
+
+    <h2>How We Built This & Core Functionality</h2>
+    <div class="architecture-box">
+        <h3>1. Corridor Pool Vault (anchor_vault)</h3>
+        <p>LPs deposit USDC stablecoin to earn interest from global cross-border remittances. When USDC is deposited, LPs are minted <strong>$AVLT</strong> share tokens.</p>
+        <ul>
+            <li><strong>LP Deposits & Withdrawals:</strong> LP deposit shares are calculated relative to the entire pool valuation (Cash Reserves + Outstanding Anchor Draws).</li>
+            <li><strong>Yield Accrual Mechanism:</strong> As anchors repay their draws plus interest, 90% of the settlement fee is added to the accumulated fees per share. The next time an LP interacts with the pool, their yield is disbursed.</li>
+        </ul>
+
+        <h3>2. Anchor Registry (anchor_registry)</h3>
+        <p>Before drawing capital to settle a payment, anchors must undergo reputational whitelisting.</p>
+        <ul>
+            <li><strong>Collateral Lockups:</strong> Anchors lock up governance tokens into the registry to back their credit capacity.</li>
+            <li><strong>Dynamic Credit Limit:</strong> The system enforces a minimum collateral-to-credit ratio. An anchor's reputation score determines how close to this ratio they can draw.</li>
+            <li><strong>Reputation Tracking (AI Copilot integration):</strong> Successful repayments boost the score. Defaults or delayed payments trigger a score slash, restricting credit capacity automatically.</li>
+        </ul>
+    </div>
+
+    <!-- Architecture Diagram Placeholder -->
+    <div class="image-placeholder">
+        [ Insert Protocol Architecture / Flow Chart Image Here ]
+        <br><br>
+        <em>Note: Export the Mermaid flow charts from the README as images and place them here.</em>
+    </div>
+
+    <h2>Dynamic Interest & Fee Model</h2>
+    <p>The vault manages LP risk and incentivizes anchor repayments by computing fees using a <strong>Two-Slope Utilization Curve</strong>.</p>
+    <ul>
+        <li><strong>Normal Range (Utilization ≤ 80%):</strong> Interest fees scale moderately to keep capital borrow costs low (Base 1% + Slope 4%).</li>
+        <li><strong>High Risk Range (Utilization > 80%):</strong> Interest fees scale aggressively (Penalty rate up to 50%) to discourage further draws and force anchors to repay, restoring liquidity.</li>
+    </ul>
+
+    <h2>Tech Stack</h2>
+    <p>Our platform combines the speed and low cost of the Robinhood Chain network with the power of EVM smart contracts and a premium modern frontend.</p>
+    
+    <table class="tech-stack-table">
+        <thead>
+            <tr>
+                <th>Layer</th>
+                <th>Technology</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Blockchain</strong></td>
+                <td>Robinhood Chain Mainnet</td>
+                <td>Layer-1 network for fast, low-cost transaction settlement</td>
+            </tr>
+            <tr>
+                <td><strong>Smart Contracts</strong></td>
+                <td>EVM (Rust / WASM)</td>
+                <td>On-chain logic for vault operations, registry, and custom token contracts</td>
+            </tr>
+            <tr>
+                <td><strong>Frontend</strong></td>
+                <td>React + TypeScript + Vite</td>
+                <td>High-fidelity, glassmorphism-themed DeFi dashboard for seamless user interaction</td>
+            </tr>
+            <tr>
+                <td><strong>Wallet Integration</strong></td>
+                <td>Freighter Wallet</td>
+                <td>Robinhood Chain browser extension for securely signing transactions</td>
+            </tr>
+            <tr>
+                <td><strong>Assets</strong></td>
+                <td>USDC (Circle)</td>
+                <td>Official Robinhood Chain Asset Contract utilized for corridor pool reserves</td>
+            </tr>
+            <tr>
+                <td><strong>RPC & Data</strong></td>
+                <td>EVM RPC & Robinhood Chain Expert</td>
+                <td>Mainnet JSON-RPC endpoint for contract interaction and on-chain verification</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- UI Screenshot Placeholder -->
+    <div class="image-placeholder">
+        [ Insert Dashboard UI Screenshot Here ]
+        <br><br>
+        <em>Showcase the high-fidelity glassmorphism-themed DeFi dashboard.</em>
+    </div>
+
+    <h2>Deployment Details</h2>
+    <p>All contracts are successfully deployed and verified on the <strong>Robinhood Chain Mainnet</strong>.</p>
+    <ul>
+        <li><strong>Robinhood Chain USDC Stablecoin:</strong> <span class="highlight">CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75</span></li>
+        <li><strong>Vault Share Token ($AVLT):</strong> <span class="highlight">CDXELK3CF4GHCK6U3NETR2NNONDV3VDNKM7MT4QD5M23AHRN5X47O4IF</span></li>
+        <li><strong>Anchor Registry:</strong> <span class="highlight">CA6NMU2ADEKVTS4XBZRLAARH7VSF7JEKWKAHNVT7WE5ZIEEKKOCOM6QO</span></li>
+        <li><strong>Corridor Pool Core Vault:</strong> <span class="highlight">CDO3GSX27G6TAHLBROCC6WV4TNM6BWLFZDT2OW6RSUVBSGZJKTIISJFG</span></li>
+    </ul>
+
+    <h2>Additional Resources</h2>
+    <ul>
+        <li><strong>Live Application:</strong> <a href="https://www.Anchor Wallet.xyz" target="_blank">Anchor Wallet.xyz</a></li>
+        <li><strong>Documentation:</strong> Comprehensive developer and SDK documentation available in the <code>/docs</code> repository folder.</li>
+    </ul>
+
+</body>
+</html>

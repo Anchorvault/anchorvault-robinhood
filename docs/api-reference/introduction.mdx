@@ -1,0 +1,69 @@
+---
+title: "API Reference"
+sidebarTitle: "Introduction"
+description: "Complete API reference for all AnchorVault smart contract functions."
+icon: "code"
+---
+
+# API Reference
+
+This section provides a complete reference for every function across all three AnchorVault smart contracts.
+
+## Contract Functions Overview
+
+### Corridor Pool Vault
+
+| Function | Type | Auth |
+|:---------|:-----|:-----|
+| `initialize()` | Write | Admin |
+| `deposit()` | Write | LP |
+| `withdraw()` | Write | LP |
+| `draw_liquidity()` | Write | Anchor |
+| `repay_liquidity()` | Write | Anchor |
+| `register_anchor()` | Write | Admin |
+| `adjust_credit_limit()` | Write | Admin |
+| `offset_defaulted_debt()` | Write | Admin |
+| `get_pool_state()` | Read | None |
+| `get_anchor_state()` | Read | None |
+| `get_lp_state()` | Read | None |
+| `get_pending_yield()` | Read | None |
+
+### Anchor Registry
+
+| Function | Type | Auth |
+|:---------|:-----|:-----|
+| `initialize()` | Write | Admin |
+| `register_anchor()` | Write | Admin |
+| `lock_collateral()` | Write | Anchor |
+| `release_collateral()` | Write | Anchor |
+| `slash_collateral()` | Write | Admin |
+| `update_reputation()` | Write | Admin/Vault |
+| `adjust_credit_limit()` | Write | Admin |
+| `get_anchor()` | Read | None |
+| `is_whitelisted()` | Read | None |
+
+### Vault Token ($AVLT)
+
+| Function | Type | Auth |
+|:---------|:-----|:-----|
+| `initialize()` | Write | Admin |
+| `mint()` | Write | Admin |
+| `burn()` | Write | Admin |
+| `transfer()` | Write | Owner |
+| `approve()` | Write | Owner |
+| `transfer_from()` | Write | Spender |
+| `balance_of()` | Read | None |
+| `allowance()` | Read | None |
+| `metadata()` | Read | None |
+
+<CardGroup cols={3}>
+  <Card title="Vault Functions" icon="vault" href="/api-reference/vault-functions">
+    Deposit, withdraw, draw, repay
+  </Card>
+  <Card title="Registry Functions" icon="list-check" href="/api-reference/registry-functions">
+    Register, collateral, reputation
+  </Card>
+  <Card title="Token Functions" icon="coins" href="/api-reference/token-functions">
+    Mint, burn, transfer, approve
+  </Card>
+</CardGroup>

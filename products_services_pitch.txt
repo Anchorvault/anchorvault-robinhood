@@ -1,0 +1,28 @@
+Products & Services
+
+1. The Corridor Pool Vault (Core Liquidity Engine)
+Overview: The flagship product of the AnchorVault ecosystem. The Corridor Pool Vault acts as a decentralized, on-chain clearinghouse where retail and institutional Liquidity Providers (LPs) deposit stablecoins (USDC) to generate passive, high-yield returns.
+Key Features:
+- Dynamic Yield Accrual: Implements a two-slope utilization curve. As capital utilization increases (up to 80%), interest fees scale moderately. Beyond 80%, fees scale aggressively to protect liquidity depth and incentivize immediate repayment.
+- Automated Fee Routing: 90% of all settlement fees generated from cross-border remittances are automatically and programmatically routed back to LPs, maximizing their capital efficiency.
+- Secure Vault Tokens: Upon deposit, LPs are minted $AVLT (AnchorVault LP Tokens), a standard utility token representing their fractional ownership of the pool.
+
+2. Anchor Registry & Credit Management System
+Overview: The risk-management backbone of AnchorVault. The Anchor Registry acts as an institutional-grade, decentralized ledger that whitelists, monitors, and manages the credit lines of official payment anchors (off-ramp operators).
+Key Features:
+- Collateralized Credit Lines: To draw liquidity, anchors must lock $AVLT governance tokens (enforcing a strict 10% minimum collateral-to-credit ratio). This ensures skin-in-the-game and mitigates default risks.
+- Dynamic Fee Modifiers: Repayment fees are calculated based on an anchor’s real-time reputation score. High-reputation anchors receive up to a 25% discount, while poorly performing anchors are penalized with up to a 50% premium.
+- Real-Time State Mapping: Utilizes scalable smart contract state dictionaries to track active draws, credit limits, and historical timestamps instantly.
+
+3. The AI Risk & Reputation Copilot
+Overview: An autonomous, AI-driven oversight mechanism that protects LP capital by constantly monitoring the on-chain behavior of whitelisted anchors.
+Key Features:
+- Continuous Ledger Analysis: The AI Copilot ingests ledger data, pool utilization rates, and repayment histories to dynamically adjust an anchor's reputation score.
+- Automated Risk Mitigation: In the event of a delayed repayment or default, the AI instantly triggers a score slash, restricting the anchor's borrowing capacity and safeguarding the pool's reserves.
+- Predictive Analytics: Analyzes historical remittance volumes to forecast peak liquidity demand, ensuring the vault remains highly solvent during high-traffic periods.
+
+4. Cross-Border Settlement Infrastructure
+Overview: AnchorVault provides a seamless API and smart contract interface for licensed off-ramp operators in various global corridors (e.g., EUR, BRL, SGD, NGN).
+Key Features:
+- Instant Capital Access: Eliminates the need for anchors to pre-fund Nostro/Vostro accounts. Anchors draw liquidity on demand, settling remittances in seconds on the native blockchain.
+- Predictable Gas & Transparent Operations: Built natively on scalable, low-cost networks (Casper/Stellar), ensuring that transaction overhead remains negligible and operations remain fully auditable on-chain.

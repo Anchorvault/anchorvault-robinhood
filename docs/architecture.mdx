@@ -1,0 +1,184 @@
+---
+title: "Architecture"
+sidebarTitle: "Architecture"
+description: "Deep dive into AnchorVault's protocol architecture, smart contract relationships, and operational lifecycle."
+icon: "sitemap"
+---
+
+# Protocol Architecture
+
+AnchorVault coordinates three distinct entities trustlessly on-chain: **Liquidity Providers**, **Payment Anchors**, and the **Core Smart Contracts**.
+
+---
+
+## High-Level Overview
+
+```mermaid
+graph TD
+    classDef contract fill:#7b39fc,stroke:#333,stroke-width:1px,color:#fff
+    classDef actor fill:#1c1917,stroke:#7b39fc,stroke-width:1.5px,color:#fff
+    classDef external fill:#1e293b,stroke:#00e5ff,stroke-width:1px,color:#fff
+
+    LP["Liquidity Provider"]:::actor -- "1. Deposits USDC" --> Vault["Corridor Pool Vault"]:::contract
+    Vault -- "2. Mints $AVLT Shares" --> LP
+
+    Anchor["Payment Anchor"]:::actor -- "3. Registers & Stakes" --> Registry["Anchor Registry"]:::contract
+    Anchor -- "4. Draws Settlement USDC" --> Vault
+    Vault -- "5. Payouts Corridor" --> ExtCorridor["Global Off-Ramp Settled"]:::external
+
+    Anchor -- "6. Repays USDC + fee" --> Vault
+    Vault -- "7. Updates acc_fees_per_share" --> LP
+```
+
+---
+
+## SCF Ecosystem Integrations
+
+AnchorVault is submitted under the **SCF Build Integration Track**. To provide a seamless, secure, and robust experience for our users, AnchorVault deeply integrates with the following officially recommended Stellar building blocks:
+
+<CardGroup cols={2}>
+  <Card title="Stellar Wallets Kit" icon="wallet">
+    **Primary Wallet Gateway**
+    AnchorVault utilizes the [Stellar Wallets Kit](https://github.com/Creit-Tech/Stellar-Wallets-Kit) as our core authentication and connection layer. This allows Liquidity Providers and Anchors to securely connect using their preferred wallet ecosystem (Freighter, LOBSTR, xBull) while standardizing our transaction signing payloads.
+  </Card>
+  <Card title="Freighter Connect" icon="plug">
+    **Native Soroban Signing**
+    For our primary smart contract interactions (Deposits, Draws, Repayments), AnchorVault relies natively on [Freighter API](https://docs.freighter.app/) to simulate, sign, and submit Soroban XDR transactions directly from the user's browser without compromising private keys.
+  </Card>
+</CardGroup>
+
+---
+
+## Smart Contract Topology
+
+The protocol consists of **four on-chain contracts** that interact in a coordinated manner:
+
+```mermaid
+graph LR
+    classDef core fill:#7b39fc,stroke:#fff,color:#fff
+    classDef token fill:#00e5ff,stroke:#fff,color:#000
+
+    USDC["USDC Stablecoin<br/>(SAC Token)"]:::token
+    AVLT["$AVLT Share Token<br/>(Vault Token)"]:::token
+    Vault["Corridor Pool<br/>Core Vault"]:::core
+    Registry["Anchor<br/>Registry"]:::core
+
+    USDC -->|"deposit / withdraw"| Vault
+    Vault -->|"mint / burn shares"| AVLT
+    AVLT -->|"lock collateral"| Registry
+    Registry -->|"whitelisting check"| Vault
+    Vault -->|"draw / repay USDC"| USDC
+    Vault -->|"reputation update"| Registry
+```
+
+| Contract | Responsibility |
+|:---------|:---------------|
+| **USDC Stablecoin** | Core asset used in all corridor pool operations. Stellar Asset Contract (SAC). |
+| **Vault Share Token ($AVLT)** | ERC20-like token representing LP ownership. Minted on deposit, burned on withdrawal. |
+| **Corridor Pool Vault** | Central vault managing deposits, withdrawals, draws, repayments, and yield distribution. |
+| **Anchor Registry** | Manages anchor whitelisting, collateral lockups, reputation tracking, and credit limits. |
+
+---
+
+## Full Operational Lifecycle
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor LP as Liquidity Provider
+    actor Anchor as Payment Anchor
+    participant Registry as Anchor Registry
+    participant Vault as Corridor Pool Vault
+    participant AVLT as $AVLT Token
+    participant USDC as USDC Contract
+
+    Note over LP, USDC: Phase 1 — Liquidity Provisioning
+    LP->>Vault: deposit(lp_address, amount)
+    Vault->>USDC: transfer(lp → vault, amount)
+    Vault->>Vault: Calculate LP shares (pro-rata)
+    Vault->>AVLT: mint(lp_address, share_amount)
+    AVLT-->>LP: $AVLT Shares Credited
+
+    Note over Anchor, Registry: Phase 2 — Anchor Onboarding
+    Anchor->>Registry: register_anchor(admin, anchor, credit_limit)
+    Anchor->>Registry: lock_collateral(amount)
+    Registry->>AVLT: transfer(anchor → registry, amount)
+    Registry->>Registry: Verify collateral ratio ≥ 10%
+
+    Note over Anchor, Vault: Phase 3 — Settlement Draw
+    Anchor->>Vault: draw_liquidity(anchor, amount)
+    Vault->>Registry: assert is_whitelisted(anchor)
+    Vault->>Vault: assert active_draw + amount ≤ credit_limit
+    Vault->>USDC: transfer(vault → anchor, amount)
+    Note over Anchor: Fulfills instant off-ramp payout
+
+    Note over Anchor, Vault: Phase 4 — Repayment & Yield
+    Anchor->>Vault: repay_liquidity(anchor, principal)
+    Vault->>Vault: calculate_utilization() & fee_rate()
+    Vault->>USDC: transfer(anchor → vault, principal + fee)
+    Vault->>Vault: 90% fee → acc_fees_per_share
+    Vault->>Vault: 5% fee → Insurance Fund
+    Vault->>Registry: Boost reputation score
+```
+
+---
+
+## Data Flow Summary
+
+<CardGroup cols={2}>
+  <Card title="LP Deposit Flow" icon="arrow-down">
+    1. LP sends USDC to Vault
+    2. Vault calculates share ratio
+    3. $AVLT minted to LP
+    4. Pool reserves increase
+  </Card>
+  <Card title="LP Withdrawal Flow" icon="arrow-up">
+    1. LP burns $AVLT shares
+    2. Vault calculates USDC equivalent
+    3. Pending yield auto-claimed
+    4. USDC returned to LP
+  </Card>
+  <Card title="Anchor Draw Flow" icon="money-bill-transfer">
+    1. Anchor requests USDC
+    2. Vault checks whitelist + credit limit
+    3. USDC transferred to anchor
+    4. Pool utilization increases
+  </Card>
+  <Card title="Anchor Repayment Flow" icon="rotate-left">
+    1. Anchor repays principal + fee
+    2. Fee distributed: 90% LP / 5% Insurance / 5% Treasury
+    3. Reputation score boosted
+    4. Pool reserves restored
+  </Card>
+</CardGroup>
+
+---
+
+## Storage Architecture
+
+The protocol uses Soroban's **instance** and **persistent** storage:
+
+```mermaid
+graph TD
+    classDef instance fill:#4338CA,stroke:#fff,color:#fff
+    classDef persistent fill:#7B39FC,stroke:#fff,color:#fff
+
+    subgraph "Instance Storage (Global)"
+        Pool["PoolState<br/>total_deposits, active_draws,<br/>reserve_balance, fee curve params"]:::instance
+        InsuranceFund["InsuranceFund<br/>Accumulated safety reserves"]:::instance
+        GovToken["GovernanceToken<br/>$AVLT contract address"]:::instance
+    end
+
+    subgraph "Persistent Storage (Per-Entity)"
+        AnchorState["AnchorState(Address)<br/>credit_limit, active_draw,<br/>reputation_score"]:::persistent
+        LPState["LPState(Address)<br/>shares, fee_debt"]:::persistent
+    end
+```
+
+| Storage Type | Key | Data |
+|:------------|:----|:-----|
+| Instance | `Pool` | Global pool state — deposits, draws, reserves, fee parameters |
+| Instance | `GovernanceToken` | Address of the $AVLT token contract |
+| Instance | `InsuranceFund` | Accumulated insurance reserves (i128) |
+| Persistent | `Anchor(Address)` | Per-anchor state — credit limit, draws, reputation |
+| Persistent | `LP(Address)` | Per-LP state — shares owned, fee debt tracking |

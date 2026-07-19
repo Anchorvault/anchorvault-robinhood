@@ -1,0 +1,78 @@
+BUIDL (project) name:
+AnchorVault
+
+BUIDL logo:
+[Upload your project's logo here. It should be a JPEG or PNG, less than 2 MB. A size of 480 x 480 px is recommended.]
+
+Vision (Describe the problem which this project solves):
+Cross-border payment anchors on the Stellar network face a massive problem: Capital Inefficiency. They are forced to lock up millions of dollars just to maintain 1:1 liquidity. AnchorVault solves this by acting as a decentralized clearinghouse, pooling USDC liquidity from retail providers and offering AI-managed credit lines to whitelisted Anchors. Retail earns yield from remittance volume, while institutions get the necessary capital to settle payments instantly.
+
+Category - Is this BUIDL an AI Agent?
+Yes (AnchorVault utilizes the Galileo AI Copilot to constantly analyze Anchor reputation, pool utilization, and ledger data to autonomously adjust credit limits and protect LP capital.)
+
+GitHub/Gitlab/Bitbucket:
+https://github.com/shriyashsoni/anchorvault
+
+Project website (optional):
+https://www.anchorvault.xyz
+
+Demo video:
+[Insert the link to your YouTube demo video here]
+
+Social links:
+1. https://x.com/shriyashsoni_
+2. https://x.com/Anchor_Vault
+3. [Insert your third social link here, e.g., LinkedIn or a Farcaster account if you have one]
+
+--------------------------------------------------
+Project Description & How We Built It
+--------------------------------------------------
+
+Overview:
+AnchorVault is a production-grade, decentralized liquidity protocol built on the Stellar Soroban Smart Contract Platform. It is LIVE ON STELLAR MAINNET. It bridges Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border remittances.
+
+[IMAGE: Upload the AnchorVault Dashboard UI screenshot here]
+(Screenshot instructions: Take a screenshot of the main page or LP Dashboard of your web app showing the dark-mode glassmorphism UI, TVL, and deposit options.)
+
+Core Working Functionality & How We Built It:
+We engineered AnchorVault using a modular smart contract architecture on Soroban, connecting three main on-chain entities trustlessly on the public Mainnet:
+
+1. Corridor Pool Vault (anchor_vault): We built the core vault where LPs deposit USDC stablecoin to earn interest from global cross-border remittances. When USDC is deposited, the contract mints $AVLT share tokens for the user. We implemented a dynamic yield accrual mechanism: as anchors repay their draws plus interest, 90% of the settlement fee is added to the accumulated fees per share, which is then dynamically routed to LPs.
+
+2. Anchor Registry (anchor_registry): To manage risk, we built an Anchor Registry. Before drawing capital, anchors must undergo whitelisting. They are required to lock up governance $VAULT tokens as collateral. Our system enforces a strict 10% minimum collateral-to-credit ratio.
+
+3. On-chain Reputation System & AI Copilot: We integrated a reputation tracking system driven by our AI Copilot. Successful repayments boost the anchor's score, increasing their credit capacity. Defaults or alerts trigger an automatic score slash, instantly restricting their borrowing power to protect LP funds.
+
+[IMAGE: Upload the Protocol Architecture Flowchart here]
+(Screenshot instructions: Use a tool to render the mermaid diagrams from your README or take a screenshot of your architecture diagram showing how the LP, Vault, and Anchor interact.)
+
+Dynamic Interest & Fee Model:
+To protect liquidity, we built a Two-Slope Utilization Curve:
+- Normal Range (Utilization <= 80%): Interest fees scale moderately (Base 1% + Slope 4%).
+- Penalty Range (Utilization > 80%): Fees scale aggressively up to 50% to discourage further draws and incentivize anchors to repay their loans, restoring capital to the pool.
+
+Tech Stack:
+- Blockchain: Stellar Mainnet (Fast, low-cost Layer-1)
+- Smart Contracts: Soroban (Rust / WASM)
+- Frontend: React, TypeScript, Vite, Vanilla CSS with Glassmorphism
+- Wallet Integration: Freighter Wallet
+- Stablecoin: USDC (Circle) via Stellar Asset Contract
+- RPC & Tooling: Soroban RPC, Stellar Expert Explorer
+
+Deployed Smart Contracts (Live on Stellar Mainnet):
+
+1. Stellar USDC Stablecoin: 
+Address: CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75
+Explorer Link: https://stellar.expert/explorer/public/contract/CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75
+
+2. Vault Share Token ($AVLT): 
+Address: CDXELK3CF4GHCK6U3NETR2NNONDV3VDNKM7MT4QD5M23AHRN5X47O4IF
+Explorer Link: https://stellar.expert/explorer/public/contract/CDXELK3CF4GHCK6U3NETR2NNONDV3VDNKM7MT4QD5M23AHRN5X47O4IF
+
+3. Anchor Registry: 
+Address: CA6NMU2ADEKVTS4XBZRLAARH7VSF7JEKWKAHNVT7WE5ZIEEKKOCOM6QO
+Explorer Link: https://stellar.expert/explorer/public/contract/CA6NMU2ADEKVTS4XBZRLAARH7VSF7JEKWKAHNVT7WE5ZIEEKKOCOM6QO
+
+4. Corridor Pool Core Vault: 
+Address: CDO3GSX27G6TAHLBROCC6WV4TNM6BWLFZDT2OW6RSUVBSGZJKTIISJFG
+Explorer Link: https://stellar.expert/explorer/public/contract/CDO3GSX27G6TAHLBROCC6WV4TNM6BWLFZDT2OW6RSUVBSGZJKTIISJFG

@@ -1,0 +1,117 @@
+---
+title: "View Functions"
+sidebarTitle: "View Functions"
+description: "Read-only query functions across all AnchorVault contracts."
+icon: "eye"
+---
+
+# View Functions
+
+All view functions are **gas-free** — they use Soroban RPC simulation.
+
+## Corridor Vault Views
+
+### `get_pool_state()`
+Returns the global pool state.
+
+```rust
+pub fn get_pool_state(env: Env) -> PoolState
+```
+
+**Returns**: `PoolState` with `total_deposits`, `active_draws`, `reserve_balance`, `acc_fees_per_share`, and fee curve parameters.
+
+---
+
+### `get_anchor_state(anchor)`
+Returns an anchor's vault state.
+
+```rust
+pub fn get_anchor_state(env: Env, anchor: Address) -> AnchorState
+```
+
+Returns default (zeroed) state if anchor is not registered.
+
+---
+
+### `get_lp_state(lp)`
+Returns an LP's share ownership and fee tracking.
+
+```rust
+pub fn get_lp_state(env: Env, lp: Address) -> LPState
+```
+
+---
+
+### `get_pending_yield(lp)`
+Returns unclaimed yield for an LP.
+
+```rust
+pub fn get_pending_yield(env: Env, lp: Address) -> i128
+```
+
+**Formula**: `(shares × acc_fees_per_share / 1e12) - fee_debt`
+
+---
+
+## Anchor Registry Views
+
+### `get_anchor(anchor)`
+Returns the full anchor record.
+
+```rust
+pub fn get_anchor(env: Env, anchor: Address) -> AnchorRecord
+```
+
+---
+
+### `is_whitelisted(anchor)`
+Check if an anchor is active.
+
+```rust
+pub fn is_whitelisted(env: Env, anchor: Address) -> bool
+```
+
+---
+
+## Vault Token Views
+
+### `balance_of(id)`
+Token balance for an address.
+
+```rust
+pub fn balance_of(env: Env, id: Address) -> i128
+```
+
+### `allowance(from, spender)`
+Current spending allowance.
+
+```rust
+pub fn allowance(env: Env, from: Address, spender: Address) -> i128
+```
+
+### `metadata()`
+Token name, symbol, and decimals.
+
+```rust
+pub fn metadata(env: Env) -> TokenMetadata
+```
+
+---
+
+## SDK Utility Functions
+
+```typescript
+// Format token amounts (7 decimals → human readable)
+formatTokenAmount(BigInt("1000000000"), 7)  // "100"
+
+// Format addresses
+formatAddress("GXXXX...YYYY", 4)  // "GXXX...YYYY"
+
+// Time ago
+timeAgo("2024-01-15T12:00:00Z")  // "3h ago"
+
+// Explorer URLs
+getStellarExpertTxUrl(hash)       // Transaction URL
+getStellarExpertAccountUrl(addr)  // Account URL
+getStellarExpertContractUrl(id)   // Contract URL
+```

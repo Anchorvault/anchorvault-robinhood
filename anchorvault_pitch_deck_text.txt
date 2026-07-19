@@ -1,0 +1,132 @@
+=== Page 1 ===
+ANCHORVAULT.XYZ CONFIDENTIAL — JUNE 2026
+AnchorVault
+Decentralized Liquidity for Global
+Cross-Border Remittances
+A trustless Soroban routing engine bridging idle stablecoins with
+Stellar anchor corridors — powering instant off-ramp settlements
+worldwide.
+STELLAR COMMUNITY FUND
+ INTEGRATION TRACK
+
+=== Page 2 ===
+⬤  THE PROBLEM
+Capital Inefficiency Cripples Global Remittances
+🔒
+Trapped Capital
+Payment anchors must pre-fund millions of
+dollars across multiple corridors just to process
+daily transactions. This capital sits idle, earning
+nothing.
+📉
+Zero Yield for Stablecoin Holders
+Billions in USDC sit dormant in wallets globally.
+Holders have no access to organic, real-world
+yield opportunities backed by actual payment
+volume.
+🔗
+Fragmented Infrastructure
+Traditional remittance rails are slow, siloed, and
+opaque. There is no unified protocol for
+decentralized anchor liquidity coordination on
+Stellar.
+02
+
+=== Page 3 ===
+⬤  THE SOLUTION
+AnchorVault — Trustless Liquidity Protocol
+We bridge Liquidity Providers (USDC depositors seeking yield) with authorized Payment Anchors
+(needing instant settlement capital) — all coordinated by Soroban smart contracts on the Stellar
+Mainnet.
+03
+
+=== Page 4 ===
+⬤  LIVE PRODUCT
+Full-Featured DeFi Portal — Live on Mainnet
+04
+
+=== Page 5 ===
+⬤  ARCHITECTURE
+Protocol Architecture & Flow
+05
+
+=== Page 6 ===
+⬤  AI-POWERED RISK ENGINE
+Galileo — Autonomous Risk Copilot
+AI-driven credit intelligence that monitors anchor behavior in real-time, autonomously adjusting credit limits and slashing
+risky actors to protect LP capital.
+06
+
+=== Page 7 ===
+⬤  PLATFORM FEATURES
+World-Class Liquidity Infrastructure
+07
+
+=== Page 8 ===
+⬤  SCF INTEGRATION TRACK
+Deep Stellar Ecosystem Integrations
+WALLET
+Stellar Wallets Kit
+Multi-wallet authentication layer
+supporting Freighter, LOBSTR, xBull,
+Albedo, Hana, and Rabet — from the
+official SCF integration list.
+SIGNING
+Freighter Connect
+Native Soroban XDR transaction
+simulation and signing directly in the
+browser. Zero private key exposure
+for all smart contract interactions.
+SMART CONTRACTS
+Soroban (Rust)
+Four production contracts deployed
+on Stellar Mainnet: CoreVault,
+AnchorRegistry, $AVLT Token, and
+USDC SAC integration.
+STABLECOIN
+Circle USDC
+All pool reserves denominated in
+native Circle USDC via the Stellar
+Asset Contract (SAC) — the gold
+standard for on-chain stablecoins.
+08
+
+=== Page 9 ===
+⬤  TECHNICAL DOCUMENTATION
+Comprehensive Developer Documentation
+Full architecture docs, SDK references, deployment guides, and API documentation — all publicly accessible at anchorvault.xyz/docs
+09
+
+=== Page 10 ===
+⬤  ROADMAP & ASK
+Scaling the Protocol
+PHASE 1 — NOW
+Foundation
+Smart contracts deployed on Mainnet→
+DeFi portal live with wallet integrations→
+AI Risk Copilot operational→
+Full documentation published→
+PHASE 2 — Q3 2026
+Growth
+Bootstrap initial pool liquidity (target $50K+)→
+Onboard 3-5 anchor partners→
+Security audit of Soroban contracts→
+Cross-corridor expansion→
+PHASE 3 — Q4 2026
+Scale
+$1M+ TVL target→
+Multi-corridor settlement network→
+Institutional LP onboarding→
+Governance token distribution→
+10
+
+=== Page 11 ===
+11
+Let's Reshape Global Remittances
+AnchorVault is live, deployed, and ready to scale. We're seeking
+partnership through the Stellar Community Fund to bootstrap
+liquidity and onboard global anchor corridors.
+anchorvault.xyz
+ GitHub
+ Documentation
+

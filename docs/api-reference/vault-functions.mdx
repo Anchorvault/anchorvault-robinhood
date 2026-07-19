@@ -1,0 +1,103 @@
+---
+title: "Vault Functions"
+sidebarTitle: "Vault Functions"
+description: "API reference for the Corridor Pool Vault contract write functions."
+icon: "vault"
+---
+
+# Vault Functions
+
+## `deposit`
+
+Deposit USDC stablecoin into the corridor pool.
+
+<ParamField path="lp" type="Address" required>
+  The LP's Stellar address. Must authorize the transaction.
+</ParamField>
+
+<ParamField path="amount" type="i128" required>
+  Amount of USDC to deposit (7 decimal precision).
+</ParamField>
+
+**Returns**: `i128` — Number of $AVLT shares minted.
+
+```rust
+pub fn deposit(env: Env, lp: Address, amount: i128) -> i128
+```
+
+---
+
+## `withdraw`
+
+Withdraw USDC by burning $AVLT shares. Auto-claims pending yield.
+
+<ParamField path="lp" type="Address" required>
+  The LP's address. Must authorize.
+</ParamField>
+
+<ParamField path="shares" type="i128" required>
+  Number of $AVLT shares to burn.
+</ParamField>
+
+**Returns**: `i128` — USDC amount returned.
+
+**Reverts**: `"Insufficient share balance"` or `"High pool utilization"`.
+
+---
+
+## `draw_liquidity`
+
+Anchor draws USDC for settlement.
+
+<ParamField path="anchor" type="Address" required>
+  The anchor's address. Must authorize.
+</ParamField>
+
+<ParamField path="amount" type="i128" required>
+  USDC amount to draw.
+</ParamField>
+
+**Reverts**: `"Anchor not registered"`, `"Draw exceeds credit limit"`, `"Insufficient reserve"`.
+
+---
+
+## `repay_liquidity`
+
+Repay drawn USDC. Fee is auto-calculated from utilization + reputation.
+
+<ParamField path="anchor" type="Address" required>
+  The anchor's address.
+</ParamField>
+
+<ParamField path="principal" type="i128" required>
+  Principal amount to repay (fee added automatically).
+</ParamField>
+
+---
+
+## `register_anchor`
+
+Register/whitelist an anchor. Admin only. Supports upsert.
+
+<ParamField path="admin" type="Address" required>Admin address.</ParamField>
+<ParamField path="anchor" type="Address" required>Anchor to register.</ParamField>
+<ParamField path="credit_limit" type="i128" required>Max drawable USDC.</ParamField>
+
+---
+
+## `adjust_credit_limit`
+
+Update an anchor's credit limit. Admin only.
+
+<ParamField path="admin" type="Address" required>Admin address.</ParamField>
+<ParamField path="anchor" type="Address" required>Target anchor.</ParamField>
+<ParamField path="new_limit" type="i128" required>New credit limit.</ParamField>
+
+---
+
+## `offset_defaulted_debt`
+
+Offset bad debt using Insurance Fund. Admin only. Requires reputation < 450.
+
+<ParamField path="admin" type="Address" required>Admin address.</ParamField>
+<ParamField path="anchor" type="Address" required>Defaulted anchor.</ParamField>

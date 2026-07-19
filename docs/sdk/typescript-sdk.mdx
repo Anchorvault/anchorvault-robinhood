@@ -1,0 +1,82 @@
+---
+title: "TypeScript SDK"
+sidebarTitle: "Overview"
+description: "The AnchorVault TypeScript SDK for interacting with the protocol from any JavaScript/TypeScript application."
+icon: "js"
+---
+
+# TypeScript SDK
+
+AnchorVault provides a comprehensive TypeScript SDK (`src/lib/soroban.ts`) for interacting with all protocol contracts from any JavaScript/TypeScript application.
+
+## Installation
+
+The SDK is included in the AnchorVault monorepo:
+
+```bash
+npm install @stellar/stellar-sdk
+```
+
+## Configuration
+
+```typescript
+import { CONTRACT_ADDRESSES } from './lib/soroban';
+
+// Deployed contract addresses (auto-populated by deploy.js)
+CONTRACT_ADDRESSES = {
+  USDC: "CCOFJ...",
+  GOVERNANCE_TOKEN: "CDRDK...",
+  ANCHOR_REGISTRY: "CC2C5...",
+  CORE_VAULT: "CCMPS...",
+};
+```
+
+## Network Config
+
+| Setting | Value |
+|:--------|:------|
+| RPC URL | `https://soroban-testnet.stellar.org` |
+| Horizon URL | `https://horizon-testnet.stellar.org` |
+| Network | Stellar Testnet |
+| Passphrase | `Test SDF Network ; September 2015` |
+
+## Core Modules
+
+<CardGroup cols={2}>
+  <Card title="Transaction Building" icon="hammer" href="/sdk/transaction-building">
+    Build deposit, withdraw, draw, and repay transactions for wallet signing.
+  </Card>
+  <Card title="State Queries" icon="magnifying-glass" href="/sdk/querying-state">
+    Query pool state, LP balances, anchor records, and pending yield.
+  </Card>
+  <Card title="Wallet Integration" icon="wallet" href="/sdk/wallet-integration">
+    Connect Freighter, sign transactions, and submit on-chain.
+  </Card>
+  <Card title="Utilities" icon="wrench" href="/api-reference/view-functions">
+    Format tokens, addresses, timestamps, and generate explorer URLs.
+  </Card>
+</CardGroup>
+
+## Quick Example
+
+```typescript
+import {
+  fetchPoolState,
+  fetchWalletBalances,
+  buildDepositTransaction,
+  submitTransaction,
+} from './lib/soroban';
+
+// 1. Query pool state
+const pool = await fetchPoolState(userPubKey);
+
+// 2. Check wallet balances
+const balances = await fetchWalletBalances(userPubKey);
+
+// 3. Build a deposit transaction
+const xdr = await buildDepositTransaction(userPubKey, "1000");
+
+// 4. Sign with Freighter & submit
+const signedXdr = await freighter.signTransaction(xdr);
+const result = await submitTransaction(signedXdr);
+```

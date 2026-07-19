@@ -1,0 +1,41 @@
+---
+title: "Insurance Fund"
+sidebarTitle: "Insurance Fund"
+description: "The protocol's safety net that absorbs bad debt from defaulting anchors to protect LP capital."
+icon: "shield-check"
+---
+
+# Insurance Fund
+
+The Insurance Fund is AnchorVault's **safety reserve** that protects LP capital from anchor defaults.
+
+## How It's Funded
+
+5% of every settlement fee paid by anchors flows into the Insurance Fund:
+
+```rust
+let insurance_share = (fee * 5) / 100;
+insurance_fund += insurance_share;
+```
+
+## How It's Used
+
+When an anchor defaults (reputation < 450), governance can offset their bad debt:
+
+```rust
+pub fn offset_defaulted_debt(env: Env, admin: Address, anchor: Address)
+```
+
+The offset amount = `min(anchor.active_draw, insurance_fund)`.
+
+## Protection Flow
+
+1. Anchor defaults → reputation drops below 450
+2. Admin calls `offset_defaulted_debt()`
+3. Insurance Fund absorbs the outstanding draw
+4. Pool `reserve_balance` is restored
+5. LP withdrawals are unblocked
+
+<Tip>
+The Insurance Fund grows continuously as anchor settlements occur, creating an ever-expanding safety buffer for LP capital.
+</Tip>

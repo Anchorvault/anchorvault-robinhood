@@ -1,0 +1,82 @@
+---
+title: "Introduction"
+sidebarTitle: "Welcome"
+description: "AnchorVault is a trustless on-chain remittance liquidity routing protocol built on Stellar Soroban. It bridges Liquidity Providers with authorized off-ramp payment anchors to facilitate instant, cross-border remittances."
+icon: "shield-halved"
+---
+
+# Welcome to AnchorVault
+
+<Note>
+AnchorVault is currently deployed on **Stellar Testnet**. Mainnet deployment coming soon.
+</Note>
+
+AnchorVault is a **production-grade, decentralized liquidity protocol** built on the Stellar Soroban Smart Contract Platform. It bridges **Liquidity Providers (LPs)** with **authorized off-ramp payment anchors** to facilitate instant, cross-border remittances.
+
+LPs lock stablecoin reserves into corridor pools and organic yield is dynamically routed to them from real payment settlement flows.
+
+---
+
+## Why AnchorVault?
+
+Traditional cross-border remittances are plagued by high fees, slow settlement times, and opaque intermediaries. AnchorVault solves this by creating a **trustless, on-chain liquidity layer** that:
+
+<CardGroup cols={2}>
+  <Card title="Instant Settlements" icon="bolt">
+    Payment anchors draw from pre-funded USDC pools to settle remittances in seconds, not days.
+  </Card>
+  <Card title="Real Yield for LPs" icon="chart-line">
+    Liquidity Providers earn organic yield from actual settlement fees — not inflationary token emissions.
+  </Card>
+  <Card title="Trustless & Transparent" icon="lock">
+    All operations are governed by Soroban smart contracts. No custodians, no opaque middlemen.
+  </Card>
+  <Card title="Dynamic Risk Management" icon="shield">
+    Utilization-based fee curves, reputation scoring, and collateral requirements protect LP capital.
+  </Card>
+</CardGroup>
+
+---
+
+## Protocol Participants
+
+AnchorVault coordinates three distinct entities trustlessly on-chain:
+
+<Steps>
+  <Step title="Liquidity Providers (LPs)">
+    Deposit USDC stablecoin into corridor pools. Receive **$AVLT** share tokens representing their pro-rata pool ownership. Earn yield from anchor settlement fees.
+  </Step>
+  <Step title="Payment Anchors">
+    Licensed off-ramp operators who draw USDC from corridor pools to fulfill instant remittance payouts. Must stake collateral and maintain a healthy reputation score.
+  </Step>
+  <Step title="Smart Contracts">
+    Three interconnected Soroban contracts (Corridor Vault, Anchor Registry, Vault Token) that orchestrate deposits, withdrawals, draws, repayments, and yield distribution.
+  </Step>
+</Steps>
+
+---
+
+## Deployed Contracts (Stellar Testnet)
+
+| Contract | Address | Role |
+|:---------|:--------|:-----|
+| 💵 **USDC Stablecoin** | `CCW67C...2CC3V2F` | Core asset of corridor pools |
+| 🪙 **Vault Share Token ($AVLT)** | `CCG35K...7TDTPC` | LP share representation |
+| 🛡️ **Anchor Registry** | `CAWO6A...NHAUGJ` | Anchor whitelisting & reputation |
+| 🏦 **Corridor Pool Vault** | `CCU3RF...EIPKJK` | Deposit/withdraw & liquidity routing |
+
+---
+
+## Quick Links
+
+<CardGroup cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get up and running in 5 minutes
+  </Card>
+  <Card title="Architecture" icon="sitemap" href="/architecture">
+    Understand the protocol design
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference/introduction">
+    Full contract function reference
+  </Card>
+</CardGroup>

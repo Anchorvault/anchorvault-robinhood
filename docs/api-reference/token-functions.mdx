@@ -1,0 +1,63 @@
+---
+title: "Token Functions"
+sidebarTitle: "Token Functions"
+description: "API reference for the Vault Token ($AVLT) contract functions."
+icon: "coins"
+---
+
+# Token Functions
+
+## `initialize`
+
+<ParamField path="admin" type="Address" required>Token admin (Vault contract).</ParamField>
+<ParamField path="name" type="Symbol" required>Token name ("AVShare").</ParamField>
+<ParamField path="symbol" type="Symbol" required>Token symbol ("AVLT").</ParamField>
+
+---
+
+## `mint`
+
+Mint new tokens. Admin (Vault) only.
+
+<ParamField path="to" type="Address" required>Recipient.</ParamField>
+<ParamField path="amount" type="i128" required>Amount to mint.</ParamField>
+
+---
+
+## `burn`
+
+Burn tokens. Admin (Vault) only.
+
+<ParamField path="from" type="Address" required>Address to burn from.</ParamField>
+<ParamField path="amount" type="i128" required>Amount to burn.</ParamField>
+
+---
+
+## `transfer`
+
+Standard token transfer.
+
+<ParamField path="from" type="Address" required>Sender (must authorize).</ParamField>
+<ParamField path="to" type="Address" required>Recipient.</ParamField>
+<ParamField path="amount" type="i128" required>Amount.</ParamField>
+
+---
+
+## `approve`
+
+Set spending allowance.
+
+<ParamField path="from" type="Address" required>Owner (must authorize).</ParamField>
+<ParamField path="spender" type="Address" required>Approved spender.</ParamField>
+<ParamField path="amount" type="i128" required>Allowance amount.</ParamField>
+
+---
+
+## `transfer_from`
+
+Transfer using allowance.
+
+<ParamField path="spender" type="Address" required>Must authorize.</ParamField>
+<ParamField path="from" type="Address" required>Token owner.</ParamField>
+<ParamField path="to" type="Address" required>Recipient.</ParamField>
+<ParamField path="amount" type="i128" required>Amount.</ParamField>

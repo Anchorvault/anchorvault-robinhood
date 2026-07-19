@@ -1,0 +1,44 @@
+---
+title: "Prerequisites"
+sidebarTitle: "Prerequisites"
+description: "Required tools and environment setup for deploying AnchorVault."
+icon: "list-check"
+---
+
+# Prerequisites
+
+## Required Tools
+
+| Tool | Version | Purpose |
+|:-----|:--------|:--------|
+| **Rust** | Latest stable | Smart contract development |
+| **wasm32 target** | — | WASM compilation for Soroban |
+| **Soroban CLI** | Latest | Contract deployment & interaction |
+| **Node.js** | v18+ | Deployment scripts & frontend |
+| **npm** | v9+ | Package management |
+
+## Install Rust
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup target add wasm32-unknown-unknown
+```
+
+## Install Soroban CLI
+
+```bash
+cargo install --locked soroban-cli
+soroban version
+```
+
+## Install Node.js
+
+Download from [nodejs.org](https://nodejs.org/) (LTS recommended).
+
+## Clone & Install
+
+```bash
+git clone https://github.com/shriyashsoni/anchorvault.git
+cd anchorvault
+npm install
+```

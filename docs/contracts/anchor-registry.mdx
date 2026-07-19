@@ -1,0 +1,86 @@
+---
+title: "Anchor Registry"
+sidebarTitle: "Anchor Registry"
+description: "Smart contract managing anchor whitelisting, collateral lockups, reputation tracking, and credit limits."
+icon: "list-check"
+---
+
+# Anchor Registry (`anchor_registry`)
+
+The Anchor Registry manages the **lifecycle and credit quality** of payment anchors.
+
+## Data Structures
+
+### RegistryConfig
+```rust
+pub struct RegistryConfig {
+    pub admin: Address,
+    pub vault_token: Address,           // $AVLT collateral token
+    pub min_collateral_ratio_bps: u32,  // e.g. 1000 = 10%
+}
+```
+
+### AnchorRecord
+```rust
+pub struct AnchorRecord {
+    pub is_whitelisted: bool,
+    pub credit_limit: i128,
+    pub reputation_score: u32,    // 0–1000
+    pub locked_collateral: i128,  // $AVLT locked
+    pub first_registered: u64,    // Timestamp
+}
+```
+
+## Functions
+
+### `initialize()`
+```rust
+pub fn initialize(env: Env, admin: Address, vault_token: Address, min_collateral_ratio_bps: u32)
+```
+
+### `register_anchor()`
+Whitelist a new anchor with an initial credit limit.
+```rust
+pub fn register_anchor(env: Env, admin: Address, anchor: Address, credit_limit: i128)
+```
+**Auth**: Both `config.admin` and `admin` must authorize. Supports upsert.
+
+### `lock_collateral()`
+Lock $AVLT tokens as collateral.
+```rust
+pub fn lock_collateral(env: Env, anchor: Address, amount: i128)
+```
+**Auth**: `anchor.require_auth()`. Transfers $AVLT from anchor to registry.
+
+### `release_collateral()`
+Release locked collateral back to anchor.
+```rust
+pub fn release_collateral(env: Env, anchor: Address, amount: i128)
+```
+**Reverts if**: Remaining collateral falls below minimum ratio.
+
+### `slash_collateral()`
+Slash collateral for defaults (governance action).
+```rust
+pub fn slash_collateral(env: Env, admin: Address, anchor: Address, slash_amount: i128, treasury: Address)
+```
+**Effects**: Collateral reduced, reputation -300, slashed tokens sent to treasury.
+
+### `update_reputation()`
+Adjust an anchor's reputation score.
+```rust
+pub fn update_reputation(env: Env, updater: Address, anchor: Address, delta: i32)
+```
+Score clamped to 0–1000. Auto-reduces credit limit by 20% if score < 500.
+
+### `adjust_credit_limit()`
+```rust
+pub fn adjust_credit_limit(env: Env, admin: Address, anchor: Address, new_limit: i128)
+```
+
+## View Functions
+
+```rust
+pub fn get_anchor(env: Env, anchor: Address) -> AnchorRecord
+pub fn is_whitelisted(env: Env, anchor: Address) -> bool
+```

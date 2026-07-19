@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Background / Aura Gradients -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1b1535" />
+      <stop offset="100%" stop-color="#070312" />
+    </radialGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#7b39fc" />
+      <stop offset="100%" stop-color="#7f00ff" />
+    </linearGradient>
+    <linearGradient id="anchorGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#d8b4fe" />
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- Outer glowing rounded rect for premium App Icon look -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" stroke="#271f4b" stroke-width="8"/>
+  
+  <!-- Inner Shield (Vault representation) -->
+  <path d="M256,64 C350,64 416,96 416,96 C416,240 336,360 256,448 C176,360 96,240 96,96 C96,96 162,64 256,64 Z" 
+        fill="none" 
+        stroke="url(#shieldGrad)" 
+        stroke-width="22" 
+        stroke-linejoin="round"
+        filter="url(#neonGlow)"/>
+
+  <!-- Anchor inside (Anchor representation) -->
+  <!-- Anchor Ring -->
+  <circle cx="256" cy="165" r="28" fill="none" stroke="url(#anchorGrad)" stroke-width="16"/>
+  
+  <!-- Anchor Shaft -->
+  <line x1="256" y1="193" x2="256" y2="340" stroke="url(#anchorGrad)" stroke-width="18" stroke-linecap="round"/>
+  
+  <!-- Anchor Crossbar -->
+  <line x1="195" y1="235" x2="317" y2="235" stroke="url(#anchorGrad)" stroke-width="16" stroke-linecap="round"/>
+  
+  <!-- Anchor Flukes -->
+  <path d="M165,275 C165,360 347,360 347,275" fill="none" stroke="url(#anchorGrad)" stroke-width="18" stroke-linecap="round"/>
+  
+  <!-- Anchor Points -->
+  <path d="M165,275 L150,290" stroke="url(#anchorGrad)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M347,275 L362,290" stroke="url(#anchorGrad)" stroke-width="18" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "contracts/anchor_vault",
+    "contracts/anchor_registry",
+    "contracts/vault_token",
+]
+resolver = "2"
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = false
+panic = "abort"
+lto = true
+codegen-units = 1

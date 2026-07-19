@@ -1,0 +1,42 @@
+---
+title: "Compile Contracts"
+sidebarTitle: "Compile Contracts"
+description: "Build the Soroban smart contracts to WASM binaries."
+icon: "gears"
+---
+
+# Compile Smart Contracts
+
+## Build All Contracts
+
+```bash
+cargo build --release --target wasm32-unknown-unknown
+```
+
+This compiles three contracts to WASM:
+
+| Contract | Source | Output |
+|:---------|:-------|:-------|
+| Anchor Registry | `contracts/anchor_registry/` | `anchor_registry.wasm` |
+| Corridor Vault | `contracts/anchor_vault/` | `anchor_vault.wasm` |
+| Vault Token | `contracts/vault_token/` | `vault_token.wasm` |
+
+Output directory: `./target/wasm32v1-none/release/`
+
+## Workspace Structure
+
+```toml
+# Cargo.toml (workspace root)
+[workspace]
+members = [
+  "contracts/anchor_registry",
+  "contracts/anchor_vault",
+  "contracts/vault_token",
+]
+```
+
+Each contract has its own `Cargo.toml` with `soroban-sdk` as the primary dependency.
+
+<Info>
+The Vault Token WASM is also deployed as a mock USDC contract on testnet. Both share the same ERC20-compatible interface.
+</Info>

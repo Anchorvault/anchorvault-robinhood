@@ -1,0 +1,80 @@
+---
+title: "Vault Token ($AVLT)"
+sidebarTitle: "Vault Token"
+description: "ERC20-like share token representing LP ownership in AnchorVault corridor pools."
+icon: "coins"
+---
+
+# Vault Token ($AVLT) — `vault_token`
+
+The Vault Token is an **ERC20-compatible share token** on Stellar Soroban. It represents LP ownership in the corridor pool.
+
+## Token Details
+
+| Property | Value |
+|:---------|:------|
+| Name | AVShare |
+| Symbol | AVLT |
+| Decimals | 7 (Stellar standard) |
+| Admin | Corridor Pool Vault contract |
+| Mintable | Yes (by admin only) |
+| Burnable | Yes (by admin only) |
+
+## Data Structures
+
+```rust
+pub struct TokenMetadata {
+    pub name: Symbol,
+    pub symbol: Symbol,
+    pub decimals: u32,
+}
+```
+
+## Functions
+
+### `initialize()`
+```rust
+pub fn initialize(env: Env, admin: Address, name: Symbol, symbol: Symbol)
+```
+
+### `mint()`
+Mint new tokens. Admin (vault) only.
+```rust
+pub fn mint(env: Env, to: Address, amount: i128)
+```
+
+### `burn()`
+Burn tokens. Admin (vault) only.
+```rust
+pub fn burn(env: Env, from: Address, amount: i128)
+```
+
+### `transfer()`
+Standard token transfer.
+```rust
+pub fn transfer(env: Env, from: Address, to: Address, amount: i128)
+```
+
+### `approve()`
+Set spending allowance.
+```rust
+pub fn approve(env: Env, from: Address, spender: Address, amount: i128)
+```
+
+### `transfer_from()`
+Transfer using allowance.
+```rust
+pub fn transfer_from(env: Env, spender: Address, from: Address, to: Address, amount: i128)
+```
+
+## View Functions
+
+```rust
+pub fn balance_of(env: Env, id: Address) -> i128
+pub fn allowance(env: Env, from: Address, spender: Address) -> i128
+pub fn metadata(env: Env) -> TokenMetadata
+```
+
+<Tip>
+The $AVLT token doubles as both LP share representation AND anchor collateral. Anchors lock $AVLT in the registry, while LPs hold $AVLT to represent pool ownership.
+</Tip>

@@ -1,0 +1,119 @@
+---
+title: "Transaction Building"
+sidebarTitle: "Transaction Building"
+description: "How to build, simulate, and prepare AnchorVault transactions for wallet signing."
+icon: "hammer"
+---
+
+# Transaction Building
+
+All write operations in AnchorVault follow a **build → sign → submit** pattern. The SDK handles simulation and resource assembly automatically.
+
+## Deposit Transaction
+
+```typescript
+import { buildDepositTransaction } from './lib/soroban';
+
+const xdr = await buildDepositTransaction(
+  userPublicKey,    // G... Stellar address
+  "1000"            // Human-readable amount (1,000 USDC)
+);
+// Returns XDR string ready for wallet signing
+```
+
+**Internally**:
+1. Scales amount to 7 decimals (`1000 × 1e7`)
+2. Builds a Soroban `deposit()` call
+3. Simulates the transaction for resource footprint
+4. Assembles with simulation results
+5. Returns the unsigned XDR
+
+## Withdraw Transaction
+
+```typescript
+import { buildWithdrawTransaction } from './lib/soroban';
+
+const xdr = await buildWithdrawTransaction(
+  userPublicKey,
+  "500"             // 500 $AVLT shares to burn
+);
+```
+
+## Lock Collateral
+
+```typescript
+import { buildLockCollateralTransaction } from './lib/soroban';
+
+const xdr = await buildLockCollateralTransaction(
+  anchorPublicKey,
+  "15000"           // Lock 15,000 $AVLT
+);
+```
+
+## Release Collateral
+
+```typescript
+import { buildReleaseCollateralTransaction } from './lib/soroban';
+
+const xdr = await buildReleaseCollateralTransaction(
+  anchorPublicKey,
+  "5000"            // Release 5,000 $AVLT
+);
+```
+
+## Draw Liquidity
+
+```typescript
+import { buildDrawLiquidityTransaction } from './lib/soroban';
+
+const xdr = await buildDrawLiquidityTransaction(
+  anchorPublicKey,
+  "50000"           // Draw 50,000 USDC
+);
+```
+
+## Repay Liquidity
+
+```typescript
+import { buildRepayLiquidityTransaction } from './lib/soroban';
+
+const xdr = await buildRepayLiquidityTransaction(
+  anchorPublicKey,
+  "50000"           // Repay 50,000 USDC principal
+);
+```
+
+## Submitting Transactions
+
+After the user signs with their wallet:
+
+```typescript
+import { submitTransaction } from './lib/soroban';
+
+const result = await submitTransaction(signedXDR);
+// Returns: { hash, status, ledger, resultXdr }
+```
+
+The SDK **polls for confirmation** (up to 30 attempts, 2s intervals) and returns the final transaction result.
+
+## Admin Operations
+
+These functions sign with the deployer key directly (no wallet needed):
+
+```typescript
+// Register an anchor on-chain (dual: registry + vault)
+await registerAnchorOnChain(anchorPubKey, "150000");
+
+// Mint mock USDC (testnet only)
+await mintMockUSDC(userPubKey, "10000");
+
+// Adjust credit limit
+await adjustCreditLimitOnChain(anchorPubKey, "200000");
+
+// Offset defaulted debt
+await offsetDefaultedDebtOnChain(anchorPubKey);
+```
+
+<Warning>
+Admin operations use the deployer secret key. In production, these should be governed by a multisig or DAO mechanism.
+</Warning>

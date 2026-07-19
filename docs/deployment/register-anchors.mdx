@@ -1,0 +1,54 @@
+---
+title: "Register Anchors"
+sidebarTitle: "Register Anchors"
+description: "Whitelist payment anchors on-chain in both the Registry and Core Vault."
+icon: "user-plus"
+---
+
+# Register Anchors
+
+After initialization, the deployment script registers four default payment anchors.
+
+## Default Anchors
+
+| Anchor | Corridor | Credit Limit |
+|:-------|:---------|:-------------|
+| Anchora | Euro Corridor (EUR) | $150,000 |
+| DeltaPay | Latam Corridor (BRL) | $120,000 |
+| ApexRemit | APAC Corridor (SGD) | $140,000 |
+| SkyRemit | Africa Corridor (NGN) | $90,000 |
+
+## Registration Process
+
+Each anchor is registered in **two contracts**:
+
+<Steps>
+  <Step title="Anchor Registry">
+    `register_anchor(admin, anchor, credit_limit)` — Sets whitelist status, credit limit, and default 800 reputation.
+  </Step>
+  <Step title="Corridor Pool Vault">
+    `register_anchor(admin, anchor, credit_limit)` — Enables draw capabilities from the vault.
+  </Step>
+</Steps>
+
+## Registering Custom Anchors
+
+Via the frontend dashboard or programmatically:
+
+```typescript
+import { registerAnchorOnChain } from './lib/soroban';
+
+const txHash = await registerAnchorOnChain(
+  anchorPublicKey,   // G... address
+  "200000"           // $200,000 credit limit
+);
+```
+
+This function handles:
+- Checking if already registered (skips if so)
+- Dual registration (registry + vault)
+- Credit limit adjustment for existing anchors
+
+<Tip>
+The frontend includes a "Register as Anchor" button that any connected wallet can use. The deployer admin key signs the registration transactions server-side.
+</Tip>

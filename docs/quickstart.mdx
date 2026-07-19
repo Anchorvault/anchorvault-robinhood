@@ -1,0 +1,196 @@
+---
+title: "Quickstart"
+sidebarTitle: "Quickstart"
+description: "Get AnchorVault running locally in under 10 minutes. Deploy contracts, initialize the protocol, and start interacting with the DeFi portal."
+icon: "rocket"
+---
+
+# Quickstart Guide
+
+Follow these steps to deploy and run AnchorVault locally or on the Stellar Testnet.
+
+---
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+<AccordionGroup>
+  <Accordion title="Rust & Cargo" icon="rust">
+    Install the Rust toolchain via [rustup](https://www.rust-lang.org/tools/install):
+    ```bash
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+    Add the WASM compilation target:
+    ```bash
+    rustup target add wasm32-unknown-unknown
+    ```
+  </Accordion>
+
+  <Accordion title="Soroban CLI" icon="terminal">
+    Install the Stellar Soroban CLI:
+    ```bash
+    cargo install --locked soroban-cli
+    ```
+    Verify the installation:
+    ```bash
+    soroban version
+    ```
+    See the [Stellar Soroban docs](https://developers.stellar.org/docs/smart-contracts/getting-started/setup) for detailed setup.
+  </Accordion>
+
+  <Accordion title="Node.js (v18+)" icon="node-js">
+    Download and install Node.js v18 or higher from [nodejs.org](https://nodejs.org/).
+    ```bash
+    node --version  # Should be >= 18.0.0
+    ```
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Step 1 — Clone & Install
+
+```bash
+git clone https://github.com/shriyashsoni/anchorvault.git
+cd anchorvault
+npm install
+```
+
+---
+
+## Step 2 — Generate Deployer Keys
+
+Generate and fund a secure testnet keypair:
+
+```bash
+npm run setup-keys
+```
+
+<Info>
+This script queries Stellar Friendbot to credit **10,000 Testnet XLM** into your wallet and writes the public/secret keys securely into a local `.env` file.
+</Info>
+
+Your `.env` file will contain:
+
+```env
+DEPLOYER_SECRET_KEY="SXXXX...your-secret..."
+DEPLOYER_PUBLIC_KEY="GXXXX...your-pubkey..."
+STELLAR_NETWORK="testnet"
+SOROBAN_RPC_URL="https://soroban-testnet.stellar.org"
+STELLAR_NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
+```
+
+---
+
+## Step 3 — Compile Smart Contracts
+
+Build all three Rust contracts to WASM:
+
+```bash
+cargo build --release --target wasm32-unknown-unknown
+```
+
+<Warning>
+Ensure you have the `wasm32-unknown-unknown` target installed. The compiled `.wasm` files will be placed in `./target/wasm32v1-none/release/`.
+</Warning>
+
+This produces three WASM artifacts:
+- `anchor_registry.wasm` — Anchor whitelisting & reputation
+- `anchor_vault.wasm` — Corridor Pool Vault logic
+- `vault_token.wasm` — $AVLT share token (also used as mock USDC)
+
+---
+
+## Step 4 — Deploy to Testnet
+
+Deploy all four contracts to the Stellar Testnet:
+
+```bash
+npm run deploy
+```
+
+The deployment script will:
+
+<Steps>
+  <Step title="Upload WASM bytecode">
+    Each contract's compiled WASM binary is uploaded to the Stellar network and returns a unique hash.
+  </Step>
+  <Step title="Instantiate contracts">
+    Four contracts are instantiated with unique salts: USDC Token, Anchor Registry, Vault Share Token, and Corridor Pool Vault.
+  </Step>
+  <Step title="Update configuration">
+    The deployed contract addresses are automatically written to both `.env` and `src/lib/soroban.ts`.
+  </Step>
+</Steps>
+
+Example output:
+```
+🎉 ALL CONTRACTS DEPLOYED ON STELLAR TESTNET!
+   USDC Token:        CCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   Anchor Registry:   CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   Vault Share Token: CCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   Corridor Vault:    CCXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
+
+---
+
+## Step 5 — Initialize Protocol
+
+After deployment, initialize all contracts with their parameters:
+
+```bash
+npm run initialize
+```
+
+This configures:
+- **USDC Token** — Admin set to deployer for testnet minting
+- **Vault Share Token** — Admin set to Corridor Vault (only the vault can mint/burn LP shares)
+- **Anchor Registry** — Admin set to deployer, 10% minimum collateral ratio (1000 bps)
+- **Corridor Pool Vault** — Connected to USDC + governance token, fee curve parameters set:
+
+| Parameter | Value | Description |
+|:----------|:------|:------------|
+| Optimal Utilization | 80% (8000 bps) | Target pool usage rate |
+| Base Fee | 1% (100 bps) | Fee at 0% utilization |
+| Slope 1 | 4% (400 bps) | Fee growth before optimal |
+| Slope 2 | 50% (5000 bps) | Penalty fee after optimal |
+
+---
+
+## Step 6 — Run the Frontend
+
+Launch the high-fidelity DeFi portal:
+
+```bash
+npm run dev
+```
+
+Open **`http://localhost:5173/`** to:
+- Connect your Freighter wallet
+- Deposit mock USDC into corridor pools
+- Track real-time yield routing events
+- View live anchor settlement activity
+
+<Tip>
+Use the built-in **Testnet USDC Faucet** in the app to mint mock USDC to your connected wallet for testing.
+</Tip>
+
+---
+
+## What's Next?
+
+<CardGroup cols={2}>
+  <Card title="Architecture Deep Dive" icon="sitemap" href="/architecture">
+    Understand the full protocol design and data flows
+  </Card>
+  <Card title="Core Concepts" icon="lightbulb" href="/concepts/corridor-pools">
+    Learn about corridor pools, yield mechanics, and reputation
+  </Card>
+  <Card title="Smart Contract Reference" icon="file-code" href="/contracts/overview">
+    Explore the Rust contract implementations
+  </Card>
+  <Card title="TypeScript SDK" icon="js" href="/sdk/typescript-sdk">
+    Integrate AnchorVault into your own applications
+  </Card>
+</CardGroup>

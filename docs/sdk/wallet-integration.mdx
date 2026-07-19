@@ -1,0 +1,89 @@
+---
+title: "Wallet Integration"
+sidebarTitle: "Wallet Integration"
+description: "Integrating Freighter wallet for transaction signing in AnchorVault."
+icon: "wallet"
+---
+
+# Wallet Integration
+
+AnchorVault uses the **Freighter** browser extension for Stellar wallet connectivity and transaction signing.
+
+## Dependencies
+
+```json
+{
+  "@creit.tech/stellar-wallets-kit": "^2.2.0",
+  "@stellar/freighter-api": "^6.0.1"
+}
+```
+
+## Connection Flow
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant App as AnchorVault App
+    participant Freighter as Freighter Wallet
+    participant Soroban as Soroban RPC
+
+    User->>App: Click "Connect Wallet"
+    App->>Freighter: requestAccess()
+    Freighter-->>App: publicKey
+    App->>Soroban: fetchWalletBalances(publicKey)
+    Soroban-->>App: { xlm, usdc, vaultToken, lpShares }
+    App->>User: Display dashboard
+```
+
+## Transaction Signing Flow
+
+```typescript
+// 1. Build the unsigned transaction
+const xdr = await buildDepositTransaction(userPubKey, "1000");
+
+// 2. Request user signature via Freighter
+const signedXdr = await freighter.signTransaction(xdr, {
+  networkPassphrase: "Test SDF Network ; September 2015",
+});
+
+// 3. Submit the signed transaction
+const result = await submitTransaction(signedXdr);
+
+// 4. Handle result
+if (result.status === "SUCCESS") {
+  console.log(`TX confirmed! Hash: ${result.hash}`);
+  console.log(`Ledger: ${result.ledger}`);
+}
+```
+
+## Explorer Links
+
+```typescript
+import {
+  getStellarExpertTxUrl,
+  getStellarExpertAccountUrl,
+  getStellarExpertContractUrl,
+} from './lib/soroban';
+
+// Transaction: https://stellar.expert/explorer/testnet/tx/{hash}
+const txUrl = getStellarExpertTxUrl(txHash);
+
+// Account: https://stellar.expert/explorer/testnet/account/{address}
+const accountUrl = getStellarExpertAccountUrl(publicKey);
+
+// Contract: https://stellar.expert/explorer/testnet/contract/{id}
+const contractUrl = getStellarExpertContractUrl(contractId);
+```
+
+## Testnet Funding
+
+```typescript
+import { fundWithFriendbot } from './lib/soroban';
+
+// Fund a testnet account with 10,000 XLM
+const success = await fundWithFriendbot(publicKey);
+```
+
+<Tip>
+The app includes a built-in **USDC Faucet** that mints mock testnet USDC directly to the connected wallet via the deployer's admin authority.
+</Tip>

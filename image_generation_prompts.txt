@@ -1,0 +1,27 @@
+# AI Image Generation Prompts for AnchorVault Posters
+
+Copy and paste these exact prompts into Midjourney, DALL-E 3, or Leonardo AI to generate stunning, high-quality marketing posters for your campaign.
+
+---
+
+### Poster 1: "Mainnet Launch Announcement"
+**Prompt:**
+> A highly professional, futuristic Web3 promotional poster for a decentralized finance platform. The text "MAINNET LIVE" should be prominently displayed in glowing neon typography. The background should feature a sleek, modern, dark-mode aesthetic with deep blacks, vibrant purple, and glowing electric cyan accents. Centerpiece: A high-tech, glowing metallic vault door opening to reveal a bright, digital cosmic light. The overall style should feel like a premium, state-of-the-art crypto platform, with subtle geometric shapes and blockchain node connections in the background. Cinematic lighting, 8k, Unreal Engine 5 render style. --ar 16:9
+
+---
+
+### Poster 2: "USDC Yield Farming & Rewards"
+**Prompt:**
+> A premium, futuristic promotional graphic for DeFi Yield Farming. The visual should feature a sleek, dark glassmorphism aesthetic with floating, glowing blue USDC stablecoins and neon purple crypto tokens. Centerpiece: A high-tech, glowing energy core representing a decentralized liquidity pool, with bright data streams flowing into it. Subtle text "EARN REAL YIELD" integrated into the futuristic UI elements. Cinematic lighting, highly detailed, depth of field, sharp focus, 8k resolution, suitable for a professional crypto marketing campaign. --ar 16:9
+
+---
+
+### Poster 3: "Galileo AI Risk Copilot"
+**Prompt:**
+> A highly sophisticated, cyberpunk-inspired marketing poster representing an Artificial Intelligence Risk Copilot. The visual should feature a dark, premium aesthetic with a stylized, glowing artificial intelligence neural network or digital brain composed of fiber optic light streams and code arrays. The AI should appear to be acting as a protective holographic shield over a high-tech financial vault. Colors: Deep Obsidian black, neon purple, and electric cyan. Ultra-detailed, corporate Web3 aesthetic, futuristic, hyper-realistic. --ar 16:9
+
+---
+
+### Poster 4: "Global Remittances Powered by Stellar"
+**Prompt:**
+> A premium Web3 marketing poster illustrating 'Global Cross-Border Remittances'. The background should feature a beautiful, highly detailed, glowing digital earth hologram in a dark void. Bright neon cyan and purple light trails (representing fast transactions) shooting across the globe between major continents. The aesthetic should be clean, institutional, and futuristic, representing high-speed decentralized finance on the Stellar blockchain. Glassmorphism UI elements floating subtly in the background displaying financial data. 8k, photorealistic, neon glow. --ar 16:9

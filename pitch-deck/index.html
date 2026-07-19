@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anchor Wallet — Investor Pitch Deck</title>
+<meta name="description" content="Anchor Wallet Investor Pitch Deck - Decentralized Liquidity for Global Cross-Border Remittances on Robinhood Chain EVM">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="deck-container">
+  <!-- Progress Bar -->
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+  <!-- Slide Navigation -->
+  <div class="slide-nav" id="slideNav">
+    <button class="nav-btn prev-btn" id="prevBtn" onclick="prevSlide()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Previous</span>
+    </button>
+    <div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">8</span></div>
+    <button class="nav-btn next-btn" id="nextBtn" onclick="nextSlide()">
+      <span>Next</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <!-- SLIDE 1: Title -->
+  <section class="slide active" id="slide-1">
+    <div class="slide-inner title-slide">
+      <div class="badge">CONFIDENTIAL — INVESTOR DECK — JULY 2026</div>
+      <div class="logo-area">
+        <div class="logo-icon">⚓</div>
+        <h1 class="brand">Anchor Wallet</h1>
+      </div>
+      <h2 class="tagline">Decentralized Liquidity for<br>Global Cross-Border Remittances</h2>
+      <p class="subtitle">A trustless EVM routing engine bridging idle stablecoins with Robinhood Chain anchor corridors — powering instant off-ramp settlements worldwide.</p>
+      <div class="eco-badges">
+        <span class="eco-badge Robinhood Chain">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+          Robinhood Chain
+        </span>
+        <span class="eco-badge EVM">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
+          EVM
+        </span>
+        <span class="eco-badge casper">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/></svg>
+          Casper
+        </span>
+        <span class="eco-badge usdc">$ USDC</span>
+      </div>
+      <div class="title-stats">
+        <div class="stat-item"><span class="stat-val">$880B+</span><span class="stat-label">Global Remittance Market</span></div>
+        <div class="stat-item"><span class="stat-val">4</span><span class="stat-label">Smart Contracts Deployed</span></div>
+        <div class="stat-item"><span class="stat-val">2</span><span class="stat-label">Blockchain Ecosystems</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: The Problem -->
+  <section class="slide" id="slide-2">
+    <div class="slide-inner">
+      <div class="slide-tag">⬤ THE PROBLEM</div>
+      <h2 class="slide-title">Capital Inefficiency Cripples<br>Global Remittances</h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">🔒</div>
+          <h3>Trapped Capital</h3>
+          <p>Payment anchors must pre-fund <strong>millions of dollars</strong> across multiple corridors just to process daily transactions. This capital sits idle, earning nothing.</p>
+          <div class="problem-stat">$48B+ locked in pre-funded accounts globally</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">📉</div>
+          <h3>Zero Yield for Stablecoin Holders</h3>
+          <p>Billions in USDC sit dormant in wallets globally. Holders have <strong>no access to organic, real-world yield</strong> backed by actual payment volume.</p>
+          <div class="problem-stat">$30B+ in idle USDC across chains</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">🔗</div>
+          <h3>Fragmented Infrastructure</h3>
+          <p>Traditional remittance rails are slow, siloed, and opaque. <strong>No unified protocol</strong> exists for decentralized anchor liquidity coordination.</p>
+          <div class="problem-stat">6.2% average remittance fee (World Bank)</div>
+        </div>
+      </div>
+      <div class="market-callout">
+        <span class="callout-icon">💡</span>
+        <p>The global remittance market hit <strong>$880 billion in 2024</strong> and is projected to reach <strong>$1.2 trillion by 2030</strong>. Yet the infrastructure remains stuck in the 1990s.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: The Solution -->
+  <section class="slide" id="slide-3">
+    <div class="slide-inner">
+      <div class="slide-tag">⬤ THE SOLUTION</div>
+      <h2 class="slide-title">Anchor Wallet — Trustless<br>Liquidity Protocol</h2>
+      <p class="slide-desc">We bridge <strong>Liquidity Providers</strong> (USDC depositors seeking yield) with authorized <strong>Payment Anchors</strong> (needing instant settlement capital) — all coordinated by smart contracts.</p>
+      <div class="solution-flow">
+        <div class="flow-node lp-node">
+          <div class="flow-icon">💰</div>
+          <h4>Liquidity Providers</h4>
+          <p>Deposit USDC → Earn real yield from global payment flows</p>
+        </div>
+        <div class="flow-arrow">
+          <svg width="60" height="24" viewBox="0 0 60 24"><path d="M0 12h50M50 12l-8-8M50 12l-8 8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </div>
+        <div class="flow-node vault-node">
+          <div class="flow-icon">⚓</div>
+          <h4>Anchor Wallet Protocol</h4>
+          <p>EVM Smart Contracts<br>On-Chain Routing Engine</p>
+        </div>
+        <div class="flow-arrow">
+          <svg width="60" height="24" viewBox="0 0 60 24"><path d="M0 12h50M50 12l-8-8M50 12l-8 8" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </div>
+        <div class="flow-node anchor-node">
+          <div class="flow-icon">🌍</div>
+          <h4>Payment Anchors</h4>
+          <p>Draw USDC → Settle remittances instantly in local fiat</p>
+        </div>
+      </div>
+      <div class="value-props">
+        <div class="vp"><span class="vp-check">✓</span> For LPs: Organic, institutional-grade yield from real payment volume</div>
+        <div class="vp"><span class="vp-check">✓</span> For Anchors: Infinite scalability without locking operational capital</div>
+        <div class="vp"><span class="vp-check">✓</span> For Users: Faster, cheaper cross-border money transfers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: Ecosystem & Integrations -->
+  <section class="slide" id="slide-4">
+    <div class="slide-inner">
+      <div class="slide-tag">⬤ MULTI-CHAIN ECOSYSTEM</div>
+      <h2 class="slide-title">Deep Blockchain Ecosystem<br>Integrations</h2>
+      <div class="eco-grid">
+        <div class="eco-col">
+          <div class="eco-header Robinhood Chain-header">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            <h3>Robinhood Chain / EVM</h3>
+            <span class="eco-status live">● LIVE ON MAINNET</span>
+          </div>
+          <div class="eco-items">
+            <div class="eco-item"><strong>EVM (Rust/WASM)</strong><br>4 production contracts deployed on Robinhood Chain Mainnet</div>
+            <div class="eco-item"><strong>Robinhood Chain Wallets Kit</strong><br>Multi-wallet: Freighter, LOBSTR, xBull, Albedo, Hana, Rabet</div>
+            <div class="eco-item"><strong>Freighter Connect</strong><br>Native browser-based XDR simulation & signing</div>
+            <div class="eco-item"><strong>Circle USDC (SAC)</strong><br>Native Robinhood Chain Asset Contract stablecoin integration</div>
+          </div>
+        </div>
+        <div class="eco-col">
+          <div class="eco-header casper-header">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 22,8.5 22,15.5 12,22 2,15.5 2,8.5"/></svg>
+            <h3>Casper Network</h3>
+            <span class="eco-status testnet">● CONDOR TESTNET</span>
+          </div>
+          <div class="eco-items">
+            <div class="eco-item"><strong>CEP-18 Contracts</strong><br>4 smart contracts deployed on Casper Condor Testnet v2.0</div>
+            <div class="eco-item"><strong>Casper JS SDK</strong><br>Full TypeScript integration with Casper node RPC</div>
+            <div class="eco-item"><strong>Casper Wallet</strong><br>Native browser wallet signing & key management</div>
+            <div class="eco-item"><strong>Enterprise WASM</strong><br>Upgradable contracts with enterprise-grade execution</div>
+          </div>
+        </div>
+      </div>
+      <div class="deployed-contracts">
+        <h4>Deployed Smart Contracts (Verified On-Chain)</h4>
+        <div class="contract-row"><span class="contract-name">Corridor Pool Core Vault</span><span class="contract-hash">CDO3GSX...IISJFG</span></div>
+        <div class="contract-row"><span class="contract-name">Anchor Registry</span><span class="contract-hash">CA6NMU...COM6QO</span></div>
+        <div class="contract-row"><span class="contract-name">Vault Share Token ($AVLT)</span><span class="contract-hash">CDXELK...47O4IF</span></div>
+        <div class="contract-row"><span class="contract-name">USDC Stablecoin (Circle)</span><span class="contract-hash">CCW67T...7SJMI75</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: Market & Competition -->
+  <section class="slide" id="slide-5">
+    <div class="slide-inner">
+      <div class="slide-tag">⬤ MARKET OPPORTUNITY</div>
+      <h2 class="slide-title">$880B Market with<br>Broken Infrastructure</h2>
+      <div class="market-grid">
+        <div class="market-card">
+          <h3>Total Addressable Market</h3>
+          <div class="market-val">$880B</div>
+          <p>Global remittance flows in 2024 (World Bank)</p>
+        </div>
+        <div class="market-card">
+          <h3>Serviceable Market</h3>
+          <div class="market-val">$120B</div>
+          <p>Digital & crypto-native remittance corridors</p>
+        </div>
+        <div class="market-card">
+          <h3>Target Market</h3>
+          <div class="market-val">$5B</div>
+          <p>Robinhood Chain & Casper ecosystem corridors (Year 1-3)</p>
+        </div>
+      </div>
+      <div class="comp-section">
+        <h3>Competitive Landscape</h3>
+        <div class="comp-table">
+          <div class="comp-header"><span></span><span>Anchor Wallet</span><span>Wise</span><span>Ripple/ODL</span><span>Aave</span></div>
+          <div class="comp-row"><span>Trustless On-Chain</span><span class="check">✓</span><span class="cross">✗</span><span class="partial">◐</span><span class="check">✓</span></div>
+          <div class="comp-row"><span>LP Yield from Payments</span><span class="check">✓</span><span class="cross">✗</span><span class="cross">✗</span><span class="cross">✗</span></div>
+          <div class="comp-row"><span>Anchor-Native</span><span class="check">✓</span><span class="cross">✗</span><span class="partial">◐</span><span class="cross">✗</span></div>
+          <div class="comp-row"><span>AI Risk Engine</span><span class="check">✓</span><span class="cross">✗</span><span class="cross">✗</span><span class="cross">✗</span></div>
+          <div class="comp-row"><span>Multi-Chain</span><span class="check">✓</span><span class="cross">✗</span><span class="check">✓</span><span class="check">✓</span></div>
+          <div class="comp-row"><span>Sub-5s Settlement</span><span class="check">✓</span><span class="cross">✗</span><span class="check">✓</span><span class="cross">✗</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: Product & AI -->
+  <section class="slide" id="slide-6">
+    <div class="slide-inner">
+      <div class="slide-tag">⬤ LIVE PRODUCT & AI ENGINE</div>
+      <h2 class="slide-title">Full-Featured DeFi Portal<br>& Galileo AI Copilot</h2>
+      <div class="product-showcase">
+        <div class="product-features">
+          <div class="pf-card">
+            <h4>🖥️ DeFi Portal</h4>
+            <p>Premium obsidian-glass UI with real-time pool analytics, LP dashboards, and anchor management — live at Anchor Wallet.xyz</p>
+          </div>
+          <div class="pf-card highlight-card">
+            <h4>🤖 Galileo — AI Risk Copilot</h4>
+            <p>Autonomous credit intelligence monitoring anchor behavior in real-time. Auto-adjusts credit limits and slashes risky actors to protect LP capital.</p>
+          </div>
+          <div class="pf-card">
+            <h4>📊 Dynamic Fee Model</h4>
+            <p>Two-slope utilization curve: Base 1% → Slope1 4% → Slope2 50% penalty above 80% utilization. 90% of fees → LPs, 5% → Insurance Fund.</p>
+          </div>
+          <div class="pf-card">
+            <h4>📖 Developer Docs</h4>
+            <p>Comprehensive SDK, API references, deployment guides, and architecture documentation at Anchor Wallet.xyz/docs</p>
+          </div>
+        </div>
+      </div>
+      <div class="key-features-bar">
+        <span>Multi-Wallet Auth</span><span>|</span>
+        <span>On-Chain Reputation</span><span>|</span>
+        <span>Insurance Fund</span><span>|</span>
+        <span>Dynamic Credit Limits</span><span>|</span>
+        <span>Real-Time Analytics</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: Roadmap & Funding -->
+  <section class="slide" id="slide-7">
+    <div class="slide-inner">
+      <div class="slide-tag">⬤ ROADMAP & FUNDING</div>
+      <h2 class="slide-title">Scaling the Protocol</h2>
+      <div class="roadmap">
+        <div class="phase phase-active">
+          <div class="phase-marker active-marker"></div>
+          <h4>PHASE 1 — NOW</h4>
+          <h3>Foundation ✓</h3>
+          <ul>
+            <li>4 Smart contracts deployed on Robinhood Chain Mainnet</li>
+            <li>4 Smart contracts deployed on Casper Testnet</li>
+            <li>DeFi portal live with wallet integrations</li>
+            <li>AI Risk Copilot (Galileo) operational</li>
+            <li>Full documentation published</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="phase-marker"></div>
+          <h4>PHASE 2 — Q3 2026</h4>
+          <h3>Growth</h3>
+          <ul>
+            <li>Bootstrap initial pool liquidity ($50K+)</li>
+            <li>Onboard 3-5 anchor partners</li>
+            <li>Security audit of EVM contracts</li>
+            <li>Cross-corridor expansion</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="phase-marker"></div>
+          <h4>PHASE 3 — Q4 2026</h4>
+          <h3>Scale</h3>
+          <ul>
+            <li>$1M+ TVL target</li>
+            <li>Multi-corridor settlement network</li>
+            <li>Institutional LP onboarding</li>
+            <li>Governance token distribution</li>
+          </ul>
+        </div>
+      </div>
+      <div class="funding-box">
+        <h3>Pre-Seed Raise</h3>
+        <div class="funding-grid">
+          <div class="fund-item"><span class="fund-val">$250K</span><span class="fund-label">Raise Amount</span></div>
+          <div class="fund-item"><span class="fund-val">$2.5M</span><span class="fund-label">Valuation</span></div>
+          <div class="fund-item"><span class="fund-val">Pre-Seed</span><span class="fund-label">Stage</span></div>
+          <div class="fund-item"><span class="fund-val">$5K/mo</span><span class="fund-label">Burn Rate</span></div>
+        </div>
+        <div class="use-of-funds">
+          <h4>Use of Funds</h4>
+          <div class="funds-bar">
+            <div class="fund-seg seg1" style="width:40%">Engineering 40%</div>
+            <div class="fund-seg seg2" style="width:25%">Liquidity 25%</div>
+            <div class="fund-seg seg3" style="width:20%">Audits 20%</div>
+            <div class="fund-seg seg4" style="width:15%">Ops 15%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: Founder & CTA -->
+  <section class="slide" id="slide-8">
+    <div class="slide-inner title-slide">
+      <div class="slide-tag">⬤ TEAM & CONTACT</div>
+      <h2 class="slide-title">Let's Reshape<br>Global Remittances</h2>
+      <div class="founder-card">
+        <div class="founder-avatar">SS</div>
+        <div class="founder-info">
+          <h3>Shriyash Soni</h3>
+          <p class="founder-role">Solo Founder & Full-Stack Blockchain Engineer</p>
+          <p class="founder-desc">Built the entire Anchor Wallet protocol end-to-end: 4 EVM smart contracts, 4 Casper contracts, full DeFi frontend, AI risk engine, comprehensive documentation, and developer SDK — all as a solo founder.</p>
+          <div class="founder-links">
+            <a href="https://x.com/shriyashsoni_" target="_blank">𝕏 @shriyashsoni_</a>
+            <a href="https://github.com/shriyashsoni" target="_blank">GitHub</a>
+            <a href="mailto:shriyash@Anchor Wallet.com">shriyash@Anchor Wallet.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="supporters-section">
+        <h4>Ecosystem Supporters & Competitions</h4>
+        <div class="supporters-grid">
+          <div class="supporter">Robinhood Chain Community Fund</div>
+          <div class="supporter">Casper Hackathon</div>
+          <div class="supporter">LvlUp Ventures</div>
+          <div class="supporter">Circle USDC</div>
+          <div class="supporter">Freighter Wallet</div>
+          <div class="supporter">EVM Dev Tools</div>
+        </div>
+      </div>
+      <div class="cta-section">
+        <a href="https://www.Anchor Wallet.xyz" class="cta-btn" target="_blank">Explore the App →</a>
+        <a href="https://github.com/shriyashsoni/Anchor Wallet" class="cta-btn secondary" target="_blank">View GitHub →</a>
+      </div>
+      <p class="closing">Anchor Wallet is live, deployed, and ready to scale.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+let current = 1;
+const total = 8;
+
+function showSlide(n) {
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active','slide-exit'));
+  const prev = document.querySelector('.slide.active');
+  const next = document.getElementById('slide-' + n);
+  if(next) { next.classList.add('active'); }
+  current = n;
+  document.getElementById('currentSlide').textContent = n;
+  document.getElementById('progressFill').style.width = ((n / total) * 100) + '%';
+  document.getElementById('prevBtn').style.opacity = n === 1 ? '0.3' : '1';
+  document.getElementById('nextBtn').style.opacity = n === total ? '0.3' : '1';
+}
+
+function nextSlide() { if(current < total) showSlide(current + 1); }
+function prevSlide() { if(current > 1) showSlide(current - 1); }
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  if(e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+});
+
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if(Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+});
+</script>
+</body>
+</html>
