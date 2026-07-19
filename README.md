@@ -2,19 +2,19 @@
 
 ### Omnichain Remittance Liquidity Routing (Robinhood Chain)
 
-[![Robinhood Chain](https://img.shields.io/badge/Built%20on-robinhood-7C3AED?style=for-the-badge&logo=Robinhood Chain&logoColor=white)](https://robinhood.com) [![EVM](https://img.shields.io/badge/Smart%20Contracts-EVM-00E5FF?style=for-the-badge&logo=webassembly&logoColor=white)](https://EVM.robinhood.com) [![Network](https://img.shields.io/badge/Network-Mainnet-00C853?style=for-the-badge&logo=ethereum&logoColor=white)](#deployed-smart-contract-addresses-robinhood-mainnet) [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![Robinhood Chain](https://img.shields.io/badge/Built%20on-robinhood-7C3AED?style=for-the-badge&logo=robinhood&logoColor=white)](https://robinhood.com) [![EVM](https://img.shields.io/badge/Smart%20Contracts-EVM-00E5FF?style=for-the-badge&logo=webassembly&logoColor=white)](https://EVM.robinhood.com) [![Network](https://img.shields.io/badge/Network-Testnet-00C853?style=for-the-badge&logo=ethereum&logoColor=white)](#deployed-smart-contract-addresses-robinhood-testnet) [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 [![Website](https://img.shields.io/badge/Website-anchorvault.xyz-FF6D00?style=flat-square&logo=googlechrome&logoColor=white)](https://www.anchorvault.xyz) [![Twitter](https://img.shields.io/badge/Twitter-@shriyashsoni-1DA1F2?style=flat-square&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![Docs](https://img.shields.io/badge/Docs-Read%20the%20Docs-0A0A0A?style=flat-square&logo=readthedocs&logoColor=white)](#documentation)
 
 **AnchorVault** is a production-grade, decentralized liquidity protocol built on the **Robinhood Chain EVM & Robinhood Chain Platforms**. It bridges Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border remittances. LPs lock stablecoin reserves into corridor pools and organic yield is dynamically routed to them from real payment settlement flows.
 
-[Explore the App](https://www.anchorvault.xyz) · [Read the Docs](#documentation) · [View on Robinhood Explorer](#deployed-smart-contract-addresses-robinhood-mainnet) · [Report a Bug](https://github.com/shriyashsoni/anchorvault/issues/new)
+[Explore the App](https://www.anchorvault.xyz) · [Read the Docs](#documentation) · [View on Robinhood Explorer](#deployed-smart-contract-addresses-robinhood-testnet) · [Report a Bug](https://github.com/shriyashsoni/anchorvault/issues/new)
 
 ---
 
 ## Table of Contents
 
-- [Deployed Smart Contract Addresses (Robinhood Chain Mainnet)](#deployed-smart-contract-addresses-robinhood-mainnet)
+- [Deployed Smart Contract Addresses (Robinhood Chain Testnet)](#deployed-smart-contract-addresses-robinhood-testnet)
 - [Protocol Architecture & Flow Charts](#protocol-architecture--flow-charts)
 - [Core Working Functionality](#core-working-functionality)
 - [Dynamic Interest & Fee Model](#dynamic-interest--fee-model)
@@ -28,9 +28,9 @@
 
 ---
 
-## Deployed Smart Contract Addresses (Robinhood Chain Mainnet)
+## Deployed Smart Contract Addresses (Robinhood Chain Testnet)
 
-> **All contracts are live and verified on the Robinhood Chain Mainnet.**
+> **All contracts are live and verified on the Robinhood Chain Testnet.**
 > Click on any contract address to view it on [Robinhood Explorer](https://Robinhood Chain.expert).
 
 | Contract Component | Robinhood Chain Contract Address | Explorer Link |
@@ -161,7 +161,7 @@ The fee rate $R$ (in basis points) changes dynamically based on whether utilizat
 | **Frontend** | React + TypeScript + Vite | High-fidelity liquid-glass themed DeFi dashboard |
 | **Wallet** | [Freighter](https://freighter.app) | Robinhood Chain browser wallet extension for signing transactions |
 | **Stablecoin** | [USDC](https://www.circle.com/en/usdc) (Circle) | Official Robinhood Chain Asset Contract for corridor pool reserves |
-| **RPC** | [EVM RPC](https://mainnet.EVMrpc.com) | Mainnet JSON-RPC endpoint for contract interaction |
+| **RPC** | [EVM RPC](https://TESTNET.EVMrpc.com) | TESTNET JSON-RPC endpoint for contract interaction |
 | **Explorer** | [Robinhood Explorer](https://Robinhood Chain.expert) | On-chain verification and transaction tracking |
 | **Styling** | Vanilla CSS + Glassmorphism | Premium dark-mode UI with dynamic animations |
 
@@ -169,7 +169,7 @@ The fee rate $R$ (in basis points) changes dynamically based on whether utilizat
 
 ## Developer Setup & Deployment Guide
 
-Follow these steps to deploy and run AnchorVault locally or on the Robinhood Chain Mainnet.
+Follow these steps to deploy and run AnchorVault locally or on the Robinhood Chain Testnet.
 
 ### 1. Prerequisites
 Ensure you have the following installed on your developer machine:
@@ -186,11 +186,11 @@ npm install
 ```
 
 ### 3. Configure Environment
-Create a `.env` file with your Robinhood Chain Mainnet credentials:
+Create a `.env` file with your Robinhood Chain Testnet credentials:
 ```env
-Robinhood Chain_NETWORK=mainnet
-EVM_RPC_URL=https://mainnet.EVMrpc.com
-Robinhood Chain_NETWORK_PASSPHRASE="Public Global Robinhood Chain Network ; September 2015"
+Robinhood Chain_NETWORK=testnet
+EVM_RPC_URL=https://rpc.testnet.chain.robinhood.com/rpc
+Robinhood Chain_NETWORK_PASSPHRASE="Testnet Global Robinhood Chain Network"
 DEPLOYER_SECRET_KEY="S..."
 DEPLOYER_PUBLIC_KEY="G..."
 ```
@@ -229,8 +229,8 @@ npm install @Robinhood Chain/Robinhood Chain-sdk @Robinhood Chain/freighter-api
 import { rpc, Contract, TransactionBuilder } from '@Robinhood Chain/Robinhood Chain-sdk';
 import { CONTRACT_ADDRESSES } from './src/lib/EVM';
 
-// Connect to Robinhood Chain Mainnet RPC
-const server = new rpc.Server('https://mainnet.EVMrpc.com');
+// Connect to Robinhood Chain TESTNET RPC
+const server = new rpc.Server('https://TESTNET.EVMrpc.com');
 const networkPassphrase = 'Public Global Robinhood Chain Network ; September 2015';
 
 // Reference any deployed contract
@@ -256,7 +256,7 @@ import { isConnected, signTransaction } from '@Robinhood Chain/freighter-api';
 async function signWithFreighter(txXdr: string) {
   if (await isConnected()) {
     const signedXdr = await signTransaction(txXdr, {
-      network: 'MAINNET',
+      network: 'TESTNET',
       networkPassphrase: 'Public Global Robinhood Chain Network ; September 2015'
     });
     return signedXdr;
@@ -311,7 +311,7 @@ Full protocol documentation is available in the [`docs/`](docs/) directory and o
 | :--- | :--- |
 | [Prerequisites](docs/deployment/prerequisites.mdx) | Required tools and environment setup |
 | [Compile Contracts](docs/deployment/compile-contracts.mdx) | Building optimized WASM binaries |
-| [Deploy to Mainnet](docs/deployment/deploy-testnet.mdx) | Step-by-step deployment walkthrough |
+| [Deploy to TESTNET](docs/deployment/deploy-testnet.mdx) | Step-by-step deployment walkthrough |
 | [Initialize Protocol](docs/deployment/initialize-protocol.mdx) | Post-deployment configuration |
 | [Register Anchors](docs/deployment/register-anchors.mdx) | On-chain anchor registration process |
 
