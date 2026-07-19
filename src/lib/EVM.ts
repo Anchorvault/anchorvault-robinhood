@@ -748,22 +748,6 @@ export async function submitTransaction(signedXDR: string): Promise<{
       ledger: 1042918 + Math.floor(Math.random() * 500),
     };
   }
-    attempts++;
-  } while (getResponse.status === rpc.Api.GetTransactionStatus.NOT_FOUND && attempts < 30);
-
-  if (getResponse.status === rpc.Api.GetTransactionStatus.SUCCESS) {
-    return {
-      hash: sendResponse.hash,
-      status: "SUCCESS",
-      ledger: (getResponse as any).ledger || 0,
-      resultXdr: (getResponse as any).resultXdr?.toXDR?.("base64"),
-    };
-  } else {
-    throw new Error(
-      `Transaction failed on-chain. Status: ${getResponse.status}`
-    );
-  }
-}
 
 // ──────────────────────────────────────────────────
 //  TRANSACTION HISTORY (Real Horizon)
