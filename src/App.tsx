@@ -21,7 +21,7 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 import { Helmet } from "react-helmet-async";
 import Hls from "hls.js";
-import { Robinhood ChainWalletsKit, Networks } from "ethers";
+import { RobinhoodChainWalletsKit, Networks } from "ethers";
 import { defaultModules } from "ethers/modules/utils";
 import BionovaHero from "./components/BionovaHero";
 import FeaturesGrid from "./components/FeaturesGrid";
@@ -440,8 +440,8 @@ export default function App() {
       setConnectingWallet(true);
       setConnectionMessage(`Connecting directly to ${walletId.toUpperCase()}...`);
       
-      Robinhood ChainWalletsKit.setWallet(walletId);
-      const { address } = await Robinhood ChainWalletsKit.fetchAddress();
+      RobinhoodChainWalletsKit.setWallet(walletId);
+      const { address } = await RobinhoodChainWalletsKit.fetchAddress();
       if (address) {
         setConnectedWalletName(walletId.toUpperCase());
         setWalletAddress(address);
@@ -576,7 +576,7 @@ export default function App() {
       setTxProgress(30);
       setTxStep("signing");
 
-      const { signedTxXdr } = await Robinhood ChainWalletsKit.signTransaction(txXDR, {
+      const { signedTxXdr } = await RobinhoodChainWalletsKit.signTransaction(txXDR, {
         networkPassphrase: "Public Global Robinhood Chain Network ; September 2015",
         address: walletAddress,
       });
@@ -633,7 +633,7 @@ export default function App() {
       setTxProgress(30);
       setTxStep("signing");
 
-      const { signedTxXdr } = await Robinhood ChainWalletsKit.signTransaction(txXDR, {
+      const { signedTxXdr } = await RobinhoodChainWalletsKit.signTransaction(txXDR, {
         networkPassphrase: "Public Global Robinhood Chain Network ; September 2015",
         address: walletAddress,
       });
@@ -672,7 +672,7 @@ export default function App() {
       setTxProgress(30);
       setTxStep("signing");
 
-      const { signedTxXdr } = await Robinhood ChainWalletsKit.signTransaction(txXDR, {
+      const { signedTxXdr } = await RobinhoodChainWalletsKit.signTransaction(txXDR, {
         networkPassphrase: "Public Global Robinhood Chain Network ; September 2015",
         address: walletAddress,
       });
@@ -722,7 +722,7 @@ export default function App() {
       setTxProgress(30);
       setTxStep("signing");
 
-      const { signedTxXdr } = await Robinhood ChainWalletsKit.signTransaction(txXDR, {
+      const { signedTxXdr } = await RobinhoodChainWalletsKit.signTransaction(txXDR, {
         networkPassphrase: "Public Global Robinhood Chain Network ; September 2015",
         address: walletAddress,
       });
@@ -778,7 +778,7 @@ export default function App() {
       setTxProgress(30);
       setTxStep("signing");
 
-      const { signedTxXdr } = await Robinhood ChainWalletsKit.signTransaction(txXDR, {
+      const { signedTxXdr } = await RobinhoodChainWalletsKit.signTransaction(txXDR, {
         networkPassphrase: "Public Global Robinhood Chain Network ; September 2015",
         address: walletAddress,
       });
@@ -1052,8 +1052,8 @@ export default function App() {
       setTxProgress(30);
       setTxStep("signing");
 
-      // Step 2: Sign with connected wallet (Freighter/Robinhood ChainWalletsKit)
-      const { signedTxXdr } = await Robinhood ChainWalletsKit.signTransaction(txXDR, {
+      // Step 2: Sign with connected wallet (Freighter/RobinhoodChainWalletsKit)
+      const { signedTxXdr } = await RobinhoodChainWalletsKit.signTransaction(txXDR, {
         networkPassphrase: "Public Global Robinhood Chain Network ; September 2015",
         address: walletAddress,
       });
@@ -1104,7 +1104,7 @@ export default function App() {
       setTxProgress(30);
       setTxStep("signing");
 
-      const { signedTxXdr } = await Robinhood ChainWalletsKit.signTransaction(txXDR, {
+      const { signedTxXdr } = await RobinhoodChainWalletsKit.signTransaction(txXDR, {
         networkPassphrase: "Public Global Robinhood Chain Network ; September 2015",
         address: walletAddress,
       });
@@ -2839,7 +2839,7 @@ export default function App() {
                     {/* WalletConnect & Other Modules Option */}
                     <button
                       type="button"
-                      onClick={handleRobinhood ChainWalletsKitConnect}
+                      onClick={handleRobinhoodChainWalletsKitConnect}
                       className="w-full h-11 relative group overflow-hidden rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 cursor-pointer text-[10px] font-bold uppercase tracking-wider text-neutral-300"
                     >
                       <Globe className="w-3.5 h-3.5 text-purple-400" />
