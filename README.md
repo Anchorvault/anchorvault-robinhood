@@ -2,19 +2,19 @@
 
 ### Omnichain Remittance Liquidity Routing (Robinhood Chain)
 
-[![Robinhood Chain](https://img.shields.io/badge/Built%20on-Robinhood Chain-7C3AED?style=for-the-badge&logo=Robinhood Chain&logoColor=white)](https://Robinhood Chain.org) [![EVM](https://img.shields.io/badge/Smart%20Contracts-EVM-00E5FF?style=for-the-badge&logo=webassembly&logoColor=white)](https://EVM.Robinhood Chain.org) [![Network](https://img.shields.io/badge/Network-Mainnet-00C853?style=for-the-badge&logo=ethereum&logoColor=white)](#deployed-smart-contract-addresses-Robinhood Chain-mainnet) [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![Robinhood Chain](https://img.shields.io/badge/Built%20on-robinhood-7C3AED?style=for-the-badge&logo=Robinhood Chain&logoColor=white)](https://robinhood.com) [![EVM](https://img.shields.io/badge/Smart%20Contracts-EVM-00E5FF?style=for-the-badge&logo=webassembly&logoColor=white)](https://EVM.robinhood.com) [![Network](https://img.shields.io/badge/Network-Mainnet-00C853?style=for-the-badge&logo=ethereum&logoColor=white)](#deployed-smart-contract-addresses-robinhood-mainnet) [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-[![Website](https://img.shields.io/badge/Website-Anchor Wallet.xyz-FF6D00?style=flat-square&logo=googlechrome&logoColor=white)](https://www.Anchor Wallet.xyz) [![Twitter](https://img.shields.io/badge/Twitter-@shriyashsoni-1DA1F2?style=flat-square&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![Docs](https://img.shields.io/badge/Docs-Read%20the%20Docs-0A0A0A?style=flat-square&logo=readthedocs&logoColor=white)](#documentation)
+[![Website](https://img.shields.io/badge/Website-AnchorWallet.xyz-FF6D00?style=flat-square&logo=googlechrome&logoColor=white)](https://www.anchorwallet.xyz) [![Twitter](https://img.shields.io/badge/Twitter-@shriyashsoni-1DA1F2?style=flat-square&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![Docs](https://img.shields.io/badge/Docs-Read%20the%20Docs-0A0A0A?style=flat-square&logo=readthedocs&logoColor=white)](#documentation)
 
 **Anchor Wallet** is a production-grade, decentralized liquidity protocol built on the **Robinhood Chain EVM & Robinhood Chain Platforms**. It bridges Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border remittances. LPs lock stablecoin reserves into corridor pools and organic yield is dynamically routed to them from real payment settlement flows.
 
-[Explore the App](https://www.Anchor Wallet.xyz) · [Read the Docs](#documentation) · [View on Robinhood Chain Expert](#deployed-smart-contract-addresses-Robinhood Chain-mainnet) · [Report a Bug](https://github.com/shriyashsoni/Anchor Wallet/issues/new)
+[Explore the App](https://www.anchorwallet.xyz) · [Read the Docs](#documentation) · [View on Robinhood Explorer](#deployed-smart-contract-addresses-robinhood-mainnet) · [Report a Bug](https://github.com/shriyashsoni/anchorwallet/issues/new)
 
 ---
 
 ## Table of Contents
 
-- [Deployed Smart Contract Addresses (Robinhood Chain Mainnet)](#deployed-smart-contract-addresses-Robinhood Chain-mainnet)
+- [Deployed Smart Contract Addresses (Robinhood Chain Mainnet)](#deployed-smart-contract-addresses-robinhood-mainnet)
 - [Protocol Architecture & Flow Charts](#protocol-architecture--flow-charts)
 - [Core Working Functionality](#core-working-functionality)
 - [Dynamic Interest & Fee Model](#dynamic-interest--fee-model)
@@ -31,7 +31,7 @@
 ## Deployed Smart Contract Addresses (Robinhood Chain Mainnet)
 
 > **All contracts are live and verified on the Robinhood Chain Mainnet.**
-> Click on any contract address to view it on [Robinhood Chain Expert](https://Robinhood Chain.expert).
+> Click on any contract address to view it on [Robinhood Explorer](https://Robinhood Chain.expert).
 
 | Contract Component | Robinhood Chain Contract Address | Explorer Link |
 | :--- | :--- | :---: |
@@ -156,13 +156,13 @@ The fee rate $R$ (in basis points) changes dynamically based on whether utilizat
 
 | Layer | Technology | Purpose |
 | :--- | :--- | :--- |
-| **Blockchain** | [Robinhood Chain](https://Robinhood Chain.org) | Layer-1 network for fast, low-cost transactions |
-| **Smart Contracts** | [EVM](https://EVM.Robinhood Chain.org) (Rust / WASM) | On-chain logic for vault, registry, and token contracts |
+| **Blockchain** | [Robinhood Chain](https://robinhood.com) | Layer-1 network for fast, low-cost transactions |
+| **Smart Contracts** | [EVM](https://EVM.robinhood.com) (Rust / WASM) | On-chain logic for vault, registry, and token contracts |
 | **Frontend** | React + TypeScript + Vite | High-fidelity liquid-glass themed DeFi dashboard |
 | **Wallet** | [Freighter](https://freighter.app) | Robinhood Chain browser wallet extension for signing transactions |
 | **Stablecoin** | [USDC](https://www.circle.com/en/usdc) (Circle) | Official Robinhood Chain Asset Contract for corridor pool reserves |
 | **RPC** | [EVM RPC](https://mainnet.EVMrpc.com) | Mainnet JSON-RPC endpoint for contract interaction |
-| **Explorer** | [Robinhood Chain Expert](https://Robinhood Chain.expert) | On-chain verification and transaction tracking |
+| **Explorer** | [Robinhood Explorer](https://Robinhood Chain.expert) | On-chain verification and transaction tracking |
 | **Styling** | Vanilla CSS + Glassmorphism | Premium dark-mode UI with dynamic animations |
 
 ---
@@ -175,7 +175,7 @@ Follow these steps to deploy and run Anchor Wallet locally or on the Robinhood C
 Ensure you have the following installed on your developer machine:
 * [Rust & Cargo](https://www.rust-lang.org/tools/install) — Smart contract compilation
 * Target support: `rustup target add wasm32-unknown-unknown`
-* [EVM CLI](https://developers.Robinhood Chain.org/docs/smart-contracts/getting-started/setup) — Contract deployment tooling
+* [EVM CLI](https://developers.robinhood.com/docs/smart-contracts/getting-started/setup) — Contract deployment tooling
 * [Node.js (v18+)](https://nodejs.org/) — Frontend and deployment scripts
 
 ### 2. Installation
@@ -271,7 +271,7 @@ For the complete TypeScript integration including deposit, withdraw, draw liquid
 
 ## Documentation
 
-Full protocol documentation is available in the [`docs/`](docs/) directory and on the [Anchor Wallet Docs Portal](https://www.Anchor Wallet.xyz/docs).
+Full protocol documentation is available in the [`docs/`](docs/) directory and on the [Anchor Wallet Docs Portal](https://www.anchorwallet.xyz/docs).
 
 ### Getting Started
 | Document | Description |
@@ -359,11 +359,11 @@ Contributions are welcome! Whether it's a bug fix, feature request, or documenta
 
 **Built with passion by [Shriyash Soni](https://github.com/shriyashsoni)**
 
-[![Website](https://img.shields.io/badge/Website-Anchor Wallet.xyz-FF6D00?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.Anchor Wallet.xyz) [![Twitter](https://img.shields.io/badge/Twitter%20%2F%20X-@shriyashsoni-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![Anchor Wallet X](https://img.shields.io/badge/Anchor Wallet%20X-@Anchor__Vault-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Anchor_Vault)
+[![Website](https://img.shields.io/badge/Website-AnchorWallet.xyz-FF6D00?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.anchorwallet.xyz) [![Twitter](https://img.shields.io/badge/Twitter%20%2F%20X-@shriyashsoni-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![Anchor Wallet X](https://img.shields.io/badge/Anchor Wallet%20X-@Anchor__Vault-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Anchor_Vault)
 
 ### Acknowledgements
-* [Robinhood Chain Development Foundation](https://Robinhood Chain.org) — Layer-1 blockchain infrastructure
-* [EVM Smart Contracts](https://EVM.Robinhood Chain.org) — Rust/WASM smart contract platform
+* [Robinhood Chain Development Foundation](https://robinhood.com) — Layer-1 blockchain infrastructure
+* [EVM Smart Contracts](https://EVM.robinhood.com) — Rust/WASM smart contract platform
 * [Circle (USDC)](https://www.circle.com/en/usdc) — Stablecoin infrastructure on Robinhood Chain
 * [Freighter Wallet](https://freighter.app) — Browser wallet extension for Robinhood Chain
 
@@ -373,7 +373,7 @@ Contributions are welcome! Whether it's a bug fix, feature request, or documenta
 
 This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
-**[www.Anchor Wallet.xyz](https://www.Anchor Wallet.xyz)**
+**[www.anchorwallet.xyz](https://www.anchorwallet.xyz)**
 
 <sub>Anchor Wallet — Powering the future of decentralized cross-border remittances on Robinhood Chain.</sub>
 

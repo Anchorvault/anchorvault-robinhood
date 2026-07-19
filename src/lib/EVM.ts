@@ -70,7 +70,7 @@ export const ANCHOR_LIST = [
 
 // ── Network Config ──
 const EVM_RPC_URL = "https://mainnet.EVMrpc.com";
-const HORIZON_URL = "https://horizon.Robinhood Chain.org";
+const HORIZON_URL = "https://horizon.robinhood.com";
 const NETWORK_PASSPHRASE = Networks.PUBLIC;
 
 // ── RPC + Horizon Clients ──
@@ -570,18 +570,18 @@ export async function fetchContractEvents(contractId: string, _limit = 15): Prom
 }
 
 // ──────────────────────────────────────────────────
-//  Robinhood Chain EXPERT + HORIZON LINKS
+//  Robinhood Explorer + HORIZON LINKS
 // ──────────────────────────────────────────────────
 
-export function getRobinhood ChainExpertTxUrl(hash: string): string {
+export function getRobinhoodExplorerTxUrl(hash: string): string {
   return `https://Robinhood Chain.expert/explorer/public/tx/${hash}`;
 }
 
-export function getRobinhood ChainExpertAccountUrl(address: string): string {
+export function getRobinhoodExplorerAccountUrl(address: string): string {
   return `https://Robinhood Chain.expert/explorer/public/account/${address}`;
 }
 
-export function getRobinhood ChainExpertContractUrl(contractId: string): string {
+export function getRobinhoodExplorerContractUrl(contractId: string): string {
   return `https://Robinhood Chain.expert/explorer/public/contract/${contractId}`;
 }
 
@@ -595,7 +595,7 @@ export function getHorizonTxUrl(hash: string): string {
 
 export async function fundWithFriendbot(publicKey: string): Promise<boolean> {
   try {
-    const response = await fetch(`https://friendbot.Robinhood Chain.org?addr=${publicKey}`);
+    const response = await fetch(`https://friendbot.robinhood.com?addr=${publicKey}`);
     return response.ok;
   } catch {
     return false;

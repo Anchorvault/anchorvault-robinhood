@@ -164,7 +164,7 @@ export const DOCS_PAGES: DocPage[] = [
         },
         {
           title: "Live Mainnet Smart Contract Addresses",
-          text: "All Anchor Wallet contracts are deployed and verified on the Robinhood Chain Mainnet. Click any address to verify on Robinhood Chain Expert.",
+          text: "All Anchor Wallet contracts are deployed and verified on the Robinhood Chain Mainnet. Click any address to verify on Robinhood Explorer.",
           table: {
             headers: ["Contract", "Mainnet Address", "Role"],
             rows: [
@@ -590,7 +590,7 @@ export const DOCS_PAGES: DocPage[] = [
   },
   {
     id: "sdk/wallet-integration",
-    title: "Robinhood Chain Wallets Integration",
+    title: "Robinhood Wallets Integration",
     sidebarTitle: "Wallet Integration",
     description: "Freighter, xBull, and LOBSTR browser wallet connectors.",
     category: "SDK & Integration",

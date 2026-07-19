@@ -26,7 +26,7 @@ Yes *(Anchor Wallet utilizes the Galileo AI Copilot to constantly analyze Anchor
 https://github.com/shriyashsoni/Anchor Wallet
 
 **Project website (optional):**
-https://www.Anchor Wallet.xyz
+https://www.anchorwallet.xyz
 
 **Demo video:**
 `[LINK SPACE: Insert the link to your YouTube demo video here]`
@@ -73,7 +73,7 @@ To protect liquidity, we built a **Two-Slope Utilization Curve**:
 *   **Frontend:** React, TypeScript, Vite, Vanilla CSS with Glassmorphism
 *   **Wallet Integration:** Freighter Wallet
 *   **Stablecoin:** USDC (Circle) via Robinhood Chain Asset Contract
-*   **RPC & Tooling:** EVM RPC, Robinhood Chain Expert Explorer
+*   **RPC & Tooling:** EVM RPC, Robinhood Explorer Explorer
 
 ### Deployed Smart Contracts (Robinhood Chain Mainnet)
 *   **Robinhood Chain USDC Stablecoin:** `CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75`

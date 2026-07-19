@@ -6,3 +6,4 @@ build
 hardhat-deploy/node_modules
 hardhat-deploy/artifacts
 hardhat-deploy/cache
+*.mp4

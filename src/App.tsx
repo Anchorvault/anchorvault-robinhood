@@ -36,9 +36,9 @@ import {
   buildDepositTransaction,
   buildWithdrawTransaction,
   submitTransaction,
-  getRobinhood ChainExpertTxUrl,
-  getRobinhood ChainExpertAccountUrl,
-  getRobinhood ChainExpertContractUrl,
+  getRobinhoodExplorerTxUrl,
+  getRobinhoodExplorerAccountUrl,
+  getRobinhoodExplorerContractUrl,
   formatAddress,
   timeAgo,
   fetchRegisteredAnchors,
@@ -239,43 +239,43 @@ export default function App() {
         return {
           title: baseTitle + "Whitepaper",
           description: "Read the official Anchor Wallet whitepaper to understand the protocol economics, EVM smart contracts, and liquidity bridging mechanics.",
-          url: "https://Anchor Wallet.xyz/whitepaper",
-          image: "https://Anchor Wallet.xyz/og-image.png"
+          url: "https://anchorwallet.xyz/whitepaper",
+          image: "https://anchorwallet.xyz/og-image.png"
         };
       case "docs":
         return {
           title: baseTitle + "Documentation",
           description: "Explore the Anchor Wallet technical documentation. Learn how to integrate the routing engine and deploy stablecoin anchors on Robinhood Chain.",
-          url: "https://Anchor Wallet.xyz/docs",
-          image: "https://Anchor Wallet.xyz/og-image.png"
+          url: "https://anchorwallet.xyz/docs",
+          image: "https://anchorwallet.xyz/og-image.png"
         };
       case "privacy":
         return {
           title: baseTitle + "Privacy Policy",
           description: "Learn about how Anchor Wallet handles your data, on-chain privacy, and our commitment to decentralized security.",
-          url: "https://Anchor Wallet.xyz/privacy",
-          image: "https://Anchor Wallet.xyz/og-image.png"
+          url: "https://anchorwallet.xyz/privacy",
+          image: "https://anchorwallet.xyz/og-image.png"
         };
       case "terms":
         return {
           title: baseTitle + "Terms of Service",
           description: "Review the Terms of Service for interacting with the decentralized Anchor Wallet protocol.",
-          url: "https://Anchor Wallet.xyz/terms",
-          image: "https://Anchor Wallet.xyz/og-image.png"
+          url: "https://anchorwallet.xyz/terms",
+          image: "https://anchorwallet.xyz/og-image.png"
         };
       case "branding":
         return {
           title: baseTitle + "Brand Kit",
           description: "Download official Anchor Wallet brand assets, logos, and guidelines for partners and press.",
-          url: "https://Anchor Wallet.xyz/branding",
-          image: "https://Anchor Wallet.xyz/og-image.png"
+          url: "https://anchorwallet.xyz/branding",
+          image: "https://anchorwallet.xyz/og-image.png"
         };
       default:
         return {
           title: "Anchor Wallet | Omnichain Protocol (Robinhood Chain & Robinhood)",
           description: "A trustless Omnichain routing engine bridging idle stablecoins with Robinhood Chain and Robinhood Chain anchor corridors. Deposit stablecoins, secure global remittance, and earn organic yield.",
-          url: "https://Anchor Wallet.xyz/",
-          image: "https://Anchor Wallet.xyz/og-image.png"
+          url: "https://anchorwallet.xyz/",
+          image: "https://anchorwallet.xyz/og-image.png"
         };
     }
   };
@@ -314,7 +314,7 @@ export default function App() {
                 <!-- Brand Header -->
                 <div style="padding: 40px 40px 20px 40px; text-align: center;">
                   <div style="display: inline-block; padding: 12px; background: rgba(123, 57, 252, 0.1); border: 1px solid rgba(123, 57, 252, 0.2); border-radius: 16px; margin-bottom: 16px;">
-                    <img style="width: 48px; height: 48px; vertical-align: middle;" src="https://Anchor Wallet.co/logo.png" alt="Anchor Wallet Logo" onerror="this.src='https://Robinhood Chain.org/images/Robinhood Chain-logo.png'">
+                    <img style="width: 48px; height: 48px; vertical-align: middle;" src="https://anchorwallet.co/logo.png" alt="Anchor Wallet Logo" onerror="this.src='https://robinhood.com/images/Robinhood Chain-logo.png'">
                   </div>
                   <h1 style="font-size: 24px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; margin: 0; color: #ffffff;">Anchor Wallet</h1>
                   <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00C805; margin-top: 4px;">Omnichain Corridors Protocol</div>
@@ -346,7 +346,7 @@ export default function App() {
                   </div>
                   
                   <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
-                    <a style="display: inline-block; background-color: #00C805; color: #ffffff !important; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 32px; border-radius: 30px; box-shadow: 0 10px 20px rgba(123, 57, 252, 0.3);" href="https://Anchor Wallet.co" target="_blank">Launch DeFi Portal</a>
+                    <a style="display: inline-block; background-color: #00C805; color: #ffffff !important; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 32px; border-radius: 30px; box-shadow: 0 10px 20px rgba(123, 57, 252, 0.3);" href="https://anchorwallet.co" target="_blank">Launch DeFi Portal</a>
                   </div>
                 </div>
                 
@@ -872,7 +872,7 @@ export default function App() {
     setAiRecommendation(null);
     setAiTerminalLogs([
       "> [AI Copilot] Initializing risk assessment run for anchor: " + formatAddress(walletAddress, 6),
-      "> [AI Copilot] Connecting to Robinhood Chain-PUBLIC.Robinhood Chain.org RPC nodes...",
+      "> [AI Copilot] Connecting to Robinhood Chain-PUBLIC.robinhood.com RPC nodes...",
       "> [AI Copilot] Querying on-chain registry parameters and active collateral ratio...",
     ]);
 
@@ -1724,7 +1724,7 @@ export default function App() {
                           { label: "Governance Token", addr: CONTRACT_ADDRESSES.GOVERNANCE_TOKEN, color: "text-green-400" },
                           { label: "USDC Token", addr: CONTRACT_ADDRESSES.USDC, color: "text-yellow-400" },
                         ].map((c) => (
-                          <a key={c.label} href={getRobinhood ChainExpertContractUrl(c.addr)} target="_blank" rel="noreferrer"
+                          <a key={c.label} href={getRobinhoodExplorerContractUrl(c.addr)} target="_blank" rel="noreferrer"
                             className="bg-neutral-900/50 border border-white/5 rounded-xl p-3 hover:border-white/15 transition-all group">
                             <div className={`text-[10px] font-semibold ${c.color}`}>{c.label}</div>
                             <div className="text-[9px] font-mono text-neutral-400 mt-1 truncate group-hover:text-white transition-colors">{c.addr}</div>
@@ -1745,7 +1745,7 @@ export default function App() {
                           <div className="flex items-center justify-center py-6 gap-2 text-neutral-400 text-xs"><Loader2 className="h-4 w-4 animate-spin" /> Loading from Horizon...</div>
                         )}
                         {txHistory.slice(0, 8).map((tx) => (
-                          <a key={tx.id} href={getRobinhood ChainExpertTxUrl(tx.hash)} target="_blank" rel="noreferrer"
+                          <a key={tx.id} href={getRobinhoodExplorerTxUrl(tx.hash)} target="_blank" rel="noreferrer"
                             className="flex items-center justify-between p-3 bg-neutral-900/50 rounded-xl border border-white/5 font-mono text-xs hover:border-white/15 transition-all">
                             <div className="flex items-center gap-3">
                               <div className={`h-6 w-6 rounded-full flex items-center justify-center ${
@@ -1879,7 +1879,7 @@ export default function App() {
                           </div>
                           
                           {(txStep === "building") && (
-                            <><div className="text-cyan-400">[RPC] Connecting to EVM-PUBLIC.Robinhood Chain.org...</div>
+                            <><div className="text-cyan-400">[RPC] Connecting to EVM-PUBLIC.robinhood.com...</div>
                             <div className="text-white">[BUILD] Simulating transaction footprint...</div>
                             <div className="text-[#FA8453] font-semibold flex items-center gap-2"><Loader2 className="h-3 w-3 animate-spin" /> Assembling XDR...</div></>
                           )}
@@ -1903,7 +1903,7 @@ export default function App() {
                                 </div>
                               )}
                               
-                              <a href={getRobinhood ChainExpertTxUrl(txHash)} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline break-all mt-2 block">
+                              <a href={getRobinhoodExplorerTxUrl(txHash)} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline break-all mt-2 block">
                                 TX: {txHash} ↗
                               </a>
                             </>
@@ -1923,9 +1923,9 @@ export default function App() {
                         {(txStep === "success" || txStep === "error") && (
                           <div className="flex gap-3 justify-end">
                             {txStep === "success" && txHash && (
-                              <a href={getRobinhood ChainExpertTxUrl(txHash)} target="_blank" rel="noreferrer"
+                              <a href={getRobinhoodExplorerTxUrl(txHash)} target="_blank" rel="noreferrer"
                                 className="bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold text-xs py-2 rounded-lg px-4 hover:bg-cyan-500/20 transition-colors flex items-center gap-1">
-                                View on Robinhood Chain Expert <ExternalLink className="h-3 w-3" />
+                                View on Robinhood Explorer <ExternalLink className="h-3 w-3" />
                               </a>
                             )}
                             <button
@@ -1972,7 +1972,7 @@ export default function App() {
                                 placeholder="0.00" step="any" min="0" 
                                 className="w-full bg-neutral-900 border border-white/10 rounded-xl px-4 py-4 text-xl font-bold text-white focus:outline-none focus:border-emerald-500 transition-colors" />
                               <div className="absolute right-3 top-1/2 -translate-y-1/2 bg-black rounded-lg px-3 py-1.5 flex items-center gap-2 border border-white/5">
-                                <img src="https://Robinhood Chain.org/favicon.ico" className="h-4 w-4 rounded-full filter grayscale" alt="ETH" />
+                                <img src="https://robinhood.com/favicon.ico" className="h-4 w-4 rounded-full filter grayscale" alt="ETH" />
                                 <span className="text-xs font-bold text-white uppercase tracking-wider">ETH</span>
                               </div>
                             </div>
@@ -2045,8 +2045,8 @@ export default function App() {
                               <div className="text-emerald-400">
                                 [SUCCESS] Swap executed successfully. You received USDC!
                                 <br />
-                                <a href={getRobinhood ChainExpertTxUrl(txHash)} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline">
-                                  View TX on Robinhood Chain Expert ↗
+                                <a href={getRobinhoodExplorerTxUrl(txHash)} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline">
+                                  View TX on Robinhood Explorer ↗
                                 </a>
                               </div>
                             )}
@@ -2070,7 +2070,7 @@ export default function App() {
                           </p>
                         </div>
                         <a 
-                          href={getRobinhood ChainExpertContractUrl(CONTRACT_ADDRESSES.ANCHOR_REGISTRY)} 
+                          href={getRobinhoodExplorerContractUrl(CONTRACT_ADDRESSES.ANCHOR_REGISTRY)} 
                           target="_blank" 
                           rel="noreferrer"
                           className="text-neutral-400 hover:text-white cursor-pointer p-2 bg-neutral-900 rounded-lg flex items-center gap-1 text-xs transition-colors"
@@ -2140,9 +2140,9 @@ export default function App() {
                     <div className="bg-neutral-950 border border-white/5 rounded-2xl p-5 flex flex-col gap-4">
                       <div className="flex items-center justify-between pb-3 border-b border-white/5">
                         <h4 className="font-semibold text-sm uppercase tracking-wider text-neutral-400">On-Chain Wallet State</h4>
-                        <a href={getRobinhood ChainExpertAccountUrl(walletAddress)} target="_blank" rel="noreferrer"
+                        <a href={getRobinhoodExplorerAccountUrl(walletAddress)} target="_blank" rel="noreferrer"
                           className="flex items-center gap-1.5 text-cyan-400 hover:underline text-[10px]">
-                          View on Robinhood Chain Expert <ExternalLink className="h-3 w-3" />
+                          View on Robinhood Explorer <ExternalLink className="h-3 w-3" />
                         </a>
                       </div>
                       <div className="flex flex-col gap-2 bg-black p-4 rounded-xl border border-white/5">
@@ -2153,7 +2153,7 @@ export default function App() {
                         <div className="bg-neutral-900/60 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                           <span className="text-neutral-500 text-[9px] uppercase tracking-wider">USDC Balance</span>
                           <span className="text-lg font-bold text-white font-sans">{balances.USDC} USDC</span>
-                          <a href={getRobinhood ChainExpertContractUrl(CONTRACT_ADDRESSES.USDC)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.USDC}</a>
+                          <a href={getRobinhoodExplorerContractUrl(CONTRACT_ADDRESSES.USDC)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.USDC}</a>
                         </div>
                         <div className="bg-neutral-900/60 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                           <span className="text-neutral-500 text-[9px] uppercase tracking-wider">ETH (Native)</span>
@@ -2163,12 +2163,12 @@ export default function App() {
                         <div className="bg-neutral-900/60 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                           <span className="text-neutral-500 text-[9px] uppercase tracking-wider">$VAULT Token</span>
                           <span className="text-lg font-bold text-white font-sans">{balances.vaultToken} $VAULT</span>
-                          <a href={getRobinhood ChainExpertContractUrl(CONTRACT_ADDRESSES.GOVERNANCE_TOKEN)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.GOVERNANCE_TOKEN}</a>
+                          <a href={getRobinhoodExplorerContractUrl(CONTRACT_ADDRESSES.GOVERNANCE_TOKEN)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.GOVERNANCE_TOKEN}</a>
                         </div>
                         <div className="bg-neutral-900/60 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                           <span className="text-neutral-500 text-[9px] uppercase tracking-wider">LP Shares</span>
                           <span className="text-lg font-bold text-white font-sans">{balances.lpShares} LP</span>
-                          <a href={getRobinhood ChainExpertContractUrl(CONTRACT_ADDRESSES.CORE_VAULT)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.CORE_VAULT}</a>
+                          <a href={getRobinhoodExplorerContractUrl(CONTRACT_ADDRESSES.CORE_VAULT)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.CORE_VAULT}</a>
                         </div>
                       </div>
                       <div className="flex items-center gap-2 mt-2">
@@ -2209,7 +2209,7 @@ export default function App() {
                     {txStep !== "idle" && dashboardTab === "withdraw" && (
                       <div className="text-xs text-neutral-400 font-mono bg-neutral-900/30 p-3 rounded-xl border border-white/5">
                         Status: <span className="text-[#FA8453] font-semibold">{txStep}</span>
-                        {txHash && <a href={getRobinhood ChainExpertTxUrl(txHash)} target="_blank" rel="noreferrer" className="ml-2 text-cyan-400 hover:underline">View TX ↗</a>}
+                        {txHash && <a href={getRobinhoodExplorerTxUrl(txHash)} target="_blank" rel="noreferrer" className="ml-2 text-cyan-400 hover:underline">View TX ↗</a>}
                       </div>
                     )}
                   </div>
@@ -2329,7 +2329,7 @@ export default function App() {
                                 Status: <span className={`font-semibold ${txStep === "error" ? "text-red-400 font-bold" : "text-[#FA8453]"}`}>{txStep.toUpperCase()}</span>
                               </span>
                               {txHash && (
-                                <a href={getRobinhood ChainExpertTxUrl(txHash)} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline flex items-center gap-1">
+                                <a href={getRobinhoodExplorerTxUrl(txHash)} target="_blank" rel="noreferrer" className="text-cyan-400 hover:underline flex items-center gap-1">
                                   View TX ↗
                                 </a>
                               )}
@@ -2426,7 +2426,7 @@ export default function App() {
                         <span className="text-neutral-500">// Robinhood Chain PUBLIC Sandbox Console</span>
                         <div className="flex items-center gap-1.5">
                           <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                          <span className="text-neutral-400">Consensus Status: connected to Robinhood Chain-PUBLIC.Robinhood Chain.org</span>
+                          <span className="text-neutral-400">Consensus Status: connected to Robinhood Chain-PUBLIC.robinhood.com</span>
                         </div>
                         
                         {faucetStatus === "funding" && <span className="text-cyan-300">&gt; Invoking Friendbot funder on-chain for {walletAddress}...</span>}
@@ -2590,7 +2590,7 @@ export default function App() {
                       <div className="text-center py-12 text-neutral-500 text-xs">No on-chain transactions found for this wallet address.</div>
                     )}
                     {txHistory.map((tx) => (
-                      <a key={tx.id} href={getRobinhood ChainExpertTxUrl(tx.hash)} target="_blank" rel="noreferrer"
+                      <a key={tx.id} href={getRobinhoodExplorerTxUrl(tx.hash)} target="_blank" rel="noreferrer"
                         className="flex items-center justify-between p-4 bg-neutral-900/50 rounded-xl border border-white/5 font-mono text-xs hover:border-white/15 transition-all">
                         <div className="flex items-center gap-3 min-w-[120px]">
                           <div className={`h-7 w-7 rounded-full flex items-center justify-center ${
@@ -2627,7 +2627,7 @@ export default function App() {
       )}
 
       {/* =================================================================== */}
-      {/*              AURORA SIGN UP & Robinhood Chain WALLET SELECTOR MODAL         */}
+      {/*              AURORA SIGN UP & Robinhood Wallet SELECTOR MODAL         */}
       {/* =================================================================== */}
       {showSignUpModal && (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 lg:p-4 overflow-y-auto">
