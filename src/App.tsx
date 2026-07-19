@@ -411,7 +411,7 @@ export default function App() {
   const handleWalletConnect = async (walletId: string) => {
     try {
       setConnectingWallet(true);
-      setConnectionMessage(Connecting to  + walletId.toUpperCase() + ...);
+      setConnectionMessage(`Connecting to ` + walletId.toUpperCase() + `...`);
       
       if (!(window as any).ethereum) {
         alert("No Web3 provider found. Please install MetaMask or Trust Wallet.");
@@ -429,29 +429,7 @@ export default function App() {
       }
     } catch (err: any) {
       console.error("Wallet connection failed:", err);
-      alert(Could not connect. Please ensure the wallet is installed and unlocked.);
-    } finally {
-      setConnectingWallet(false);
-    }
-  };
-
-  const handleWalletConnect = async (walletId: string) => {
-    try {
-      setConnectingWallet(true);
-      setConnectionMessage(`Connecting directly to ${walletId.toUpperCase()}...`);
-      
-      RobinhoodChainWalletsKit.setWallet(walletId);
-      const { address } = await RobinhoodChainWalletsKit.fetchAddress();
-      if (address) {
-        setConnectedWalletName(walletId.toUpperCase());
-        setWalletAddress(address);
-        setWalletConnected(true);
-        setSignUpStep(3);
-      }
-    } catch (err: any) {
-      console.error("Direct wallet connection failed:", err);
-      const friendlyName = walletId.charAt(0).toUpperCase() + walletId.slice(1);
-      alert(`Could not connect to ${friendlyName}. Please ensure the extension is installed, unlocked, and that you have granted permission.`);
+      alert(`Could not connect. Please ensure the wallet is installed and unlocked.`);
     } finally {
       setConnectingWallet(false);
     }
