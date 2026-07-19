@@ -24,7 +24,7 @@ import {
   Keypair,
   Asset,
   Operation,
-} from "@Robinhood Chain/Robinhood Chain-sdk";
+} from "@stellar/stellar-sdk";
 
 // ── Contract Addresses (from .env / deployed mainnet) ──
 export const CONTRACT_ADDRESSES = {
@@ -112,8 +112,8 @@ export interface AnchorVaultState {
 }
 
 export interface WalletBalances {
-  xlm: string;
-  usdc: string;
+  ETH: string;
+  USDC: string;
   vaultToken: string;
   lpShares: string;
 }
@@ -141,8 +141,8 @@ export interface TxRecord {
  */
 export async function fetchWalletBalances(publicKey: string): Promise<WalletBalances> {
   const result: WalletBalances = {
-    xlm: "0",
-    usdc: "0",
+    ETH: "0",
+    USDC: "0",
     vaultToken: "0",
     lpShares: "0",
   };
@@ -152,7 +152,7 @@ export async function fetchWalletBalances(publicKey: string): Promise<WalletBala
     
     for (const balance of account.balances) {
       if (balance.asset_type === "native") {
-        result.xlm = balance.balance;
+        result.ETH = balance.balance;
       }
     }
   } catch (err: any) {
@@ -161,11 +161,11 @@ export async function fetchWalletBalances(publicKey: string): Promise<WalletBala
 
   // Fetch SAC token balances via EVM RPC
   try {
-    result.usdc = await fetchTokenBalance(CONTRACT_ADDRESSES.USDC, publicKey);
+    result.USDC = await fetchTokenBalance(CONTRACT_ADDRESSES.MOCK_USDC, publicKey);
   } catch { /* no balance */ }
 
   try {
-    result.vaultToken = await fetchTokenBalance(CONTRACT_ADDRESSES.GOVERNANCE_TOKEN, publicKey);
+    result.vaultToken = await fetchTokenBalance(CONTRACT_ADDRESSES.VAULT_TOKEN, publicKey);
   } catch { /* no balance */ }
 
   try {
@@ -787,7 +787,7 @@ export async function mintVaultToken(userPubKey: string, amount: string): Promis
   const amountScaled = BigInt(Math.round(parseFloat(amount) * 1e7)); // 7 decimals
   
   // Mint $VAULT Governance Tokens (we have deployer authority for this on Mainnet)
-  const contractVault = new Contract(CONTRACT_ADDRESSES.GOVERNANCE_TOKEN);
+  const contractVault = new Contract(CONTRACT_ADDRESSES.VAULT_TOKEN);
   const callVault = contractVault.call(
     "mint",
     new Address(userPubKey).toScVal(),
@@ -1053,7 +1053,7 @@ export async function buildRepayLiquidityTransaction(
  * (Administrative Governance Action - Signed & submitted directly via Deployer Authority)
  */
 export async function offsetDefaultedDebtOnChain(anchorAddress: string): Promise<string> {
-  const deployerKeypair = Keypair.fromSecret(process.env.DEPLOYER_SECRET || "SD2..." /* fallback standard */);
+  const deployerKeypair = Keypair.fromSecret((import.meta.env.VITE_DEPLOYER_SECRET) || "SD2..." /* fallback standard */);
   const deployerAddress = deployerKeypair.publicKey();
 
   const contract = new Contract(CONTRACT_ADDRESSES.CORE_VAULT);
@@ -1167,4 +1167,5 @@ export async function buildNativeSwapTransaction(
 
   return tx.toXDR();
 }
+
 

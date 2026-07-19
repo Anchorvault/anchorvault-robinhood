@@ -1699,8 +1699,8 @@ export default function App() {
                         {[
                           { label: "CoreVault", addr: CONTRACT_ADDRESSES.CORE_VAULT, color: "text-purple-400" },
                           { label: "AnchorRegistry", addr: CONTRACT_ADDRESSES.ANCHOR_REGISTRY, color: "text-cyan-400" },
-                          { label: "Governance Token", addr: CONTRACT_ADDRESSES.GOVERNANCE_TOKEN, color: "text-green-400" },
-                          { label: "USDC Token", addr: CONTRACT_ADDRESSES.USDC, color: "text-yellow-400" },
+                          { label: "Governance Token", addr: CONTRACT_ADDRESSES.VAULT_TOKEN, color: "text-green-400" },
+                          { label: "USDC Token", addr: CONTRACT_ADDRESSES.MOCK_USDC, color: "text-yellow-400" },
                         ].map((c) => (
                           <a key={c.label} href={getRobinhoodExplorerContractUrl(c.addr)} target="_blank" rel="noreferrer"
                             className="bg-neutral-900/50 border border-white/5 rounded-xl p-3 hover:border-white/15 transition-all group">
@@ -2131,7 +2131,7 @@ export default function App() {
                         <div className="bg-neutral-900/60 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                           <span className="text-neutral-500 text-[9px] uppercase tracking-wider">USDC Balance</span>
                           <span className="text-lg font-bold text-white font-sans">{balances.USDC} USDC</span>
-                          <a href={getRobinhoodExplorerContractUrl(CONTRACT_ADDRESSES.USDC)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.USDC}</a>
+                          <a href={getRobinhoodExplorerContractUrl(CONTRACT_ADDRESSES.MOCK_USDC)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.MOCK_USDC}</a>
                         </div>
                         <div className="bg-neutral-900/60 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                           <span className="text-neutral-500 text-[9px] uppercase tracking-wider">ETH (Native)</span>
@@ -2141,7 +2141,7 @@ export default function App() {
                         <div className="bg-neutral-900/60 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                           <span className="text-neutral-500 text-[9px] uppercase tracking-wider">$VAULT Token</span>
                           <span className="text-lg font-bold text-white font-sans">{balances.vaultToken} $VAULT</span>
-                          <a href={getRobinhoodExplorerContractUrl(CONTRACT_ADDRESSES.GOVERNANCE_TOKEN)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.GOVERNANCE_TOKEN}</a>
+                          <a href={getRobinhoodExplorerContractUrl(CONTRACT_ADDRESSES.VAULT_TOKEN)} target="_blank" rel="noreferrer" className="text-[9px] text-cyan-400 hover:underline mt-1 truncate">{CONTRACT_ADDRESSES.VAULT_TOKEN}</a>
                         </div>
                         <div className="bg-neutral-900/60 border border-white/5 rounded-xl p-4 flex flex-col gap-1">
                           <span className="text-neutral-500 text-[9px] uppercase tracking-wider">LP Shares</span>
@@ -2817,7 +2817,7 @@ export default function App() {
                     {/* WalletConnect & Other Modules Option */}
                     <button
                       type="button"
-                      onClick={handleRobinhoodChainWalletsKitConnect}
+                      onClick={() => handleWalletConnect('metamask')}
                       className="w-full h-11 relative group overflow-hidden rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 cursor-pointer text-[10px] font-bold uppercase tracking-wider text-neutral-300"
                     >
                       <Globe className="w-3.5 h-3.5 text-purple-400" />
@@ -3387,5 +3387,6 @@ function BrandingView() {
     </motion.div>
   );
 }
+
 
 
