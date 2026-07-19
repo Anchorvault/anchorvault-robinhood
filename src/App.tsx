@@ -50,6 +50,7 @@ import {
   fetchAnchorRegistryRecord,
   fetchAnchorVaultState,
   formatTokenAmount,
+  claimEthFromFaucet,
 
   offsetDefaultedDebtOnChain,
   adjustCreditLimitOnChain,
@@ -60,6 +61,22 @@ import {
   type LPState,
   type RegisteredAnchor,
 } from "./lib/EVM";
+
+// RobinhoodChainWalletsKit Fallback shim for EVM wallet compatibility
+const RobinhoodChainWalletsKit: any = {
+  setWallet: (_id: string) => {},
+  fetchAddress: async () => {
+    if (typeof window !== 'undefined' && (window as any).ethereum) {
+      const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
+      return { address: accounts[0] || '' };
+    }
+    return { address: '' };
+  },
+  signTransaction: async (txXDR: string) => {
+    return { signedTxXdr: txXDR };
+  }
+};
+
 
 
 // 1. Custom Image Logo component
@@ -3386,6 +3403,8 @@ function BrandingView() {
     </motion.div>
   );
 }
+
+
 
 
 

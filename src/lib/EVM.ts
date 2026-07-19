@@ -1169,3 +1169,13 @@ export async function buildNativeSwapTransaction(
 }
 
 
+
+export async function claimEthFromFaucet(publicKey: string): Promise<boolean> {
+  try {
+    const response = await fetch("https://faucet.testnet.chain.robinhood.com/?address=" + publicKey);
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
