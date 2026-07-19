@@ -31,14 +31,14 @@
 ## Deployed Smart Contract Addresses (Robinhood Chain Testnet)
 
 > **All contracts are live and verified on the Robinhood Chain Testnet.**
-> Click on any contract address to view it on [Robinhood Explorer](https://Robinhood Chain.expert).
+> Click on any contract address to view it on [Robinhood Explorer](https://explorer.testnet.chain.robinhood.com).
 
 | Contract Component | Robinhood Chain Contract Address | Explorer Link |
 | :--- | :--- | :---: |
-| **Robinhood Chain USDC Stablecoin** | `CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75` | [View](https://Robinhood Chain.expert/explorer/public/contract/CCW67TSZV3SSS2HXMBQ5JFGCKJNXKZM7UQUWUZPUTHXSTZLEO7SJMI75) |
-| **Vault Share Token ($AVLT)** | `CDXELK3CF4GHCK6U3NETR2NNONDV3VDNKM7MT4QD5M23AHRN5X47O4IF` | [View](https://Robinhood Chain.expert/explorer/public/contract/CDXELK3CF4GHCK6U3NETR2NNONDV3VDNKM7MT4QD5M23AHRN5X47O4IF) |
-| **Anchor Registry** | `CA6NMU2ADEKVTS4XBZRLAARH7VSF7JEKWKAHNVT7WE5ZIEEKKOCOM6QO` | [View](https://Robinhood Chain.expert/explorer/public/contract/CA6NMU2ADEKVTS4XBZRLAARH7VSF7JEKWKAHNVT7WE5ZIEEKKOCOM6QO) |
-| **Corridor Pool Core Vault** | `CDO3GSX27G6TAHLBROCC6WV4TNM6BWLFZDT2OW6RSUVBSGZJKTIISJFG` | [View](https://Robinhood Chain.expert/explorer/public/contract/CDO3GSX27G6TAHLBROCC6WV4TNM6BWLFZDT2OW6RSUVBSGZJKTIISJFG) |
+| **Mock USDC Stablecoin** | `0x09FfDB167F80fF9E4C5BE64C24bEbeCF1F4B4625` | [View](https://explorer.testnet.chain.robinhood.com/address/0x09FfDB167F80fF9E4C5BE64C24bEbeCF1F4B4625) |
+| **Vault Share Token ($AVLT)** | `0x6f1C884712537ac7B11CE90A8B2C840c5Be01aF4` | [View](https://explorer.testnet.chain.robinhood.com/address/0x6f1C884712537ac7B11CE90A8B2C840c5Be01aF4) |
+| **Anchor Registry** | `0xCE2979887785d415b407727CDd8f6Ed752AAE335` | [View](https://explorer.testnet.chain.robinhood.com/address/0xCE2979887785d415b407727CDd8f6Ed752AAE335) |
+| **Corridor Pool Core Vault** | `0xedd0bb0F06a2c12DC502165d98fbbba6701a12Ba` | [View](https://explorer.testnet.chain.robinhood.com/address/0xedd0bb0F06a2c12DC502165d98fbbba6701a12Ba) |
 
 ---
 
