@@ -24,7 +24,7 @@ function contractInstanceKey(contractId) {
 }
 
 async function main() {
-  console.log('=== Anchor Wallet CONTRACT STATUS ===\n');
+  console.log('=== AnchorVault CONTRACT STATUS ===\n');
   const latestLedger = (await server.getLatestLedger()).sequence;
   console.log(`Current ledger: ${latestLedger}\n`);
 

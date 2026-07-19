@@ -171,7 +171,7 @@ async function process(name, contractId) {
 
 async function main() {
   console.log('================================================');
-  console.log('🚀  Anchor Wallet — FULL CONTRACT RESTORE SCRIPT');
+  console.log('🚀  AnchorVault — FULL CONTRACT RESTORE SCRIPT');
   console.log(`    Deployer: ${keypair.publicKey()}`);
   console.log('================================================');
 

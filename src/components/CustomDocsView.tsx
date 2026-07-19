@@ -42,7 +42,7 @@ export default function CustomDocsView({ onBackToHome }: CustomDocsViewProps) {
   const [stars, setStars] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/shriyashsoni/Anchor Wallet")
+    fetch("https://api.github.com/repos/shriyashsoni/AnchorVault")
       .then(res => {
         if (!res.ok) throw new Error("Private or offline");
         return res.json();
@@ -142,7 +142,7 @@ export default function CustomDocsView({ onBackToHome }: CustomDocsViewProps) {
           </button>
           
           <div onClick={onBackToHome} className="flex items-center gap-2.5 cursor-pointer group">
-            <img src="/logo.png" alt="Anchor Wallet Logo" className="h-7 w-7 object-contain group-hover:rotate-6 transition duration-300" />
+            <img src="/logo.png" alt="AnchorVault Logo" className="h-7 w-7 object-contain group-hover:rotate-6 transition duration-300" />
             <span className="font-bold text-lg tracking-wider bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent">
               Anchor<span className="text-[#00C805] group-hover:animate-pulse">Vault</span>
             </span>
@@ -155,7 +155,7 @@ export default function CustomDocsView({ onBackToHome }: CustomDocsViewProps) {
         <div className="flex items-center gap-4">
           {/* GitHub Repo Button */}
           <a 
-            href="https://github.com/shriyashsoni/Anchor Wallet" 
+            href="https://github.com/shriyashsoni/AnchorVault" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hidden sm:flex items-center gap-2 text-sm text-white/70 hover:text-white bg-white/5 border border-white/10 px-3.5 py-1.5 rounded-xl hover:bg-white/10 transition duration-300"
@@ -537,7 +537,7 @@ export default function CustomDocsView({ onBackToHome }: CustomDocsViewProps) {
               
               <div className="flex items-center gap-4">
                 <a 
-                  href={`https://github.com/shriyashsoni/Anchor Wallet/issues/new`}
+                  href={`https://github.com/shriyashsoni/AnchorVault/issues/new`}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-white/50 hover:text-white flex items-center gap-2 transition"
@@ -549,7 +549,7 @@ export default function CustomDocsView({ onBackToHome }: CustomDocsViewProps) {
                 <span className="h-3 w-[1px] bg-white/10 hidden sm:inline" />
 
                 <a 
-                  href={`https://github.com/shriyashsoni/Anchor Wallet/edit/main/docs/${activePage.id}.mdx`}
+                  href={`https://github.com/shriyashsoni/AnchorVault/edit/main/docs/${activePage.id}.mdx`}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-xs font-semibold text-[#a855f7] hover:text-[#c084fc] flex items-center gap-2 transition"

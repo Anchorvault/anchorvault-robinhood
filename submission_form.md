@@ -7,26 +7,26 @@ Here is the normal, structured format you can use to copy-paste directly into yo
 ## 1. Basic Information
 
 **BUIDL (project) name:**
-Anchor Wallet
+AnchorVault
 
 **BUIDL logo:**
 `[IMAGE SPACE: Upload your project's logo here. It should be a JPEG or PNG, less than 2 MB. A size of 480 × 480 px is recommended.]`
 
 **Vision (Describe the problem which this project solves):**
-Cross-border payment anchors on the Robinhood Chain network face a massive problem: Capital Inefficiency. They are forced to lock up millions of dollars just to maintain 1:1 liquidity. Anchor Wallet solves this by acting as a decentralized clearinghouse, pooling USDC liquidity from retail providers and offering AI-managed credit lines to whitelisted Anchors. Retail earns yield from remittance volume, while institutions get the necessary capital to settle payments instantly.
+Cross-border payment anchors on the Robinhood Chain network face a massive problem: Capital Inefficiency. They are forced to lock up millions of dollars just to maintain 1:1 liquidity. AnchorVault solves this by acting as a decentralized clearinghouse, pooling USDC liquidity from retail providers and offering AI-managed credit lines to whitelisted Anchors. Retail earns yield from remittance volume, while institutions get the necessary capital to settle payments instantly.
 
 **Category - Is this BUIDL an AI Agent?**
-Yes *(Anchor Wallet utilizes the Galileo AI Copilot to constantly analyze Anchor reputation, pool utilization, and ledger data to autonomously adjust credit limits and protect LP capital.)*
+Yes *(AnchorVault utilizes the Galileo AI Copilot to constantly analyze Anchor reputation, pool utilization, and ledger data to autonomously adjust credit limits and protect LP capital.)*
 
 ---
 
 ## 2. Links
 
 **GitHub/Gitlab/Bitbucket:**
-https://github.com/shriyashsoni/Anchor Wallet
+https://github.com/shriyashsoni/AnchorVault
 
 **Project website (optional):**
-https://www.anchorwallet.xyz
+https://www.anchorvault.xyz
 
 **Demo video:**
 `[LINK SPACE: Insert the link to your YouTube demo video here]`
@@ -42,13 +42,13 @@ https://www.anchorwallet.xyz
 *(You can use this for the "Project Description" or Readme section of the submission)*
 
 ### Overview
-Anchor Wallet is a production-grade, decentralized liquidity protocol built on the **Robinhood Chain EVM Smart Contract Platform**. It bridges Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border remittances.
+AnchorVault is a production-grade, decentralized liquidity protocol built on the **Robinhood Chain EVM Smart Contract Platform**. It bridges Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border remittances.
 
-`[IMAGE SPACE: Upload the Anchor Wallet Dashboard UI screenshot here]`
+`[IMAGE SPACE: Upload the AnchorVault Dashboard UI screenshot here]`
 *(Screenshot instructions: Take a screenshot of the main page or LP Dashboard of your web app showing the dark-mode glassmorphism UI, TVL, and deposit options.)*
 
 ### Core Working Functionality & How We Built It
-We engineered Anchor Wallet using a modular smart contract architecture on EVM, connecting three main on-chain entities trustlessly. 
+We engineered AnchorVault using a modular smart contract architecture on EVM, connecting three main on-chain entities trustlessly. 
 
 **1. Corridor Pool Vault (anchor_vault)**
 We built the core vault where LPs deposit USDC stablecoin to earn interest from global cross-border remittances. When USDC is deposited, the contract mints **$AVLT** share tokens for the user. We implemented a dynamic yield accrual mechanism: as anchors repay their draws plus interest, 90% of the settlement fee is added to the accumulated fees per share, which is then dynamically routed to LPs.

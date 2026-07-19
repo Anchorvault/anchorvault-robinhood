@@ -49,7 +49,7 @@ import {
   buildDrawLiquidityTransaction,
   buildRepayLiquidityTransaction,
   fetchAnchorRegistryRecord,
-  fetchAnchor WalletState,
+  fetchAnchorVaultState,
   formatTokenAmount,
   claimEthFromFaucet,
   offsetDefaultedDebtOnChain,
@@ -65,7 +65,7 @@ import {
 
 // 1. Custom Image Logo component
 const LogoMark = ({ className = "h-10 w-10" }: { className?: string }) => (
-  <img src="/logo.png" alt="Anchor Wallet Logo" className={`${className} object-contain`} />
+  <img src="/logo.png" alt="AnchorVault Logo" className={`${className} object-contain`} />
 );
 
 const TwitterIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
@@ -233,49 +233,49 @@ export default function App() {
 
   // Dynamic SEO mapping
   const getSeoTags = () => {
-    const baseTitle = "Anchor Wallet | ";
+    const baseTitle = "AnchorVault | ";
     switch (currentView) {
       case "whitepaper":
         return {
           title: baseTitle + "Whitepaper",
-          description: "Read the official Anchor Wallet whitepaper to understand the protocol economics, EVM smart contracts, and liquidity bridging mechanics.",
-          url: "https://anchorwallet.xyz/whitepaper",
-          image: "https://anchorwallet.xyz/og-image.png"
+          description: "Read the official AnchorVault whitepaper to understand the protocol economics, EVM smart contracts, and liquidity bridging mechanics.",
+          url: "https://anchorvault.xyz/whitepaper",
+          image: "https://anchorvault.xyz/og-image.png"
         };
       case "docs":
         return {
           title: baseTitle + "Documentation",
-          description: "Explore the Anchor Wallet technical documentation. Learn how to integrate the routing engine and deploy stablecoin anchors on Robinhood Chain.",
-          url: "https://anchorwallet.xyz/docs",
-          image: "https://anchorwallet.xyz/og-image.png"
+          description: "Explore the AnchorVault technical documentation. Learn how to integrate the routing engine and deploy stablecoin anchors on Robinhood Chain.",
+          url: "https://anchorvault.xyz/docs",
+          image: "https://anchorvault.xyz/og-image.png"
         };
       case "privacy":
         return {
           title: baseTitle + "Privacy Policy",
-          description: "Learn about how Anchor Wallet handles your data, on-chain privacy, and our commitment to decentralized security.",
-          url: "https://anchorwallet.xyz/privacy",
-          image: "https://anchorwallet.xyz/og-image.png"
+          description: "Learn about how AnchorVault handles your data, on-chain privacy, and our commitment to decentralized security.",
+          url: "https://anchorvault.xyz/privacy",
+          image: "https://anchorvault.xyz/og-image.png"
         };
       case "terms":
         return {
           title: baseTitle + "Terms of Service",
-          description: "Review the Terms of Service for interacting with the decentralized Anchor Wallet protocol.",
-          url: "https://anchorwallet.xyz/terms",
-          image: "https://anchorwallet.xyz/og-image.png"
+          description: "Review the Terms of Service for interacting with the decentralized AnchorVault protocol.",
+          url: "https://anchorvault.xyz/terms",
+          image: "https://anchorvault.xyz/og-image.png"
         };
       case "branding":
         return {
           title: baseTitle + "Brand Kit",
-          description: "Download official Anchor Wallet brand assets, logos, and guidelines for partners and press.",
-          url: "https://anchorwallet.xyz/branding",
-          image: "https://anchorwallet.xyz/og-image.png"
+          description: "Download official AnchorVault brand assets, logos, and guidelines for partners and press.",
+          url: "https://anchorvault.xyz/branding",
+          image: "https://anchorvault.xyz/og-image.png"
         };
       default:
         return {
-          title: "Anchor Wallet | Omnichain Protocol (Robinhood Chain & Robinhood)",
+          title: "AnchorVault | Omnichain Protocol (Robinhood Chain & Robinhood)",
           description: "A trustless Omnichain routing engine bridging idle stablecoins with Robinhood Chain and Robinhood Chain anchor corridors. Deposit stablecoins, secure global remittance, and earn organic yield.",
-          url: "https://anchorwallet.xyz/",
-          image: "https://anchorwallet.xyz/og-image.png"
+          url: "https://anchorvault.xyz/",
+          image: "https://anchorvault.xyz/og-image.png"
         };
     }
   };
@@ -307,16 +307,16 @@ export default function App() {
         body: JSON.stringify({
           from: "onboarding@resend.dev",
           to: subscrEmail,
-          subject: "Welcome to Anchor Wallet! 🚀",
+          subject: "Welcome to AnchorVault! 🚀",
           html: `
             <div style="font-family: 'Inter', sans-serif; background-color: #08080a; color: #ffffff; padding: 40px 20px; max-width: 600px; margin: 0 auto;">
               <div style="background-color: #0c0c0e; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);">
                 <!-- Brand Header -->
                 <div style="padding: 40px 40px 20px 40px; text-align: center;">
                   <div style="display: inline-block; padding: 12px; background: rgba(123, 57, 252, 0.1); border: 1px solid rgba(123, 57, 252, 0.2); border-radius: 16px; margin-bottom: 16px;">
-                    <img style="width: 48px; height: 48px; vertical-align: middle;" src="https://anchorwallet.co/logo.png" alt="Anchor Wallet Logo" onerror="this.src='https://robinhood.com/images/Robinhood Chain-logo.png'">
+                    <img style="width: 48px; height: 48px; vertical-align: middle;" src="https://anchorvault.co/logo.png" alt="AnchorVault Logo" onerror="this.src='https://robinhood.com/images/Robinhood Chain-logo.png'">
                   </div>
-                  <h1 style="font-size: 24px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; margin: 0; color: #ffffff;">Anchor Wallet</h1>
+                  <h1 style="font-size: 24px; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; margin: 0; color: #ffffff;">AnchorVault</h1>
                   <div style="font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #00C805; margin-top: 4px;">Omnichain Corridors Protocol</div>
                 </div>
                 
@@ -325,11 +325,11 @@ export default function App() {
                   <div style="background: linear-gradient(135deg, rgba(123, 57, 252, 0.15) 0%, rgba(0, 229, 255, 0.05) 100%); border: 1px solid rgba(123, 57, 252, 0.2); border-radius: 16px; padding: 24px; margin-bottom: 30px; text-align: center;">
                     <h2 style="font-size: 22px; font-weight: 700; color: #00e5ff; margin: 0 0 8px 0;">Subscription Confirmed! 🎉</h2>
                     <p style="font-size: 14px; line-height: 1.6; color: #d4d4d8; margin: 0;">
-                      Thank you for subscribing to Anchor Wallet. You are now whitelisted to receive priority access to our upcoming Robinhood Chain features, technical updates, and smart contract releases.
+                      Thank you for subscribing to AnchorVault. You are now whitelisted to receive priority access to our upcoming Robinhood Chain features, technical updates, and smart contract releases.
                     </p>
                   </div>
                   
-                  <div style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #71717a; margin-bottom: 16px;">What is Anchor Wallet?</div>
+                  <div style="font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #71717a; margin-bottom: 16px;">What is AnchorVault?</div>
                   
                   <div style="padding: 16px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; margin-bottom: 12px;">
                     <h3 style="font-size: 15px; font-weight: 700; color: #ffffff; margin: 0 0 4px 0;">USDC Corridor Liquidity Pools</h3>
@@ -346,7 +346,7 @@ export default function App() {
                   </div>
                   
                   <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
-                    <a style="display: inline-block; background-color: #00C805; color: #ffffff !important; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 32px; border-radius: 30px; box-shadow: 0 10px 20px rgba(123, 57, 252, 0.3);" href="https://anchorwallet.co" target="_blank">Launch DeFi Portal</a>
+                    <a style="display: inline-block; background-color: #00C805; color: #ffffff !important; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 32px; border-radius: 30px; box-shadow: 0 10px 20px rgba(123, 57, 252, 0.3);" href="https://anchorvault.co" target="_blank">Launch DeFi Portal</a>
                   </div>
                 </div>
                 
@@ -354,10 +354,10 @@ export default function App() {
                 <div style="padding: 30px 40px; background-color: #070709; border-top: 1px solid rgba(255, 255, 255, 0.03); text-align: center;">
                   <p style="font-size: 12px; line-height: 1.6; color: #52525b; margin: 0 0 16px 0;">
                     CURATED BY @SHRIYASHSONI | POWERED BY Robinhood Chain WEB3.<br>
-                    You are receiving this because you signed up on the Anchor Wallet portal. If you wish to unsubscribe, you can do so anytime using the link below.
+                    You are receiving this because you signed up on the AnchorVault portal. If you wish to unsubscribe, you can do so anytime using the link below.
                   </p>
                   <div style="margin-top: 10px;">
-                    <a style="display: inline-block; margin: 0 8px; color: #71717a; text-decoration: none; font-size: 12px; font-weight: 600;" href="https://github.com/shriyashsoni/Anchor Wallet" target="_blank">GitHub</a>
+                    <a style="display: inline-block; margin: 0 8px; color: #71717a; text-decoration: none; font-size: 12px; font-weight: 600;" href="https://github.com/shriyashsoni/AnchorVault" target="_blank">GitHub</a>
                     <a style="display: inline-block; margin: 0 8px; color: #71717a; text-decoration: none; font-size: 12px; font-weight: 600;" href="https://x.com" target="_blank">Twitter</a>
                     <a style="display: inline-block; margin: 0 8px; color: #ef4444; text-decoration: none; font-size: 12px; font-weight: 600;" href="#">Unsubscribe</a>
                   </div>
@@ -816,7 +816,7 @@ export default function App() {
         fetchTransactionHistory(walletAddress, 25),
         fetchRegisteredAnchors(walletAddress),
         fetchAnchorRegistryRecord(walletAddress, walletAddress),
-        fetchAnchor WalletState(walletAddress, walletAddress)
+        fetchAnchorVaultState(walletAddress, walletAddress)
       ]);
 
       if (bal.status === "fulfilled") setBalances(bal.value);
@@ -846,7 +846,7 @@ export default function App() {
 
       setLastRefresh(new Date());
     } catch (err) {
-      console.error("[Anchor Wallet] Data refresh failed:", err);
+      console.error("[AnchorVault] Data refresh failed:", err);
     } finally {
       setIsLoadingData(false);
     }
@@ -1175,7 +1175,7 @@ export default function App() {
           {/* Logo */}
           <div onClick={() => setCurrentView("home")} className="flex items-center gap-3 cursor-pointer select-none">
             <LogoMark className="h-10 w-10 text-white" />
-            <span className="text-white text-xl font-bold tracking-tight">Anchor Wallet</span>
+            <span className="text-white text-xl font-bold tracking-tight">AnchorVault</span>
           </div>
 
           {/* Center Links (Desktop Only) */}
@@ -1213,7 +1213,7 @@ export default function App() {
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-3">
               <LogoMark className="h-10 w-10 text-white" />
-              <span className="text-white text-xl font-bold">Anchor Wallet</span>
+              <span className="text-white text-xl font-bold">AnchorVault</span>
             </div>
             <button 
               onClick={() => setMobileMenuOpen(false)}
@@ -1342,7 +1342,7 @@ export default function App() {
               </h3>
 
               <p className="relative z-10 mt-12 sm:mt-20 text-[13px] sm:text-[14px] leading-relaxed text-white/70 font-light max-w-[280px]">
-                Anchor Wallet LPs deposit USDC directly into EVM smart contracts to facilitate active remittance pools. Yield is organic, generated from real transactions handled by authorized Robinhood Chain anchors.
+                AnchorVault LPs deposit USDC directly into EVM smart contracts to facilitate active remittance pools. Yield is organic, generated from real transactions handled by authorized Robinhood Chain anchors.
               </p>
 
             </div>
@@ -1515,10 +1515,10 @@ export default function App() {
             <div className="lg:col-span-5 flex flex-col items-start gap-4">
               <div className="flex items-center gap-3">
                 <LogoMark className="h-10 w-10 text-white" />
-                <span className="text-white text-xl font-bold tracking-tight uppercase">Anchor Wallet</span>
+                <span className="text-white text-xl font-bold tracking-tight uppercase">AnchorVault</span>
               </div>
               <p className="text-neutral-400 text-sm font-light leading-relaxed max-w-sm font-sans">
-                Anchor Wallet provides premium liquidity routing, automated remittance corridors, and dynamic on-chain yield across the Robinhood Chain EVM ecosystem.
+                AnchorVault provides premium liquidity routing, automated remittance corridors, and dynamic on-chain yield across the Robinhood Chain EVM ecosystem.
               </p>
             </div>
 
@@ -1551,7 +1551,7 @@ export default function App() {
               <div className="flex flex-col gap-4">
                 <span className="text-[13px] font-bold tracking-wider text-white uppercase font-sans">Contact</span>
                 <div className="flex flex-col gap-2 font-sans text-sm">
-                  <a href="mailto:support@Anchor Wallet.xyz" className="text-neutral-400 hover:text-white transition-colors duration-200">support@Anchor Wallet.xyz</a>
+                  <a href="mailto:support@AnchorVault.xyz" className="text-neutral-400 hover:text-white transition-colors duration-200">support@AnchorVault.xyz</a>
                   <a href="https://x.com/Anchor_Vault" target="_blank" rel="noreferrer" className="text-neutral-400 hover:text-white transition-colors duration-200">Official X (Twitter)</a>
                 </div>
               </div>
@@ -1567,7 +1567,7 @@ export default function App() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
             {/* Copyright */}
             <div className="text-xs text-neutral-500 font-sans tracking-wide">
-              CURATED BY @SHRIYASHSONI &nbsp;|&nbsp; © 2026 Anchor Wallet. ALL RIGHTS RESERVED.
+              CURATED BY @SHRIYASHSONI &nbsp;|&nbsp; © 2026 AnchorVault. ALL RIGHTS RESERVED.
             </div>
 
             {/* Social icons */}
@@ -1592,7 +1592,7 @@ export default function App() {
       </footer>
 
       {/* =================================================================== */}
-      {/*              Anchor Wallet HIGH-FIDELITY DEFI APP MODAL             */}
+      {/*              AnchorVault HIGH-FIDELITY DEFI APP MODAL             */}
       {/* =================================================================== */}
       {showDashboard && (
         <div className="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-4">
@@ -1604,7 +1604,7 @@ export default function App() {
                 <LogoMark className="h-12 w-12" />
                 <div>
                   <h3 className="font-semibold text-lg flex items-center gap-2">
-                    <span>Anchor Wallet Portal</span>
+                    <span>AnchorVault Portal</span>
                     <span className="bg-green-500/10 text-green-400 text-[10px] font-mono px-2 py-0.5 rounded-full border border-green-500/20">
                       Robinhood Chain PUBLIC
                     </span>
@@ -2683,7 +2683,7 @@ export default function App() {
                   className="flex items-center gap-4"
                 >
                   <LogoMark className="w-14 h-14 object-contain" />
-                  <span className="text-2xl font-bold tracking-tight text-white">Anchor Wallet</span>
+                  <span className="text-2xl font-bold tracking-tight text-white">AnchorVault</span>
                 </motion.div>
 
                 {/* Heading Block */}
@@ -2795,7 +2795,7 @@ export default function App() {
                         ✨
                       </div>
                       <p className="text-xs text-purple-300 leading-relaxed font-sans">
-                        Welcome to Anchor Wallet! Your wallet is now connected to Robinhood Chain PUBLIC. All balances and transactions are fetched live from the EVM network. Use the Friendbot to fund your account with test ETH if needed.
+                        Welcome to AnchorVault! Your wallet is now connected to Robinhood Chain PUBLIC. All balances and transactions are fetched live from the EVM network. Use the Friendbot to fund your account with test ETH if needed.
                       </p>
                     </div>
 
@@ -2908,7 +2908,7 @@ function WhitepaperView() {
           </div>
           <div className="h-px bg-white/10 w-full" />
           <div className="text-[11px] text-neutral-500 leading-relaxed font-light">
-            Anchor Wallet Tech-Paper v2.4.0 <br />
+            AnchorVault Tech-Paper v2.4.0 <br />
             Published: May 2026 <br />
             Audited & Approved
           </div>
@@ -2918,7 +2918,7 @@ function WhitepaperView() {
         <div className="lg:col-span-9 flex flex-col gap-12 font-light leading-relaxed text-neutral-300">
           <div className="flex flex-col gap-3">
             <h1 className="font-instrument text-4xl lg:text-6xl text-white tracking-tight leading-none">
-              Anchor Wallet Protocol
+              AnchorVault Protocol
             </h1>
             <p className="text-lg text-purple-300 font-normal">
               Autonomous Stablecoin Yield Routing & On-chain Corridor Settlements
@@ -2931,10 +2931,10 @@ function WhitepaperView() {
           <section id="abstract" className="flex flex-col gap-4">
             <h2 className="text-xl font-semibold text-white tracking-tight">1. Abstract</h2>
             <p>
-              In traditional remittance infrastructures, cross-border settlements incur high intermediate routing fees, settlement delays, and custodial counterparty risks. <strong>Anchor Wallet</strong> resolves this by establishing an autonomous routing corridor system deployed on the <strong>Robinhood Chain EVM smart contract network</strong>.
+              In traditional remittance infrastructures, cross-border settlements incur high intermediate routing fees, settlement delays, and custodial counterparty risks. <strong>AnchorVault</strong> resolves this by establishing an autonomous routing corridor system deployed on the <strong>Robinhood Chain EVM smart contract network</strong>.
             </p>
             <p>
-              By leveraging Robinhood Chain anchor corridors (regulated gateways bridging cash-in and cash-out rails via SEP-24/SEP-31), Anchor Wallet allows liquidity providers to pool idle stablecoins (e.g. USDC, EURC) into smart vault structures. These vault funds are routed algorithmically through active corridor gateways, generating non-inflationary organic yield backed exclusively by cross-border settlement fees and exchange rate arbitrages.
+              By leveraging Robinhood Chain anchor corridors (regulated gateways bridging cash-in and cash-out rails via SEP-24/SEP-31), AnchorVault allows liquidity providers to pool idle stablecoins (e.g. USDC, EURC) into smart vault structures. These vault funds are routed algorithmically through active corridor gateways, generating non-inflationary organic yield backed exclusively by cross-border settlement fees and exchange rate arbitrages.
             </p>
           </section>
 
@@ -2950,7 +2950,7 @@ function WhitepaperView() {
               <li><strong>SEP-31 (Direct Cross-Border Remittance):</strong> Standardizes payment instructions for bank-to-bank corridor settlements.</li>
             </ul>
             <p>
-              Anchor Wallet operates directly at the junction of these standards. Idle stablecoins within the <code>CoreVault</code> contract are locked and routed to approved Robinhood Chain Anchors who guarantee local settlements. To hedge against anchor failure, every gateway must register and stake reputation collateral in our <code>AnchorRegistry</code>.
+              AnchorVault operates directly at the junction of these standards. Idle stablecoins within the <code>CoreVault</code> contract are locked and routed to approved Robinhood Chain Anchors who guarantee local settlements. To hedge against anchor failure, every gateway must register and stake reputation collateral in our <code>AnchorRegistry</code>.
             </p>
           </section>
 
@@ -3022,14 +3022,14 @@ function PrivacyView() {
           Privacy Policy
         </h1>
         <p className="text-purple-300 text-sm tracking-wide uppercase font-semibold">
-          Anchor Wallet Cryptographic Transparency Statement
+          AnchorVault Cryptographic Transparency Statement
         </p>
       </div>
 
       <div className="h-px bg-white/10 w-full" />
 
       <p>
-        At Anchor Wallet, we prioritize the protection of your privacy. Because our platform is a decentralized, non-custodial decentralized application (dApp) built on the Robinhood Chain public blockchain, we do not collect, process, or store any personal data.
+        At AnchorVault, we prioritize the protection of your privacy. Because our platform is a decentralized, non-custodial decentralized application (dApp) built on the Robinhood Chain public blockchain, we do not collect, process, or store any personal data.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
@@ -3054,7 +3054,7 @@ function PrivacyView() {
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col gap-2">
           <span className="font-semibold text-white">4. Decentralized Corridors</span>
           <p className="text-sm text-neutral-400 font-light">
-            Anchor Wallet does not control third-party Robinhood Chain Anchors. Users interacting with cash-out anchors are bound by those specific anchors' respective local KYC and compliance policies.
+            AnchorVault does not control third-party Robinhood Chain Anchors. Users interacting with cash-out anchors are bound by those specific anchors' respective local KYC and compliance policies.
           </p>
         </div>
       </div>
@@ -3095,13 +3095,13 @@ function TermsView() {
         <div className="flex flex-col gap-1 text-sm font-normal">
           <span className="font-semibold text-white">HIGH RISK TRANSACTION DISCLAIMER</span>
           <p className="text-xs text-yellow-300/80 leading-relaxed font-light">
-            Anchor Wallet is an automated, non-custodial smart contract corridor routing system. Interacting with EVM smart contracts carries inherent risks, including contract vulnerabilities, liquidation flags, and stablecoin peg failures. Proceed strictly at your own discretion.
+            AnchorVault is an automated, non-custodial smart contract corridor routing system. Interacting with EVM smart contracts carries inherent risks, including contract vulnerabilities, liquidation flags, and stablecoin peg failures. Proceed strictly at your own discretion.
           </p>
         </div>
       </div>
 
       <p>
-        By using the Anchor Wallet protocol (including our smart contracts, website portal, and SDK integrations), you unconditionally agree to the following conditions:
+        By using the AnchorVault protocol (including our smart contracts, website portal, and SDK integrations), you unconditionally agree to the following conditions:
       </p>
 
       <div className="flex flex-col gap-5">
@@ -3110,7 +3110,7 @@ function TermsView() {
           <div>
             <span className="font-semibold text-white">Self-Custodial Autonomy:</span>
             <p className="text-sm text-neutral-400 mt-1">
-              You are solely responsible for securing your Freighter secret keys and wallet authorizations. Anchor Wallet has zero access to your funds and cannot recover locked or misrouted assets.
+              You are solely responsible for securing your Freighter secret keys and wallet authorizations. AnchorVault has zero access to your funds and cannot recover locked or misrouted assets.
             </p>
           </div>
         </div>
@@ -3130,7 +3130,7 @@ function TermsView() {
           <div>
             <span className="font-semibold text-white">Decentralized Service Availability:</span>
             <p className="text-sm text-neutral-400 mt-1">
-              The Anchor Wallet interface runs as an open-source gateway. The protocol resides entirely on the Robinhood Chain mainnet public network. The authors and community guarantee zero service uptime and carry zero liabilities.
+              The AnchorVault interface runs as an open-source gateway. The protocol resides entirely on the Robinhood Chain mainnet public network. The authors and community guarantee zero service uptime and carry zero liabilities.
             </p>
           </div>
         </div>
@@ -3185,7 +3185,7 @@ function BrandingView() {
 
       {/* Intro */}
       <p className="text-lg text-neutral-400 font-light max-w-3xl leading-relaxed font-sans">
-        Welcome to the official Anchor Wallet Branding Kit. Here you will find our core design elements, high-fidelity brand assets, color specifications, and usage instructions to maintain visual consistency across all Robinhood Chain DeFi platforms and integrations.
+        Welcome to the official AnchorVault Branding Kit. Here you will find our core design elements, high-fidelity brand assets, color specifications, and usage instructions to maintain visual consistency across all Robinhood Chain DeFi platforms and integrations.
       </p>
 
       {/* Brand assets showcase */}
@@ -3201,14 +3201,14 @@ function BrandingView() {
             <div className="absolute top-4 left-4 text-xs font-semibold text-neutral-500 uppercase tracking-widest font-sans">Dark Canvas</div>
             
             <div className="flex-1 flex items-center justify-center p-6">
-              <img src="/logo.png" alt="Anchor Wallet Dark Logo" className="h-28 w-28 object-contain drop-shadow-[0_0_25px_rgba(123,57,252,0.2)] group-hover:scale-105 transition-transform duration-300" />
+              <img src="/logo.png" alt="AnchorVault Dark Logo" className="h-28 w-28 object-contain drop-shadow-[0_0_25px_rgba(123,57,252,0.2)] group-hover:scale-105 transition-transform duration-300" />
             </div>
 
             <div className="w-full flex items-center justify-between gap-4 mt-4 font-sans">
               <span className="text-xs text-neutral-500 font-mono">logo.png (Transparent)</span>
               <a 
                 href="/logo.png" 
-                download="Anchor Wallet_Logo_Dark.png"
+                download="AnchorVault_Logo_Dark.png"
                 className="bg-white/5 hover:bg-[#00C805]/20 border border-white/10 hover:border-[#00C805]/30 text-white rounded-lg text-xs font-medium px-4 py-2 transition-all flex items-center gap-1.5"
               >
                 <span>Download Assets</span>
@@ -3222,14 +3222,14 @@ function BrandingView() {
             <div className="absolute top-4 left-4 text-xs font-semibold text-neutral-400 uppercase tracking-widest font-sans">Light Canvas</div>
             
             <div className="flex-1 flex items-center justify-center p-6">
-              <img src="/logo.png" alt="Anchor Wallet Light Logo" className="h-28 w-28 object-contain filter invert drop-shadow-[0_0_15px_rgba(0,0,0,0.1)] group-hover:scale-105 transition-transform duration-300" />
+              <img src="/logo.png" alt="AnchorVault Light Logo" className="h-28 w-28 object-contain filter invert drop-shadow-[0_0_15px_rgba(0,0,0,0.1)] group-hover:scale-105 transition-transform duration-300" />
             </div>
 
             <div className="w-full flex items-center justify-between gap-4 mt-4 font-sans">
               <span className="text-xs text-neutral-500 font-mono">logo_light.png</span>
               <a 
                 href="/logo.png" 
-                download="Anchor Wallet_Logo_Light.png"
+                download="AnchorVault_Logo_Light.png"
                 className="bg-neutral-900/5 hover:bg-neutral-900/10 border border-neutral-900/10 text-neutral-900 rounded-lg text-xs font-medium px-4 py-2 transition-all flex items-center gap-1.5"
               >
                 <span>Download Assets</span>
@@ -3244,14 +3244,14 @@ function BrandingView() {
       <div className="flex flex-col gap-6">
         <h2 className="text-2xl font-semibold text-white tracking-tight font-instrument">2. Hero Banner & Design Showcase</h2>
         <p className="text-sm text-neutral-400 -mt-3 font-sans">
-          Our high-impact brand banner represents the visual style, premium dark aesthetic, and liquidity pools of Anchor Wallet.
+          Our high-impact brand banner represents the visual style, premium dark aesthetic, and liquidity pools of AnchorVault.
         </p>
 
         <div className="bg-[#0c0c0e] border border-white/5 rounded-2xl p-4 overflow-hidden flex flex-col gap-4 relative group">
           <div className="aspect-[16/9] w-full rounded-lg overflow-hidden bg-neutral-950 relative">
             <img 
               src="/branding_banner.png" 
-              alt="Anchor Wallet Branding Banner" 
+              alt="AnchorVault Branding Banner" 
               className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out" 
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
@@ -3264,7 +3264,7 @@ function BrandingView() {
             </div>
             <a 
               href="/branding_banner.png" 
-              download="Anchor Wallet_Brand_Banner.png"
+              download="AnchorVault_Brand_Banner.png"
               className="bg-[#00C805] hover:bg-[#8b4eff] text-white rounded-lg text-xs font-semibold px-4 py-2.5 transition-all shadow-md shadow-[#00C805]/20 flex items-center gap-1.5"
             >
               <span>Download Image</span>
@@ -3357,7 +3357,7 @@ function BrandingView() {
           <div className="flex flex-col gap-2">
             <span className="text-xs text-neutral-500 font-semibold tracking-widest uppercase font-sans">Paragraph & Body Text — Inter / Sans-Serif</span>
             <p className="text-sm text-neutral-400 font-light leading-relaxed max-w-2xl font-sans">
-              Anchor Wallet enables Robinhood Chain anchors to seamlessly claim corridor credits. All operations are local, secure, and powered by advanced EVM smart contract architectures.
+              AnchorVault enables Robinhood Chain anchors to seamlessly claim corridor credits. All operations are local, secure, and powered by advanced EVM smart contract architectures.
             </p>
             <p className="text-xs text-neutral-400 font-mono">Usage: Core copy, descriptive tags, tables, dynamic lists | light/normal</p>
           </div>
@@ -3402,7 +3402,7 @@ function BrandingView() {
       {/* Footer support notice */}
       <div className="rounded-xl border border-white/5 bg-white/2 p-5 text-center mt-6 font-sans">
         <p className="text-xs text-neutral-400 leading-relaxed font-light">
-          Need custom visual formats, raw vector SVGs, or editorial press permissions? Contact our core development group at <a href="mailto:support@Anchor Wallet.xyz" className="text-purple-300 underline font-semibold">support@Anchor Wallet.xyz</a>.
+          Need custom visual formats, raw vector SVGs, or editorial press permissions? Contact our core development group at <a href="mailto:support@AnchorVault.xyz" className="text-purple-300 underline font-semibold">support@AnchorVault.xyz</a>.
         </p>
       </div>
 

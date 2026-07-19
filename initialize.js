@@ -46,7 +46,7 @@ function toAddressScVal(str) {
 }
 
 console.log("=================================================");
-console.log("🚀 INITIALIZING Anchor Wallet SMART CONTRACTS");
+console.log("🚀 INITIALIZING AnchorVault SMART CONTRACTS");
 console.log(`Deployer: ${deployerKeypair.publicKey()}`);
 console.log("=================================================\n");
 
@@ -202,7 +202,7 @@ async function main() {
   updateEVMTsAnchors(registeredAnchors);
 
   console.log("=================================================");
-  console.log("🎉 ALL Anchor Wallet CONTRACTS FULLY INITIALIZED!");
+  console.log("🎉 ALL AnchorVault CONTRACTS FULLY INITIALIZED!");
   console.log(`   USDC Token:        ${usdcAddress}`);
   console.log(`   Vault Share Token: ${govTokenAddress}`);
   console.log(`   Anchor Registry:   ${registryAddress}`);

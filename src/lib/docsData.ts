@@ -42,9 +42,9 @@ export const DOCS_PAGES: DocPage[] = [
   // -------------------------------------------------------------
   {
     id: "introduction",
-    title: "Welcome to Anchor Wallet",
+    title: "Welcome to AnchorVault",
     sidebarTitle: "Introduction",
-    description: "Anchor Wallet is a trustless, on-chain remittance liquidity routing protocol built on Robinhood Chain EVM.",
+    description: "AnchorVault is a trustless, on-chain remittance liquidity routing protocol built on Robinhood Chain EVM.",
     category: "Getting Started",
     icon: BookOpen,
     content: {
@@ -53,13 +53,13 @@ export const DOCS_PAGES: DocPage[] = [
         {
           infoCallout: {
             title: "Robinhood Chain Mainnet Deployed",
-            text: "Anchor Wallet is currently live on the Robinhood Chain Mainnet. Multi-corridor testing is fully operational."
+            text: "AnchorVault is currently live on the Robinhood Chain Mainnet. Multi-corridor testing is fully operational."
           },
-          text: "Anchor Wallet is a production-grade, decentralized liquidity protocol designed to bridge Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border payments. By locking stablecoins in corridor pools, LPs earn organic yield from actual remittance settlements."
+          text: "AnchorVault is a production-grade, decentralized liquidity protocol designed to bridge Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border payments. By locking stablecoins in corridor pools, LPs earn organic yield from actual remittance settlements."
         },
         {
-          title: "Why Anchor Wallet?",
-          text: "Traditional remittance channels rely on fragmented liquidity pools and slow pre-funding arrangements. Anchor Wallet solves this by providing a unified, trustless liquidity layer:",
+          title: "Why AnchorVault?",
+          text: "Traditional remittance channels rely on fragmented liquidity pools and slow pre-funding arrangements. AnchorVault solves this by providing a unified, trustless liquidity layer:",
           cards: [
             { title: "Instant Settlements", desc: "Anchors draw pooled USDC to settle cash-outs in seconds instead of days.", icon: "bolt" },
             { title: "Organic Yield for LPs", desc: "LPs earn interest strictly from active corridor utilization, not artificial token mints.", icon: "trending-up" },
@@ -91,7 +91,7 @@ export const DOCS_PAGES: DocPage[] = [
       type: "rich",
       sections: [
         {
-          text: "Follow this guide to set up your developer environment and run the complete Anchor Wallet protocol locally or on the Robinhood Chain Mainnet in under 10 minutes."
+          text: "Follow this guide to set up your developer environment and run the complete AnchorVault protocol locally or on the Robinhood Chain Mainnet in under 10 minutes."
         },
         {
           title: "1. Prerequisites",
@@ -108,7 +108,7 @@ export const DOCS_PAGES: DocPage[] = [
           codeBlock: {
             language: "bash",
             filename: "Terminal",
-            code: "git clone https://github.com/shriyashsoni/Anchor Wallet.git\ncd Anchor Wallet\nnpm install"
+            code: "git clone https://github.com/shriyashsoni/AnchorVault.git\ncd AnchorVault\nnpm install"
           }
         },
         {
@@ -153,18 +153,18 @@ export const DOCS_PAGES: DocPage[] = [
     id: "architecture",
     title: "System Architecture",
     sidebarTitle: "Architecture",
-    description: "Deep dive into Anchor Wallet's protocol architecture, smart contract relationships, and storage schemas.",
+    description: "Deep dive into AnchorVault's protocol architecture, smart contract relationships, and storage schemas.",
     category: "Getting Started",
     icon: Workflow,
     content: {
       type: "rich",
       sections: [
         {
-          text: "Anchor Wallet operates as a trustless, modular state machine on Robinhood Chain. It consists of four distinct on-chain coordinates designed to maintain system health, manage LPs, whitelist anchors, and handle yield math."
+          text: "AnchorVault operates as a trustless, modular state machine on Robinhood Chain. It consists of four distinct on-chain coordinates designed to maintain system health, manage LPs, whitelist anchors, and handle yield math."
         },
         {
           title: "Live Mainnet Smart Contract Addresses",
-          text: "All Anchor Wallet contracts are deployed and verified on the Robinhood Chain Mainnet. Click any address to verify on Robinhood Explorer.",
+          text: "All AnchorVault contracts are deployed and verified on the Robinhood Chain Mainnet. Click any address to verify on Robinhood Explorer.",
           table: {
             headers: ["Contract", "Mainnet Address", "Role"],
             rows: [
@@ -181,7 +181,7 @@ export const DOCS_PAGES: DocPage[] = [
         },
         {
           title: "Protocol Architecture Flow",
-          text: "Anchor Wallet coordinates three distinct entities trustlessly on-chain — Liquidity Providers, Payment Anchors, and the Core Smart Contracts. The high-level interaction flow operates as follows:",
+          text: "AnchorVault coordinates three distinct entities trustlessly on-chain — Liquidity Providers, Payment Anchors, and the Core Smart Contracts. The high-level interaction flow operates as follows:",
           bulletPoints: [
             "Step 1 — LP Deposits USDC: A Liquidity Provider deposits USDC stablecoins into the Corridor Pool Vault contract.",
             "Step 2 — Vault Mints $AVLT Shares: The Vault calculates the LP's proportional ownership and mints $AVLT share tokens back to the LP.",
@@ -292,11 +292,11 @@ export const DOCS_PAGES: DocPage[] = [
       type: "rich",
       sections: [
         {
-          text: "Liquidity Providers (LPs) supply the USDC capital that fuels the Anchor Wallet protocol. In exchange, they receive $AVLT (Vault Share Token) representing their proportional share of pool capital."
+          text: "Liquidity Providers (LPs) supply the USDC capital that fuels the AnchorVault protocol. In exchange, they receive $AVLT (Vault Share Token) representing their proportional share of pool capital."
         },
         {
           title: "Organic Yield Generation",
-          text: "Unlike inflationary protocols that mint speculative tokens to reward users, Anchor Wallet distributes organic yield from real transaction utility. When payment anchors repay their draws, a fee is added to the pool reserves.",
+          text: "Unlike inflationary protocols that mint speculative tokens to reward users, AnchorVault distributes organic yield from real transaction utility. When payment anchors repay their draws, a fee is added to the pool reserves.",
           bulletPoints: [
             "90% of all accumulated fees are directly allocated to LPs.",
             "Yield is tracked via a high-precision accumulator (acc_fees_per_share) scaled to 1e12.",
@@ -335,14 +335,14 @@ export const DOCS_PAGES: DocPage[] = [
     id: "concepts/yield-model",
     title: "Two-Slope Utilization & Dynamic Fee Curve",
     sidebarTitle: "Yield Model",
-    description: "Deep dive into Anchor Wallet's utilization-based dynamic borrow rate curve.",
+    description: "Deep dive into AnchorVault's utilization-based dynamic borrow rate curve.",
     category: "Core Concepts",
     icon: LineChart,
     content: {
       type: "rich",
       sections: [
         {
-          text: "Anchor Wallet manages borrow risk and protects pool liquidity using a Two-Slope Utilization Curve. This increases borrowing costs aggressively when pool reserves are heavily depleted, forcing anchors to repay outstanding lines."
+          text: "AnchorVault manages borrow risk and protects pool liquidity using a Two-Slope Utilization Curve. This increases borrowing costs aggressively when pool reserves are heavily depleted, forcing anchors to repay outstanding lines."
         },
         {
           title: "Optimal Target and Fee Structure",
@@ -403,7 +403,7 @@ export const DOCS_PAGES: DocPage[] = [
       type: "rich",
       sections: [
         {
-          text: "To protect LPs from default risks or settlement defaults, Anchor Wallet maintains an on-chain Insurance Fund."
+          text: "To protect LPs from default risks or settlement defaults, AnchorVault maintains an on-chain Insurance Fund."
         },
         {
           title: "Capital Accumulation & Claims",
@@ -425,14 +425,14 @@ export const DOCS_PAGES: DocPage[] = [
     id: "contracts/overview",
     title: "Smart Contracts Overview",
     sidebarTitle: "Overview",
-    description: "Anchor Wallet's modular Rust-based smart contract stack.",
+    description: "AnchorVault's modular Rust-based smart contract stack.",
     category: "Smart Contracts",
     icon: Terminal,
     content: {
       type: "rich",
       sections: [
         {
-          text: "Anchor Wallet smart contracts are compiled to optimized WASM binaries and run on Robinhood Chain's EVM VM. The modular design separates asset balances, risk management, and reputation metrics."
+          text: "AnchorVault smart contracts are compiled to optimized WASM binaries and run on Robinhood Chain's EVM VM. The modular design separates asset balances, risk management, and reputation metrics."
         },
         {
           title: "Contract Interfaces",
@@ -462,7 +462,7 @@ export const DOCS_PAGES: DocPage[] = [
           title: "Key Entrypoints (Rust)",
           codeBlock: {
             language: "rust",
-            code: "#[contractimpl]\nimpl Anchor Wallet {\n    // Deposit USDC, receive AVLT shares\n    pub fn deposit(env: Env, user: Address, amount: i128) -> i128;\n\n    // Burn AVLT shares, receive USDC\n    pub fn withdraw(env: Env, user: Address, shares: i128) -> i128;\n\n    // Authorized anchor draws USDC from reserves\n    pub fn draw_liquidity(env: Env, anchor: Address, amount: i128) -> i128;\n\n    // Repay outstanding draw + dynamic fee\n    pub fn repay_liquidity(env: Env, anchor: Address, principal: i128) -> i128;\n}"
+            code: "#[contractimpl]\nimpl AnchorVault {\n    // Deposit USDC, receive AVLT shares\n    pub fn deposit(env: Env, user: Address, amount: i128) -> i128;\n\n    // Burn AVLT shares, receive USDC\n    pub fn withdraw(env: Env, user: Address, shares: i128) -> i128;\n\n    // Authorized anchor draws USDC from reserves\n    pub fn draw_liquidity(env: Env, anchor: Address, amount: i128) -> i128;\n\n    // Repay outstanding draw + dynamic fee\n    pub fn repay_liquidity(env: Env, anchor: Address, principal: i128) -> i128;\n}"
           }
         }
       ]
@@ -530,13 +530,13 @@ export const DOCS_PAGES: DocPage[] = [
       type: "rich",
       sections: [
         {
-          text: "The Anchor Wallet SDK provides JavaScript/TypeScript developers with unified bindings to query state, build transactions, and hook into protocol event streams."
+          text: "The AnchorVault SDK provides JavaScript/TypeScript developers with unified bindings to query state, build transactions, and hook into protocol event streams."
         },
         {
           title: "Library Initialization",
           codeBlock: {
             language: "typescript",
-            code: "import { Anchor WalletClient } from '@Anchor Wallet/sdk';\nimport { rpc } from '@Robinhood Chain/Robinhood Chain-sdk';\n\nconst rpcServer = new rpc.Server('https://mainnet.EVMrpc.com');\nconst vaultClient = new Anchor WalletClient({\n  contractId: 'CDO3GSX27G6TAHLBROCC6WV4TNM6BWLFZDT2OW6RSUVBSGZJKTIISJFG',\n  server: rpcServer\n});"
+            code: "import { AnchorVaultClient } from '@AnchorVault/sdk';\nimport { rpc } from '@Robinhood Chain/Robinhood Chain-sdk';\n\nconst rpcServer = new rpc.Server('https://mainnet.EVMrpc.com');\nconst vaultClient = new AnchorVaultClient({\n  contractId: 'CDO3GSX27G6TAHLBROCC6WV4TNM6BWLFZDT2OW6RSUVBSGZJKTIISJFG',\n  server: rpcServer\n});"
           }
         }
       ]
@@ -576,7 +576,7 @@ export const DOCS_PAGES: DocPage[] = [
       type: "rich",
       sections: [
         {
-          text: "Anchor Wallet enables fast, fee-less state querying by simulating read-only smart contract operations against EVM RPC endpoints."
+          text: "AnchorVault enables fast, fee-less state querying by simulating read-only smart contract operations against EVM RPC endpoints."
         },
         {
           title: "Query Reserves & Utilization",
@@ -753,14 +753,14 @@ export const DOCS_PAGES: DocPage[] = [
     id: "api-reference/introduction",
     title: "Contract API Reference",
     sidebarTitle: "Introduction",
-    description: "Complete query and invoke function reference for Anchor Wallet contracts.",
+    description: "Complete query and invoke function reference for AnchorVault contracts.",
     category: "API Reference",
     icon: Code2,
     content: {
       type: "rich",
       sections: [
         {
-          text: "Welcome to the official Anchor Wallet Smart Contract API Reference. This directory contains detailed descriptions, argument types, and return value declarations for every callable function in the protocol."
+          text: "Welcome to the official AnchorVault Smart Contract API Reference. This directory contains detailed descriptions, argument types, and return value declarations for every callable function in the protocol."
         },
         {
           title: "API Categories",

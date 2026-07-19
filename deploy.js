@@ -31,7 +31,7 @@ const deployerKeypair = Keypair.fromSecret(secretKey);
 const server = new rpc.Server(rpcUrl);
 
 console.log("=================================================");
-console.log(`🚀 Anchor Wallet ${network.toUpperCase()} DEPLOYMENT`);
+console.log(`🚀 AnchorVault ${network.toUpperCase()} DEPLOYMENT`);
 console.log(`Network: ${network}`);
 console.log(`RPC Node: ${rpcUrl}`);
 console.log(`Deployer: ${deployerKeypair.publicKey()}`);

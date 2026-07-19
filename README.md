@@ -1,14 +1,14 @@
-# Anchor Wallet
+# AnchorVault
 
 ### Omnichain Remittance Liquidity Routing (Robinhood Chain)
 
 [![Robinhood Chain](https://img.shields.io/badge/Built%20on-robinhood-7C3AED?style=for-the-badge&logo=Robinhood Chain&logoColor=white)](https://robinhood.com) [![EVM](https://img.shields.io/badge/Smart%20Contracts-EVM-00E5FF?style=for-the-badge&logo=webassembly&logoColor=white)](https://EVM.robinhood.com) [![Network](https://img.shields.io/badge/Network-Mainnet-00C853?style=for-the-badge&logo=ethereum&logoColor=white)](#deployed-smart-contract-addresses-robinhood-mainnet) [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-[![Website](https://img.shields.io/badge/Website-AnchorWallet.xyz-FF6D00?style=flat-square&logo=googlechrome&logoColor=white)](https://www.anchorwallet.xyz) [![Twitter](https://img.shields.io/badge/Twitter-@shriyashsoni-1DA1F2?style=flat-square&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![Docs](https://img.shields.io/badge/Docs-Read%20the%20Docs-0A0A0A?style=flat-square&logo=readthedocs&logoColor=white)](#documentation)
+[![Website](https://img.shields.io/badge/Website-anchorvault.xyz-FF6D00?style=flat-square&logo=googlechrome&logoColor=white)](https://www.anchorvault.xyz) [![Twitter](https://img.shields.io/badge/Twitter-@shriyashsoni-1DA1F2?style=flat-square&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![Docs](https://img.shields.io/badge/Docs-Read%20the%20Docs-0A0A0A?style=flat-square&logo=readthedocs&logoColor=white)](#documentation)
 
-**Anchor Wallet** is a production-grade, decentralized liquidity protocol built on the **Robinhood Chain EVM & Robinhood Chain Platforms**. It bridges Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border remittances. LPs lock stablecoin reserves into corridor pools and organic yield is dynamically routed to them from real payment settlement flows.
+**AnchorVault** is a production-grade, decentralized liquidity protocol built on the **Robinhood Chain EVM & Robinhood Chain Platforms**. It bridges Liquidity Providers (LPs) with authorized off-ramp payment anchors to facilitate instant, cross-border remittances. LPs lock stablecoin reserves into corridor pools and organic yield is dynamically routed to them from real payment settlement flows.
 
-[Explore the App](https://www.anchorwallet.xyz) · [Read the Docs](#documentation) · [View on Robinhood Explorer](#deployed-smart-contract-addresses-robinhood-mainnet) · [Report a Bug](https://github.com/shriyashsoni/anchorwallet/issues/new)
+[Explore the App](https://www.anchorvault.xyz) · [Read the Docs](#documentation) · [View on Robinhood Explorer](#deployed-smart-contract-addresses-robinhood-mainnet) · [Report a Bug](https://github.com/shriyashsoni/anchorvault/issues/new)
 
 ---
 
@@ -44,7 +44,7 @@
 
 ## Protocol Architecture & Flow Charts
 
-Anchor Wallet coordinates three distinct entities trustlessly on-chain across multiple networks (Robinhood Chain): **Liquidity Providers**, **Payment Anchors**, and the **Core Smart Contracts**.
+AnchorVault coordinates three distinct entities trustlessly on-chain across multiple networks (Robinhood Chain): **Liquidity Providers**, **Payment Anchors**, and the **Core Smart Contracts**.
 
 ### 1. High-Level Protocol Architecture
 ```mermaid
@@ -169,7 +169,7 @@ The fee rate $R$ (in basis points) changes dynamically based on whether utilizat
 
 ## Developer Setup & Deployment Guide
 
-Follow these steps to deploy and run Anchor Wallet locally or on the Robinhood Chain Mainnet.
+Follow these steps to deploy and run AnchorVault locally or on the Robinhood Chain Mainnet.
 
 ### 1. Prerequisites
 Ensure you have the following installed on your developer machine:
@@ -180,8 +180,8 @@ Ensure you have the following installed on your developer machine:
 
 ### 2. Installation
 ```bash
-git clone https://github.com/shriyashsoni/Anchor Wallet.git
-cd Anchor Wallet
+git clone https://github.com/shriyashsoni/AnchorVault.git
+cd AnchorVault
 npm install
 ```
 
@@ -217,7 +217,7 @@ Open **`http://localhost:5173/`** to interact with the live DeFi portal.
 
 ## SDK Integration
 
-Integrate Anchor Wallet into your own applications using the Robinhood Chain SDK and our TypeScript bindings.
+Integrate AnchorVault into your own applications using the Robinhood Chain SDK and our TypeScript bindings.
 
 ### Install Dependencies
 ```bash
@@ -271,7 +271,7 @@ For the complete TypeScript integration including deposit, withdraw, draw liquid
 
 ## Documentation
 
-Full protocol documentation is available in the [`docs/`](docs/) directory and on the [Anchor Wallet Docs Portal](https://www.anchorwallet.xyz/docs).
+Full protocol documentation is available in the [`docs/`](docs/) directory and on the [AnchorVault Docs Portal](https://www.anchorvault.xyz/docs).
 
 ### Getting Started
 | Document | Description |
@@ -346,7 +346,7 @@ Contributions are welcome! Whether it's a bug fix, feature request, or documenta
 | **SDK** | TypeScript bindings, new helper functions, documentation |
 | **Documentation** | Tutorials, guides, API reference improvements |
 | **Testing** | Unit tests, integration tests, fuzzing |
-| **Security** | Vulnerability reports (please use [responsible disclosure](https://github.com/shriyashsoni/Anchor Wallet/security)) |
+| **Security** | Vulnerability reports (please use [responsible disclosure](https://github.com/shriyashsoni/AnchorVault/security)) |
 
 ### Code Style
 * Rust contracts follow standard `rustfmt` formatting
@@ -359,7 +359,7 @@ Contributions are welcome! Whether it's a bug fix, feature request, or documenta
 
 **Built with passion by [Shriyash Soni](https://github.com/shriyashsoni)**
 
-[![Website](https://img.shields.io/badge/Website-AnchorWallet.xyz-FF6D00?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.anchorwallet.xyz) [![Twitter](https://img.shields.io/badge/Twitter%20%2F%20X-@shriyashsoni-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![Anchor Wallet X](https://img.shields.io/badge/Anchor Wallet%20X-@Anchor__Vault-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Anchor_Vault)
+[![Website](https://img.shields.io/badge/Website-anchorvault.xyz-FF6D00?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.anchorvault.xyz) [![Twitter](https://img.shields.io/badge/Twitter%20%2F%20X-@shriyashsoni-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/shriyashsoni_) [![GitHub](https://img.shields.io/badge/GitHub-shriyashsoni-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shriyashsoni) [![AnchorVault X](https://img.shields.io/badge/AnchorVault%20X-@Anchor__Vault-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Anchor_Vault)
 
 ### Acknowledgements
 * [Robinhood Chain Development Foundation](https://robinhood.com) — Layer-1 blockchain infrastructure
@@ -373,9 +373,9 @@ Contributions are welcome! Whether it's a bug fix, feature request, or documenta
 
 This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
-**[www.anchorwallet.xyz](https://www.anchorwallet.xyz)**
+**[www.anchorvault.xyz](https://www.anchorvault.xyz)**
 
-<sub>Anchor Wallet — Powering the future of decentralized cross-border remittances on Robinhood Chain.</sub>
+<sub>AnchorVault — Powering the future of decentralized cross-border remittances on Robinhood Chain.</sub>
 
 ## Robinhood Chain Details
 

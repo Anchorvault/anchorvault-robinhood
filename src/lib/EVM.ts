@@ -1,6 +1,6 @@
 /**
  * ============================================================
- *  Anchor Wallet — Real EVM On-Chain Integration Service
+ *  AnchorVault — Real EVM On-Chain Integration Service
  * ============================================================
  *  This module handles ALL blockchain interactions:
  *    • Querying contract state (pool, LP, anchors)
@@ -103,7 +103,7 @@ export interface AnchorRecord {
   firstRegistered: number;
 }
 
-export interface Anchor WalletState {
+export interface AnchorVaultState {
   isRegistered: boolean;
   creditLimit: bigint;
   activeDraw: bigint;
@@ -319,7 +319,7 @@ export async function fetchPendingYield(callerPubKey: string): Promise<string> {
 /**
  * Query an anchor's state from the CoreVault contract
  */
-export async function fetchAnchor WalletState(callerPubKey: string, anchorAddress: string): Promise<Anchor WalletState | null> {
+export async function fetchAnchorVaultState(callerPubKey: string, anchorAddress: string): Promise<AnchorVaultState | null> {
   try {
     const contract = new Contract(CONTRACT_ADDRESSES.CORE_VAULT);
     const call = contract.call("get_anchor_state", new Address(anchorAddress).toScVal());
@@ -749,7 +749,7 @@ export async function fetchRegisteredAnchors(callerPubKey: string): Promise<Regi
       }
 
       // Query CoreVault
-      const vaultRecord = await fetchAnchor WalletState(callerPubKey, item.address);
+      const vaultRecord = await fetchAnchorVaultState(callerPubKey, item.address);
       
       const creditLimit = formatTokenAmount(registryRecord.creditLimit, 7);
       const reputationScore = `${(registryRecord.reputationScore / 10).toFixed(1)}%`;
@@ -829,7 +829,7 @@ export async function registerAnchorOnChain(userPubKey: string, creditLimit: str
   const isWhitelisted = registryRecord?.isWhitelisted ?? false;
   
   // 2. Check if already registered in CoreVault
-  const vaultRecord = await fetchAnchor WalletState(deployerAddress, userPubKey);
+  const vaultRecord = await fetchAnchorVaultState(deployerAddress, userPubKey);
   const isRegisteredInVault = vaultRecord?.isRegistered ?? false;
 
   let lastHash = "";
@@ -1092,7 +1092,7 @@ export async function adjustCreditLimitOnChain(userPubKey: string, newLimit: str
   const deployerAddress = deployerKeypair.publicKey();
   
   // Check if registered first to prevent VM trap UnreachableCodeReached (expect failed)
-  const vaultRecord = await fetchAnchor WalletState(deployerAddress, userPubKey);
+  const vaultRecord = await fetchAnchorVaultState(deployerAddress, userPubKey);
   if (!vaultRecord || !vaultRecord.isRegistered) {
     console.log(`[EVM] Anchor not registered in Vault! Registering instead of adjusting...`);
     return await registerAnchorOnChain(userPubKey, newLimit);

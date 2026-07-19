@@ -21,7 +21,7 @@ const FeaturesGrid: React.FC<FeaturesGridProps> = ({ onNavigate }) => {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 max-w-7xl mx-auto w-full">
         <div className="max-w-3xl">
           <h2 className="text-[28px] sm:text-3xl md:text-4xl lg:text-[44px] leading-[1.15] font-normal tracking-tight mb-4">
-            Anchor Wallet Liquidity Features
+            AnchorVault Liquidity Features
           </h2>
           <p className="text-sm md:text-[15px] leading-[1.6] text-white/60">
             A trustless EVM routing engine bridging idle stablecoins with Robinhood Chain anchor corridors. With robust smart contracts behind us, we help liquidity move with focus and intention.
@@ -68,7 +68,7 @@ const FeaturesGrid: React.FC<FeaturesGridProps> = ({ onNavigate }) => {
               <Sparkle className="h-3 w-3 stroke-[1.5px] text-white/70" />
             </div>
             <p className="relative z-10 text-[13px] sm:text-[13.5px] leading-[1.6] text-white/85 font-medium italic">
-              "Anchor Wallet reshaped our liquidity management with a degree of finesse and vision that surpassed what we'd hoped for. The on-chain settlements feel graceful, and the yields speak for themselves."
+              "AnchorVault reshaped our liquidity management with a degree of finesse and vision that surpassed what we'd hoped for. The on-chain settlements feel graceful, and the yields speak for themselves."
             </p>
             <div className="relative z-10 text-xs text-white/70 mt-2">
               <strong className="text-white">Elena Brooks</strong>, Operations Lead — Anchora
