@@ -13,12 +13,10 @@
     "initialize": "node initialize.js"
   },
   "dependencies": {
-    "@creit.tech/stellar-wallets-kit": "^2.2.0",
-    "@stellar/freighter-api": "^6.0.1",
-    "@stellar/stellar-sdk": "^16.0.1",
     "bip39": "^3.1.0",
     "dotenv": "^17.4.2",
     "ed25519-hd-key": "^2.0.0",
+    "ethers": "^6.17.0",
     "hls.js": "^1.6.16",
     "lucide-react": "^1.17.0",
     "motion": "^12.40.0",

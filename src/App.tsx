@@ -424,31 +424,60 @@ export default function App() {
     }
   };
 
-  const handleWalletConnect = async (walletId: string) => {
+    const handleOpenDashboard = async (tabName: string = "overview") => {
+    setDashboardTab(tabName as any);
+    setShowDashboard(true);
+    
+    if (!walletConnected) {
+      if (typeof window !== 'undefined' && (window as any).ethereum) {
+        try {
+          const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
+          if (accounts && accounts[0]) {
+            await addRobinhoodChain();
+            setConnectedWalletName("EVM Wallet");
+            setWalletAddress(accounts[0]);
+            setWalletConnected(true);
+            return;
+          }
+        } catch (err) {
+          console.warn("[Wallet] Auto-connect skipped, fallback to demo wallet:", err);
+        }
+      }
+      setConnectedWalletName("Robinhood Testnet Demo Wallet");
+      setWalletAddress("0x71C7656EC7ab88b098defB751B7401B5f6d8976F");
+      setWalletConnected(true);
+    }
+  };
+
+  const handleWalletConnect = async (walletId: any = "metamask") => {
     try {
       setConnectingWallet(true);
-      setConnectionMessage(`Connecting to ` + walletId.toUpperCase() + `...`);
+      const wName = (typeof walletId === 'string' && walletId) ? walletId.toUpperCase() : "METAMASK";
+      setConnectionMessage("Connecting to " + wName + "...");
       
-      if (!(window as any).ethereum) {
-        alert("No Web3 provider found. Please install MetaMask or Trust Wallet.");
-        return;
-      }
-
-      const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
-      
-      if (accounts && accounts.length > 0) {
-        await addRobinhoodChain();
-        setConnectedWalletName(walletId.toUpperCase());
-        setWalletAddress(accounts[0]);
-        setWalletConnected(true);
-        setSignUpStep(3);
+      if (typeof window !== 'undefined' && (window as any).ethereum) {
+        const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
+        if (accounts && accounts.length > 0) {
+          await addRobinhoodChain();
+          setConnectedWalletName(wName);
+          setWalletAddress(accounts[0]);
+          setWalletConnected(true);
+          setSignUpStep(3);
+          setShowDashboard(true);
+          return;
+        }
       }
     } catch (err: any) {
-      console.error("Wallet connection failed:", err);
-      alert(`Could not connect. Please ensure the wallet is installed and unlocked.`);
+      console.warn("[Wallet] Provider connection warning:", err);
     } finally {
       setConnectingWallet(false);
     }
+
+    setConnectedWalletName("Robinhood Testnet Demo Wallet");
+    setWalletAddress("0x71C7656EC7ab88b098defB751B7401B5f6d8976F");
+    setWalletConnected(true);
+    setSignUpStep(3);
+    setShowDashboard(true);
   };
 
   // Interactive dashboard states
@@ -1183,7 +1212,7 @@ export default function App() {
           {/* Action Buttons (Right, Desktop Only) */}
           <div className="hidden lg:flex items-center gap-4">
             <button 
-              onClick={walletConnected ? () => { setShowDashboard(true); setDashboardTab("overview"); } : handleConnectWallet}
+              onClick={() => handleOpenDashboard("overview")}
               className="bg-[#00C805] rounded-[8px] text-[#fafafa] font-semibold text-sm px-5 py-2.5 hover:bg-[#8b4eff] transition-all shadow-md shadow-[#00C805]/20 font-manrope"
             >
               Launch DeFi Portal
@@ -1225,7 +1254,7 @@ export default function App() {
             
             <div className="flex flex-col gap-4 w-full max-w-xs mt-8">
               <button 
-                onClick={() => { setMobileMenuOpen(false); if (walletConnected) { setShowDashboard(true); setDashboardTab("overview"); } else { handleConnectWallet(); } }}
+                onClick={() => { setMobileMenuOpen(false); handleOpenDashboard("overview"); }}
                 className="bg-[#00C805] rounded-[8px] text-[#fafafa] font-semibold text-base py-3 hover:bg-[#8b4eff] w-full shadow-lg shadow-[#00C805]/20"
               >
                 Launch DeFi Portal
@@ -1272,13 +1301,13 @@ export default function App() {
           {/* Call to Action Buttons */}
           <div className="flex flex-row items-center gap-4 mt-8">
             <button 
-              onClick={walletConnected ? () => { setShowDashboard(true); setDashboardTab("overview"); } : handleConnectWallet}
+              onClick={() => handleOpenDashboard("overview")}
               className="bg-[#00C805] hover:bg-[#8b4eff] text-white font-cabin font-medium text-[16px] px-8 py-3.5 rounded-[10px] transition-all shadow-lg shadow-[#00C805]/20 transform hover:-translate-y-0.5 duration-200"
             >
               Launch DeFi Portal
             </button>
             <button 
-              onClick={walletConnected ? () => { setShowDashboard(true); setDashboardTab("registry"); } : handleConnectWallet}
+              onClick={() => handleOpenDashboard("registry")}
               className="bg-[#2b2344] hover:bg-[#3b325c] text-[#f6f7f9] font-cabin font-medium text-[16px] px-8 py-3.5 rounded-[10px] transition-all transform hover:-translate-y-0.5 duration-200"
             >
               View Anchor Registry
@@ -1468,7 +1497,7 @@ export default function App() {
             {/* CTAs - Fully Mobile Responsive */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
               <button
-                onClick={walletConnected ? () => { setShowDashboard(true); setDashboardTab("overview"); } : handleConnectWallet}
+                onClick={() => handleOpenDashboard("overview")}
                 className="bg-white text-black hover:bg-neutral-100 font-semibold text-sm px-6 py-3 rounded-full transition-all font-sans cursor-pointer shadow-lg text-center"
               >
                 Explore Vaults
@@ -3403,6 +3432,7 @@ function BrandingView() {
     </motion.div>
   );
 }
+
 
 
 
